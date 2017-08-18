@@ -10,6 +10,8 @@
 
 @interface ViewController : NSViewController
 
+@property (weak) IBOutlet NSTextField *metalLabel;
+
 
 @end
 

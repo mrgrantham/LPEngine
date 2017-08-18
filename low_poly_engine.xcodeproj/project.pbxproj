@@ -14,6 +14,9 @@
 		D76CBADF1F46716700D51490 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D76CBADD1F46716700D51490 /* Main.storyboard */; };
 		D76CBAEA1F46716700D51490 /* low_poly_engineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D76CBAE91F46716700D51490 /* low_poly_engineTests.m */; };
 		D76CBAF51F46716700D51490 /* low_poly_engineUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D76CBAF41F46716700D51490 /* low_poly_engineUITests.m */; };
+		D76CBB041F46B6AD00D51490 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76CBB031F46B6AD00D51490 /* Metal.framework */; };
+		D76CBB061F46B6B400D51490 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76CBB051F46B6B400D51490 /* MetalKit.framework */; };
+		D76CBB0C1F46BF8C00D51490 /* EngineMetalView.m in Sources */ = {isa = PBXBuildFile; fileRef = D76CBB0B1F46BF8C00D51490 /* EngineMetalView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,10 @@
 		D76CBAF01F46716700D51490 /* low_poly_engineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = low_poly_engineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D76CBAF41F46716700D51490 /* low_poly_engineUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = low_poly_engineUITests.m; sourceTree = "<group>"; };
 		D76CBAF61F46716700D51490 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D76CBB031F46B6AD00D51490 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		D76CBB051F46B6B400D51490 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		D76CBB0B1F46BF8C00D51490 /* EngineMetalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineMetalView.m; sourceTree = "<group>"; };
+		D76CBB0D1F46BF9F00D51490 /* EngineMetalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineMetalView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +63,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D76CBB061F46B6B400D51490 /* MetalKit.framework in Frameworks */,
+				D76CBB041F46B6AD00D51490 /* Metal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +92,7 @@
 				D76CBAE81F46716700D51490 /* low_poly_engineTests */,
 				D76CBAF31F46716700D51490 /* low_poly_engineUITests */,
 				D76CBAD01F46716700D51490 /* Products */,
+				D76CBB021F46B6AC00D51490 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +111,8 @@
 			children = (
 				D76CBAD21F46716700D51490 /* AppDelegate.h */,
 				D76CBAD31F46716700D51490 /* AppDelegate.m */,
+				D76CBB0B1F46BF8C00D51490 /* EngineMetalView.m */,
+				D76CBB0D1F46BF9F00D51490 /* EngineMetalView.h */,
 				D76CBAD81F46716700D51490 /* ViewController.h */,
 				D76CBAD91F46716700D51490 /* ViewController.m */,
 				D76CBADB1F46716700D51490 /* Assets.xcassets */,
@@ -135,6 +147,15 @@
 				D76CBAF61F46716700D51490 /* Info.plist */,
 			);
 			path = low_poly_engineUITests;
+			sourceTree = "<group>";
+		};
+		D76CBB021F46B6AC00D51490 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D76CBB051F46B6B400D51490 /* MetalKit.framework */,
+				D76CBB031F46B6AD00D51490 /* Metal.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D76CBB0C1F46BF8C00D51490 /* EngineMetalView.m in Sources */,
 				D76CBADA1F46716700D51490 /* ViewController.m in Sources */,
 				D76CBAD71F46716700D51490 /* main.m in Sources */,
 				D76CBAD41F46716700D51490 /* AppDelegate.m in Sources */,
@@ -414,6 +436,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = low_poly_engine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "alto.low-poly-engine";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -426,6 +449,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = low_poly_engine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "alto.low-poly-engine";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

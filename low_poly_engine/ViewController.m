@@ -7,12 +7,29 @@
 //
 
 #import "ViewController.h"
+#import <Metal/Metal.h>
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    NSArray <id<MTLDevice>> *allDevs;
+    allDevs = MTLCopyAllDevices();
+    NSObject<MTLDevice> *aDevice;
+    
+    if ((aDevice = allDevs.firstObject)) {
+        NSLog(@"THERE IS A DEVICE");
+    } else {
+        NSLog(@"Your GPU does not support Metal!");
+    }
+    
+    _metalLabel.stringValue = @"Your system has the following GPU(s):\n";
+    
+    for (NSObject<MTLDevice> *dev in allDevs) {
+        _metalLabel.stringValue = [NSString stringWithFormat:@"%@\n%@",_metalLabel.stringValue, dev.name ];
+    }
+    
     // Do any additional setup after loading the view.
 }
 
