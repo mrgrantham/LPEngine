@@ -15,8 +15,15 @@
 
 @interface EngineMetalView : MTKView
 
+//@property (nonatomic, weak) NSObject <MTLCommandBuffer> *commandBuffer;
+//@property (nonatomic, weak) NSObject <MTLRenderCommandEncoder> *commandEncoder;
+@property (nonatomic, strong) id<MTLRenderPipelineState> renderPipelineState;
+@property (nonatomic, strong) id <MTLBuffer> vertex_buffer;
 - (void) render;
 - (void) drawRect: (NSRect)dirtyRect;
+- (void) createBuffer;
+- (void) registerShaders;
+- (void) sendToGPU;
 
 
 @end
