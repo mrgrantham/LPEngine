@@ -9,8 +9,14 @@
 #ifndef EngineMetalView_h
 #define EngineMetalView_h
 
-@interface EngineMetalView : NSView
+#import <Cocoa/Cocoa.h>
+#import <Metal/Metal.h>
+#import <MetalKit/MetalKit.h>
 
+@interface EngineMetalView : MTKView
+
+- (void) render;
+- (void) drawRect: (NSRect)dirtyRect;
 
 
 @end
