@@ -17,6 +17,9 @@
 		D76CBB061F46B6B400D51490 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76CBB051F46B6B400D51490 /* MetalKit.framework */; };
 		D76CBB0C1F46BF8C00D51490 /* EngineMetalView.m in Sources */ = {isa = PBXBuildFile; fileRef = D76CBB0B1F46BF8C00D51490 /* EngineMetalView.m */; };
 		D76CBB0F1F46D96B00D51490 /* engineShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = D76CBB0E1F46D96B00D51490 /* engineShaders.metal */; };
+		D78240DF1F4767FC005CE3C9 /* EnginePrimitives.m in Sources */ = {isa = PBXBuildFile; fileRef = D78240DE1F4767FC005CE3C9 /* EnginePrimitives.m */; };
+		D7F6B8621F48086F00607F4E /* EngineTransforms.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8611F48086F00607F4E /* EngineTransforms.m */; };
+		D7F6B8641F480BC400607F4E /* EngineDemos.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8631F480BC400607F4E /* EngineDemos.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,12 @@
 		D76CBB0B1F46BF8C00D51490 /* EngineMetalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineMetalView.m; sourceTree = "<group>"; };
 		D76CBB0D1F46BF9F00D51490 /* EngineMetalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineMetalView.h; sourceTree = "<group>"; };
 		D76CBB0E1F46D96B00D51490 /* engineShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = engineShaders.metal; sourceTree = "<group>"; };
+		D78240DD1F4767E3005CE3C9 /* EnginePrimitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnginePrimitives.h; sourceTree = "<group>"; };
+		D78240DE1F4767FC005CE3C9 /* EnginePrimitives.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnginePrimitives.m; sourceTree = "<group>"; };
+		D7F6B8601F48084F00607F4E /* EngineTransforms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineTransforms.h; sourceTree = "<group>"; };
+		D7F6B8611F48086F00607F4E /* EngineTransforms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineTransforms.m; sourceTree = "<group>"; };
+		D7F6B8631F480BC400607F4E /* EngineDemos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineDemos.m; sourceTree = "<group>"; };
+		D7F6B8651F480BD500607F4E /* EngineDemos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineDemos.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,9 +119,15 @@
 			children = (
 				D76CBAD21F46716700D51490 /* AppDelegate.h */,
 				D76CBAD31F46716700D51490 /* AppDelegate.m */,
-				D76CBB0B1F46BF8C00D51490 /* EngineMetalView.m */,
-				D76CBB0E1F46D96B00D51490 /* engineShaders.metal */,
 				D76CBB0D1F46BF9F00D51490 /* EngineMetalView.h */,
+				D76CBB0B1F46BF8C00D51490 /* EngineMetalView.m */,
+				D7F6B8631F480BC400607F4E /* EngineDemos.m */,
+				D7F6B8651F480BD500607F4E /* EngineDemos.h */,
+				D78240DD1F4767E3005CE3C9 /* EnginePrimitives.h */,
+				D78240DE1F4767FC005CE3C9 /* EnginePrimitives.m */,
+				D7F6B8601F48084F00607F4E /* EngineTransforms.h */,
+				D7F6B8611F48086F00607F4E /* EngineTransforms.m */,
+				D76CBB0E1F46D96B00D51490 /* engineShaders.metal */,
 				D76CBADB1F46716700D51490 /* Assets.xcassets */,
 				D76CBADD1F46716700D51490 /* Main.storyboard */,
 				D76CBAE01F46716700D51490 /* Info.plist */,
@@ -288,9 +303,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D78240DF1F4767FC005CE3C9 /* EnginePrimitives.m in Sources */,
 				D76CBB0F1F46D96B00D51490 /* engineShaders.metal in Sources */,
 				D76CBB0C1F46BF8C00D51490 /* EngineMetalView.m in Sources */,
 				D76CBAD71F46716700D51490 /* main.m in Sources */,
+				D7F6B8621F48086F00607F4E /* EngineTransforms.m in Sources */,
+				D7F6B8641F480BC400607F4E /* EngineDemos.m in Sources */,
 				D76CBAD41F46716700D51490 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,6 +540,7 @@
 				D76CBAFB1F46716700D51490 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D76CBAFC1F46716700D51490 /* Build configuration list for PBXNativeTarget "low_poly_engineTests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +549,7 @@
 				D76CBAFE1F46716700D51490 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D76CBAFF1F46716700D51490 /* Build configuration list for PBXNativeTarget "low_poly_engineUITests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +558,7 @@
 				D76CBB011F46716700D51490 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

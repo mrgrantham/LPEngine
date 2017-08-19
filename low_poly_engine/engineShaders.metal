@@ -20,5 +20,6 @@ vertex Vertex vertex_func(constant Vertex *vertices [[buffer(0)]], uint vid [[ve
 }
 
 fragment float4 fragment_func(Vertex vert [[stage_in]]) {
+//    return {1.0, 0.0, 0.0, 1.0};
     return vert.color;
 }

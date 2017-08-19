@@ -12,13 +12,18 @@
 #import <Cocoa/Cocoa.h>
 #import <Metal/Metal.h>
 #import <MetalKit/MetalKit.h>
+#import "EnginePrimitives.h"
 
 @interface EngineMetalView : MTKView
 
 //@property (nonatomic, weak) NSObject <MTLCommandBuffer> *commandBuffer;
 //@property (nonatomic, weak) NSObject <MTLRenderCommandEncoder> *commandEncoder;
 @property (nonatomic, strong) id<MTLRenderPipelineState> renderPipelineState;
-@property (nonatomic, strong) id <MTLBuffer> vertex_buffer;
+@property (nonatomic, strong) id <MTLBuffer> vertexBuffer;
+@property (nonatomic, strong) EnginePrimitives *primitives;
+@property (nonatomic) Vertex *vertexData;
+@property (nonatomic) NSInteger vertexDataSize;
+
 - (void) render;
 - (void) drawRect: (NSRect)dirtyRect;
 - (void) createBuffer;
