@@ -13,10 +13,14 @@
 
 @interface EngineTransforms : NSObject
 
-+ (LPPoint) rotate2DAtAxis:(LPPoint)axis WithPoint:(LPPoint)point AtAngle:(float) radians;
-+ (LPPoint) rotate3DAtXAxis: (LPPoint) axis WithPoint:(LPPoint) point AtAngle:(float) radians;
-+ (LPPoint) rotate3DAtYAxis: (LPPoint) axis WithPoint:(LPPoint) point AtAngle:(float) radians;
-+ (LPPoint) rotate3DAtZAxis: (LPPoint) axis WithPoint:(LPPoint) point AtAngle:(float) radians;
++ (LPPoint) rotate2DAtAxis:(LPPoint)axis ForPoint:(LPPoint)point AtAngle:(float) radians;
++ (LPPoint) rotateAtAxis: (LPPoint) axis ForPoint:(LPPoint) point AtAngles:(LPPoint) radianVector;
++ (LPPoint) rotateAtXAxis: (LPPoint) axis ForPoint:(LPPoint) point AtAngle:(float) radians;
++ (LPPoint) rotateAtYAxis: (LPPoint) axis ForPoint:(LPPoint) point AtAngle:(float) radians;
++ (LPPoint) rotateAtZAxis: (LPPoint) axis ForPoint:(LPPoint) point AtAngle:(float) radians;
+
++ (LPPoint) translatePoint:(LPPoint)point WithVector:(LPPoint)translationVector;
++ (LPPoint) scalePoint:(LPPoint)point WithVector:(LPPoint)scaleVector;
 
 @end
 

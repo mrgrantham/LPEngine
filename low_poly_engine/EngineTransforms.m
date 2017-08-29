@@ -13,7 +13,7 @@ static float _3Dmatrix[3][3];
 
 @implementation EngineTransforms
 
-+ (LPPoint) rotate2DAtAxis:(LPPoint)axis WithPoint:(LPPoint)point AtAngle:(float) radians {
++ (LPPoint) rotate2DAtAxis:(LPPoint)axis ForPoint:(LPPoint)point AtAngle:(float) radians {
     
     LPPoint newPoint;
     
@@ -37,7 +37,13 @@ static float _3Dmatrix[3][3];
 
 }
 
-+ (LPPoint) rotate3DAtXAxis: (LPPoint) axis WithPoint:(LPPoint) point AtAngle:(float) radians {
++ (LPPoint) rotateAtAxis: (LPPoint) axis ForPoint:(LPPoint) point AtAngles:(LPPoint) radianVector {
+    LPPoint temp = {};
+    
+    return temp;
+}
+
++ (LPPoint) rotateAtXAxis: (LPPoint) axis ForPoint:(LPPoint) point AtAngle:(float) radians {
     LPPoint temp;
     temp.x=point.x-axis.x;
     temp.y=point.y-axis.y;
@@ -65,7 +71,7 @@ static float _3Dmatrix[3][3];
 
 }
 
-+ (LPPoint) rotate3DAtYAxis: (LPPoint) axis WithPoint:(LPPoint) point AtAngle:(float) radians {
++ (LPPoint) rotateAtYAxis: (LPPoint) axis ForPoint:(LPPoint) point AtAngle:(float) radians {
     LPPoint temp;
     
     temp.x=point.x-axis.x;
@@ -93,7 +99,7 @@ static float _3Dmatrix[3][3];
     return temp;
 }
 
-+ (LPPoint) rotate3DAtZAxis: (LPPoint) axis WithPoint:(LPPoint) point AtAngle:(float) radians {
++ (LPPoint) rotateAtZAxis: (LPPoint) axis ForPoint:(LPPoint) point AtAngle:(float) radians {
     LPPoint temp;
     temp.x=point.x-axis.x;
     temp.y=point.y-axis.y;
@@ -118,6 +124,25 @@ static float _3Dmatrix[3][3];
     temp.z += axis.z;
     
     return temp;
+}
+
++ (LPPoint) translatePoint:(LPPoint)point WithVector:(LPPoint)translationVector {
+    LPPoint translatedPoint = point;
+    translatedPoint.x = translationVector.x + translatedPoint.x;
+    translatedPoint.y = translationVector.y + translatedPoint.y;
+    translatedPoint.z = translationVector.z + translatedPoint.z;
+
+    return translatedPoint;
+}
+
++ (LPPoint) scalePoint:(LPPoint)point WithVector:(LPPoint)scaleVector {
+    LPPoint scaledPoint = point;
+    scaledPoint.x = scaleVector.x * scaledPoint.x;
+    scaledPoint.y = scaleVector.y * scaledPoint.y;
+    scaledPoint.z = scaleVector.z * scaledPoint.z;
+
+    
+    return scaledPoint;
 }
 
 
