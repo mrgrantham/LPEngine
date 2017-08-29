@@ -33,10 +33,11 @@
         self.vertexData = nil;
         self.vertexDataSize = 0;
         
+        self.preferredFramesPerSecond = 24;
         
-        [self.primitives setPixelWidth:4];
-        [self.primitives setVirtualWidth:320];
-        [self.primitives setVirtualHeight:240];
+        [self.primitives setPixelWidth:2];
+        [self.primitives setVirtualWidth:640];
+        [self.primitives setVirtualHeight:480];
         [self.primitives resetDepthBuffer];
         
         CGSize canvasSize = [self.primitives canvasSize];
@@ -76,44 +77,27 @@
     
 
     [self.primitives clearVertices];
-//    [self.primitives setColorWithRed:20 Green:200 Blue:0];
-//    [self.primitives drawPixelAtX:3 Y:3];
-//    [self.primitives drawPixelAtX:0 Y:0];
-//    [self.primitives setColorWithRed:200 Green:200 Blue:0];
-//    [self.primitives drawPixelAtX:10 Y:20];
-//    [self.primitives drawPixelAtX:20 Y:20];
-//    [self.primitives setColorWithRed:0 Green:200 Blue:0];
-//    [self.primitives drawPixelAtX:9 Y:10];
-//    [self.primitives drawPixelAtX:10 Y:9];
-//    [self.primitives drawPixelAtX:11 Y:9];
-//    [self.primitives drawPixelAtX:12 Y:8];
-//    [self.primitives drawPixelAtX:13 Y:8];
-//    [self.primitives drawPixelAtX:14 Y:8];
-//    [self.primitives drawPixelAtX:15 Y:8];
-//    [self.primitives drawPixelAtX:16 Y:8];
-//    [self.primitives drawPixelAtX:17 Y:8];
-//    [self.primitives drawPixelAtX:18 Y:8];
-//    [self.primitives drawPixelAtX:19 Y:9];
-//    [self.primitives drawPixelAtX:20 Y:9];
-//    [self.primitives drawPixelAtX:21 Y:10];
 
     [self.primitives setColorWithRed:200 Green:200 Blue:0];
-//    [self.primitives drawTriangleAtCopiedPoint1:LPPointMake(10, 10, 0) Point2:LPPointMake(20, 20, 0) Point3:LPPointMake(15, 25, 0)];
-    [EngineDemos triangleDemo];
+
+//    [EngineDemos triangleDemo];
+    [EngineDemos arwingDemo];
     
     self.vertexData = self.primitives.vertexData;
     self.vertexDataSize = self.primitives.vertexDataSize;
 //    NSLog(@"Number of Vertexes: %i",self.vertexDataSize);
     
     if (self.vertexData == nil) {
-        NSLog(@"Error with vertex data");
-    } else {
-        float *vectors = (float *)self.vertexData;
+        NSLog(@"Error: No Vertex Data");
+        exit(EXIT_FAILURE);
+    }
+//    else {
+//        float *vectors = (float *)self.vertexData;
 //        for (int i = 0; i < self.vertexDataSize; i++) {
 //            NSLog(@"V %d { %0.3f,%0.3f,%0.3f,%0.3f} {%0.3f,%0.3f,%0.3f,%0.3f}",i,vectors[(i*8)+0],vectors[(i*8)+1],vectors[(i*8)+2],vectors[(i*8)+3],vectors[(i*8)+4],vectors[(i*8)+5],vectors[(i*8)+6],vectors[(i*8)+7]);
 //        }
-    }
-    
+//    }
+//    
     self.vertexBuffer = [self.device newBufferWithBytes: self.vertexData length: self.vertexDataSize * sizeof(Vertex) options: MTLResourceCPUCacheModeDefaultCache];
     
 }
