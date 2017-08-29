@@ -75,24 +75,26 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
 
 - (void) clearVertices {
     if (_vertexData != nil) {
-        free(_vertexData);
-        _vertexData=nil;
+        memset(_vertexData, 0, sizeof(Vertex) * _vertexDataSize);
         _vertexDataSize = 0;
     }
 }
 
 - (Vertex *)addVertex:(Vertex)vertex To:(Vertex*)source OfSize:(NSInteger*)sourceSize {
     static NSInteger multiplier = 0;
+    static const NSInteger sizeIncreaseMargin = 300000;
     Vertex *tempSource;
     if (source == nil) {
-        source = malloc(sizeof(Vertex) * 1024 * (multiplier+1));
+        NSLog(@"Initial Allocation");
+        source = malloc(sizeof(Vertex) * sizeIncreaseMargin * (multiplier+1));
         multiplier++;
-    } else if (*sourceSize >= (1024 * multiplier)) {
-        tempSource = malloc(sizeof(Vertex) * 1024 * (multiplier + 1));
+    } else if (*sourceSize >= (sizeIncreaseMargin * multiplier)) {
+        tempSource = malloc(sizeof(Vertex) * sizeIncreaseMargin * (multiplier + 1));
         memcpy(tempSource, source, *sourceSize * sizeof(Vertex));
         free(source);
         source = tempSource;
         multiplier++;
+        NSLog(@"source size %li",(long)*sourceSize);
     }
     memcpy(&source[*sourceSize], &vertex, sizeof(Vertex));
 
@@ -197,7 +199,7 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
 
 - (void) resetDepthBuffer {
     depthBuffer = (int16_t *)malloc(virtualWidth * virtualHeight * sizeof(int16_t));
-    memset(depthBuffer, 0, virtualWidth * virtualHeight * sizeof(int16_t));
+    memset(depthBuffer, 0x80, virtualWidth * virtualHeight * sizeof(int16_t));
 }
 
 - (void) drawHorizontalLineAtLeftPoint:(LPPoint) leftPoint RightPoint:(LPPoint)rightPoint {
@@ -423,7 +425,7 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
 
     
     for(;;) {
-        if(z < 0) {
+        if(z > 0) {
             //cout << "Z went negative" << endl;
             //System.exit(1);
             
@@ -432,11 +434,15 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
         }
         if (y < 0) {
             // stuff
+            NSLog(@"Y is negative %i", y);
         }
-        depthBufferIndex = x + (y * virtualWidth);
+        if (x < 0) {
+//            NSLog(@"X is negative %i", x);
+        }
+        depthBufferIndex = x + (y * self.virtualWidth);
 
-        
-        if (z <= depthBuffer[depthBufferIndex]) {
+//        NSLog(@"depthBuffer[%i]: %i z: %i", depthBufferIndex, depthBuffer[depthBufferIndex], z );
+        if (z >= depthBuffer[depthBufferIndex] && z <= 0 && x >= 0 && x < self.virtualWidth && y >= 0 && y < self.virtualHeight) {
             [self drawPixelAtX:x Y:y];
             depthBuffer[depthBufferIndex] = z;
         }
