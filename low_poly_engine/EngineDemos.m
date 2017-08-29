@@ -10,31 +10,81 @@
 #import "EnginePrimitives.h"
 #import "EngineTransforms.h"
 #import "EngineDemos.h"
+#import "EngineModel.h"
+#import "EngineModelInterface.h"
+#import "Arwing.h"
 
 @implementation EngineDemos
 
-+ (void) triangleDemo {
++ (void)triangleDemo {
     EnginePrimitives *prim = [EnginePrimitives sharedManager];
     
     static LPPoint _2Daxis;
     static float currentRadian = 0.0;
     static LPTriangle testTriangle;
-    testTriangle = LPTriangleMake(LPPointMake(100,100,0), LPPointMake(170,130,0), LPPointMake(180,200,0));
+    testTriangle = LPTriangleMake(LPPointMake(40,40,0), LPPointMake(120,60,0), LPPointMake(90,120,0));
     _2Daxis.x = [prim virtualWidth] / 2;
     _2Daxis.y = [prim virtualHeight] / 2;
 
 
     static LPTriangle tempTriangle = {0};
     
-    tempTriangle.p1 = [EngineTransforms rotate2DAtAxis:_2Daxis WithPoint:testTriangle.p1 AtAngle:currentRadian];
-    tempTriangle.p2 = [EngineTransforms rotate2DAtAxis:_2Daxis WithPoint:testTriangle.p2 AtAngle:currentRadian];
-    tempTriangle.p3 = [EngineTransforms rotate2DAtAxis:_2Daxis WithPoint:testTriangle.p3 AtAngle:currentRadian];
+    tempTriangle.p1 = [EngineTransforms rotate2DAtAxis:_2Daxis
+                                             ForPoint:testTriangle.p1
+                                               AtAngle:currentRadian];
+    tempTriangle.p2 = [EngineTransforms rotate2DAtAxis:_2Daxis
+                                             ForPoint:testTriangle.p2
+                                               AtAngle:currentRadian];
+    tempTriangle.p3 = [EngineTransforms rotate2DAtAxis:_2Daxis
+                                             ForPoint:testTriangle.p3
+                                               AtAngle:currentRadian];
 
     [prim setColorWithRed:255 Green:0 Blue:255];
     [prim drawTriangle:&tempTriangle];
     
     currentRadian += 0.01;
     currentRadian = currentRadian >= (M_PI * 2) ? currentRadian - (M_PI * 2): currentRadian;
+}
+
++ (void)arwingDemo {
+//    EnginePrimitives *prim = [EnginePrimitives sharedManager];
+    static EngineModel *arwing = nil;
+    static float currentRadian = 0.0;
+    if (arwing == nil) {
+        EngineModelInterface *modelProperties = [[EngineModelInterface alloc] init];
+        modelProperties.vertices = (int16_t*)arwingVertices;
+        modelProperties.vertexCount = sizeof(arwingVertices) / (sizeof(int16_t) * 3);
+        modelProperties.faces = (int16_t*)arwingFaces;
+        modelProperties.faceCount = sizeof(arwingFaces) / (sizeof(int16_t) * 3);
+        
+        arwing = [[EngineModel alloc] initWithProperties:modelProperties];
+    }
+    
+
+    
+//    static LPPoint translation = {};
+//    translation.x = prim.virtualWidth / 2;
+//    translation.y = prim.virtualHeight / 4;
+//    translation.z = 1;
+//    arwing.translation = translation;
+    
+    static float radians = 0.4;
+    static LPPoint rotation = {};
+    rotation.y = radians;
+    arwing.rotation = rotation;
+    
+//    radians += 0.01;
+//    if (radians >= 2.0 * M_PI) radians = 0.0;
+    
+    [arwing findVertexCenter];
+    arwing.rotationAxis = arwing.center;
+    [arwing transformVertices];
+    
+    [arwing draw:LPEngineDrawSolid];
+    
+    currentRadian += 0.001;
+    currentRadian = currentRadian >= (M_PI * 2) ? currentRadian - (M_PI * 2): currentRadian;
+
 }
 
 @end

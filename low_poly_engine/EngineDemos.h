@@ -13,6 +13,7 @@
 
 
 + (void) triangleDemo;
++ (void) arwingDemo;
 
 @end
 
