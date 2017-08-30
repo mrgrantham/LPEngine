@@ -66,15 +66,17 @@
         modelProperties.faceCount = sizeof(arwingFaces) / (sizeof(int16_t) * 3);
         
         self.arwing = [[EngineModel alloc] initWithProperties:modelProperties];
+        LPPoint translation = {};
+        EnginePrimitives *prim = [EnginePrimitives sharedManager];
+        translation.x = prim.virtualWidth / 2;
+        translation.y = prim.virtualHeight / 4;
+        translation.z = 0;
+        self.arwing.translation = translation;
     }
     
 
     
-//    static LPPoint translation = {};
-//    translation.x = prim.virtualWidth / 2;
-//    translation.y = prim.virtualHeight / 4;
-//    translation.z = 1;
-//    arwing.translation = translation;
+
     
 //    static float radians = 0.4;
 //    static LPPoint rotation = {};
