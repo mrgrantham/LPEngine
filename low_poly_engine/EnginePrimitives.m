@@ -417,7 +417,13 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
         
         //return;
     }
-    DeltaX = leftX > rightX ? leftX - rightX : rightX - leftX;
+    if (leftX > rightX) {
+        // NSLog(@"leftX %li rightX %li", leftX, rightX);
+        // sometimes the left calculation overshoots. this is to correct
+        leftX = rightX;
+    }
+//     DeltaX = leftX > rightX ? leftX - rightX : rightX - leftX; // x is always from left to right so its always right - left;
+    DeltaX = rightX - leftX;
     DeltaZ = -(leftZ > rightZ ? leftZ - rightZ : rightZ - leftZ);
     
 //    StepX = leftX < rightX ? 1 : -1; // x is always from left to right
