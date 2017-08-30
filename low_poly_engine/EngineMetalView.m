@@ -231,4 +231,9 @@
     }
 }
 
+- (IBAction)resetDemo:(id)sender {
+    EngineDemos *demo = [EngineDemos sharedManager];
+    [demo resetArwing];
+}
+
 @end

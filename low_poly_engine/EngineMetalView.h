@@ -38,6 +38,7 @@
 - (IBAction)rotateContinuous:(id)sender;
 - (IBAction)translateContinuous:(id)sender;
 - (IBAction)scaleContinuous:(id)sender;
+- (IBAction)resetDemo:(id)sender;
 
 
 @end
