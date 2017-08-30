@@ -64,6 +64,7 @@
     if (drawStyle == LPEngineDrawSolid) {
 //        NSLog(@"==STARTING FRAME==");
         for(int face = 0; face < self.engineModelProperties.faceCount; face++) {
+            [prim setColorWithRed:((face * 6) + 100) % 255 Green:((face * 6) + 100) % 255 Blue:((face * 6) + 100) % 255];
             float *point = (float*)&self.faces[face];
             [prim drawTriangleAtPoint1:&self.transformedVertices[(NSInteger)*(point + 0)]
                                 Point2:&self.transformedVertices[(NSInteger)*(point + 1)]
@@ -107,7 +108,7 @@
         center.z += self.translation.z;
         
         
-        NSLog(@"Vertex Center at x: %0.2f y: %0.2f x: %0.2f",center.x,center.y,center.z);
+//        NSLog(@"Vertex Center at x: %0.2f y: %0.2f x: %0.2f",center.x,center.y,center.z);
         
         vertexCheck = self.translation;
         
