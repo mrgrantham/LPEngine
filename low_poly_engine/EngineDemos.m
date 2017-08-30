@@ -25,6 +25,32 @@
     return sharedEnginePrimitives;
 }
 
+- (id) init {
+    if (self = [super init]) {
+        if (_arwing == nil) {
+            EngineModelInterface *modelProperties = [[EngineModelInterface alloc] init];
+            modelProperties.vertices = (int16_t*)arwingVertices;
+            modelProperties.vertexCount = sizeof(arwingVertices) / (sizeof(int16_t) * 3);
+            modelProperties.faces = (int16_t*)arwingFaces;
+            modelProperties.faceCount = sizeof(arwingFaces) / (sizeof(int16_t) * 3);
+            
+            _arwing = [[EngineModel alloc] initWithProperties:modelProperties];
+            LPPoint translation = {};
+            EnginePrimitives *prim = [EnginePrimitives sharedManager];
+            translation.x = prim.virtualWidth / 2;
+            translation.y = prim.virtualHeight / 4;
+            translation.z = -800;
+            _arwing.translation = translation;
+            LPPoint scale = {.x=0.6, .y=0.6, .z=0.6};
+            _arwing.scale = scale;
+            _arwing.centerChanged = YES;
+            [_arwing findVertexCenter];
+
+        }
+    }
+    return self;
+}
+
 - (void)triangleDemo {
     EnginePrimitives *prim = [EnginePrimitives sharedManager];
     
@@ -58,26 +84,7 @@
 - (void)arwingDemo {
 //    EnginePrimitives *prim = [EnginePrimitives sharedManager];
     static float currentRadian = 0.0;
-    if (self.arwing == nil) {
-        EngineModelInterface *modelProperties = [[EngineModelInterface alloc] init];
-        modelProperties.vertices = (int16_t*)arwingVertices;
-        modelProperties.vertexCount = sizeof(arwingVertices) / (sizeof(int16_t) * 3);
-        modelProperties.faces = (int16_t*)arwingFaces;
-        modelProperties.faceCount = sizeof(arwingFaces) / (sizeof(int16_t) * 3);
-        
-        self.arwing = [[EngineModel alloc] initWithProperties:modelProperties];
-        LPPoint translation = {};
-        EnginePrimitives *prim = [EnginePrimitives sharedManager];
-        translation.x = prim.virtualWidth / 2;
-        translation.y = prim.virtualHeight / 4;
-        translation.z = 0;
-        self.arwing.translation = translation;
-    }
-    
 
-    
-
-    
 //    static float radians = 0.4;
 //    static LPPoint rotation = {};
 //    rotation.y = radians;
