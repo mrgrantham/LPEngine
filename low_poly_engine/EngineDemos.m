@@ -109,7 +109,7 @@
         static float scaleRadian = 0.0;
         static LPPoint scaleVector = {};
         float sineValue = sin(scaleRadian);
-        NSLog(@"sineValue: %0.2f", sineValue);
+//        NSLog(@"sineValue: %0.2f", sineValue);
         scaleVector.x = sineValue * 0.01;
         scaleVector.y = sineValue * 0.01;
         scaleVector.z = sineValue * 0.01;
