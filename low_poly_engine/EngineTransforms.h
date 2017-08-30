@@ -20,7 +20,7 @@
 + (LPPoint) rotateAtZAxis: (LPPoint) axis ForPoint:(LPPoint) point AtAngle:(float) radians;
 
 + (LPPoint) translatePoint:(LPPoint)point WithVector:(LPPoint)translationVector;
-+ (LPPoint) scalePoint:(LPPoint)point WithVector:(LPPoint)scaleVector;
++ (LPPoint) scalePoint:(LPPoint)point fromPoint:(LPPoint)centerPoint WithVector:(LPPoint)scaleVector;
 
 @end
 

@@ -127,20 +127,30 @@ static float _3Dmatrix[3][3];
 }
 
 + (LPPoint) translatePoint:(LPPoint)point WithVector:(LPPoint)translationVector {
+    static NSInteger count = 0;
+    NSLog(@"Entering Translate Point #%li",count);
     LPPoint translatedPoint = point;
     translatedPoint.x = translationVector.x + translatedPoint.x;
     translatedPoint.y = translationVector.y + translatedPoint.y;
     translatedPoint.z = translationVector.z + translatedPoint.z;
-    
+    NSLog(@"Exiting Translate Point #%li",count);
+    count++;
     return translatedPoint;
 }
 
-+ (LPPoint) scalePoint:(LPPoint)point WithVector:(LPPoint)scaleVector {
++ (LPPoint) scalePoint:(LPPoint)point fromPoint:(LPPoint)centerPoint WithVector:(LPPoint)scaleVector {
     LPPoint scaledPoint = point;
+    scaledPoint.x = scaledPoint.x - centerPoint.x;
+    scaledPoint.y = scaledPoint.y - centerPoint.y;
+    scaledPoint.z = scaledPoint.z - centerPoint.z;
+    
     scaledPoint.x = scaleVector.x * scaledPoint.x;
     scaledPoint.y = scaleVector.y * scaledPoint.y;
     scaledPoint.z = scaleVector.z * scaledPoint.z;
-
+    
+    scaledPoint.x = scaledPoint.x + centerPoint.x;
+    scaledPoint.y = scaledPoint.y + centerPoint.y;
+    scaledPoint.z = scaledPoint.z + centerPoint.z;
     
     return scaledPoint;
 }
