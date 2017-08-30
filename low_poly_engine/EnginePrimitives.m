@@ -407,30 +407,30 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
     static int16_t StepX = 1;
     static int16_t StepZ;
     static int16_t Error;
+    static int16_t ErrorComparison;
     static int16_t ErrorTmp;
     static int16_t x;
     static int16_t z;
     static long int depthBufferIndex; // needs to be a huge number. uint16_t might be enough i havent done the calculations. but int16_t definitely isnt
     
-    if(leftZ < 0 || rightZ < 0) {
-        pauseFlag = true;
-        
-        //return;
-    }
     if (leftX > rightX) {
-        // NSLog(@"leftX %li rightX %li", leftX, rightX);
+        if ((leftX - rightX) > 4) {
+            NSLog(@"leftX %li rightX %li", leftX, rightX);
+        }
         // sometimes the left calculation overshoots. this is to correct
         leftX = rightX;
     }
-//     DeltaX = leftX > rightX ? leftX - rightX : rightX - leftX; // x is always from left to right so its always right - left;
     DeltaX = rightX - leftX;
-    DeltaZ = -(leftZ > rightZ ? leftZ - rightZ : rightZ - leftZ);
+    DeltaZ = leftZ > rightZ ? leftZ - rightZ : rightZ - leftZ;
     
 //    StepX = leftX < rightX ? 1 : -1; // x is always from left to right
     StepZ = leftZ < rightZ ? 1 : -1;
     
-    //Error = (DeltaX > DeltaZ ? DeltaX : -DeltaZ) >> 1;
-    Error = DeltaX + DeltaZ;
+    Error = DeltaX > DeltaZ ? DeltaZ : DeltaX;
+    ErrorComparison = DeltaX < DeltaZ ? DeltaZ : DeltaX;
+    
+    static BOOL xIsBigger = NO;
+    xIsBigger = DeltaX > DeltaZ? YES : NO;
     
     x=leftX;
     z=leftZ;
@@ -438,11 +438,7 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
     
     for(;;) {
         if(z > 0) {
-            //cout << "Z went negative" << endl;
-            //System.exit(1);
-            
-            pauseFlag = true;
-            break;
+            NSLog(@"Z went positive");
         }
         if (y < 0) {
             // stuff
@@ -461,9 +457,27 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
             _depthBuffer[depthBufferIndex] = z;
         }
         if(x == rightX) {break;}
-        ErrorTmp = 2 * Error;
-        if (ErrorTmp >= DeltaZ) { Error += DeltaZ; x += StepX; }
-        if (ErrorTmp <= DeltaX) { Error += DeltaX; z += StepZ; }
+        ErrorTmp = Error;
+        if (ErrorTmp >= ErrorComparison) {
+            Error -= ErrorComparison;
+            if (xIsBigger) {
+                z += StepZ;
+            } else {
+                x += StepX;
+            }
+        } else {
+            if (xIsBigger) {
+                Error += DeltaZ;
+            } else {
+                Error += DeltaX;
+            }
+        }
+        if (xIsBigger) {
+            x += StepX;
+        } else {
+            z += StepZ;
+        }
+//        NSLog(@"StepX %i StepZ %i DeltaX %i DeltaZ %i Error %i ErrorComparison %i LeftX %i RightX %i LeftZ %i RightZ %i x %i z %i",StepX,StepZ,DeltaX,DeltaZ,Error,ErrorComparison,leftX,rightX,leftZ,rightZ,x,z);
     }
 }
 
