@@ -124,7 +124,7 @@
     tempRotation.y += rotationVector.y;
     tempRotation.z += rotationVector.z;
     self.rotation = tempRotation;
-    NSLog(@"New Rotation State: x %0.2f y %0.2f z %0.2f",self.rotation.x, self.rotation.y, self.rotation.z);
+//    NSLog(@"New Rotation State: x %0.2f y %0.2f z %0.2f",self.rotation.x, self.rotation.y, self.rotation.z);
     self.centerChanged = TRUE;
 }
 
