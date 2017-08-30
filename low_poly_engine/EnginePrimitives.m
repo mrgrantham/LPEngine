@@ -25,11 +25,11 @@ static LPPoint DTB; // calculating Top-Bottom
 static LPPoint DTM; // calculating Top-Middle
 static LPPoint DMB; // calculating Middle-Bottom
 
-static int16_t DMaxTM;
-static int16_t DMaxTB;
-static int16_t DMaxMB;
+static int32_t DMaxTM;
+static int32_t DMaxTB;
+static int32_t DMaxMB;
 
-static int16_t remainingSteps;
+static float remainingSteps;
 
 static LPPoint STB; // calculating Top-Bottom
 static LPPoint STM; // calculating Top-Middle
@@ -41,16 +41,16 @@ static LPPoint ETM; // calculating Top-Middle Error
 static LPPoint EMB; // calculating Middle-Bottom Error
 
 // temp error holder for comparisons
-static int16_t E2L;
-static int16_t E2R;
+static int32_t E2L;
+static int32_t E2R;
 
 static LPPoint top;
 static LPPoint middle;
 static LPPoint bottom;
 
-static int16_t YL,YR, XL, XR, ZL, ZR;
-static int16_t setup_time;
-static int16_t draw_time;
+static float YL,YR, XL, XR, ZL, ZR;
+static float setup_time;
+static float draw_time;
 
 static vector_float4 color;
 
@@ -239,7 +239,7 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
     
     
     
-    int16_t edge = (middle.x - top.x) * (bottom.y - top.y) - (middle.y-top.y) * (bottom.x - top.x);
+    float edge = (middle.x - top.x) * (bottom.y - top.y) - (middle.y-top.y) * (bottom.x - top.x);
     
     
     DTM.x = top.x > middle.x ? top.x - middle.x : middle.x - top.x;
