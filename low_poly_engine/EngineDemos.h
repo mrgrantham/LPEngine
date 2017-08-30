@@ -23,6 +23,7 @@
 - (id) init;
 - (void) triangleDemo;
 - (void) arwingDemo;
+- (void) resetArwing;
 
 @end
 

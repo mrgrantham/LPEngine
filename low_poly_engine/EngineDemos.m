@@ -131,4 +131,19 @@
 
 }
 
+- (void) resetArwing {
+    EnginePrimitives *prim = [EnginePrimitives sharedManager];
+    self.scaleContinuous = NO;
+    self.rotateContinuous = NO;
+    self.translateContinuous = NO;
+    [self.arwing resetTransforms];
+    LPPoint scale = {.x=0.6, .y=0.6, .z=0.6};
+    self.arwing.scale = scale;
+    LPPoint translation = {};
+    translation.x = prim.virtualWidth / 2;
+    translation.y = prim.virtualHeight / 4;
+    translation.z = -800;
+    self.arwing.translation = translation;
+}
+
 @end
