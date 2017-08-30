@@ -33,7 +33,7 @@
         self.vertexData = nil;
         self.vertexDataSize = 0;
         
-        self.preferredFramesPerSecond = 24;
+        self.preferredFramesPerSecond = 30;
         
         [self.primitives setPixelWidth:2];
         [self.primitives setVirtualWidth:640];
@@ -78,7 +78,7 @@
 
     [self.primitives clearVertices];
 
-    [self.primitives setColorWithRed:200 Green:200 Blue:0];
+    [self.primitives setColorWithRed:200 Green:200 Blue:200];
 
 //    [[EngineDemos sharedManager] triangleDemo];
     [[EngineDemos sharedManager] arwingDemo];
@@ -126,7 +126,7 @@
     MTLRenderPassDescriptor *renderPassDescriptor = [[MTLRenderPassDescriptor alloc] init];
     if (renderPassDescriptor != nil && self.currentDrawable != nil) {
         renderPassDescriptor.colorAttachments[0].texture = self.currentDrawable.texture;
-        renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0.0f, 0.2f, 0.2f, 1.0f);
+        renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0.2f, 0.2f, 0.8f, 1.0f);
         renderPassDescriptor.colorAttachments[0].loadAction = MTLLoadActionClear;
         NSObject <MTLCommandBuffer>*commandBuffer = self.device.newCommandQueue.commandBuffer;
         NSObject <MTLRenderCommandEncoder> *commandEncoder = [commandBuffer renderCommandEncoderWithDescriptor: renderPassDescriptor];
@@ -144,6 +144,8 @@
 }
 
 - (IBAction)rotateCounterClockwise:(id)sender {
+    EngineDemos *demo = [EngineDemos sharedManager];
+    demo.rotateContinuous = NO;
     NSLog(@"counterclockwise!!!");
     LPPoint rotationVector = {};
     rotationVector.y = 0.05;
@@ -151,6 +153,8 @@
 }
 
 - (IBAction)rotateClockwise:(id)sender {
+    EngineDemos *demo = [EngineDemos sharedManager];
+    demo.rotateContinuous = NO;
     NSLog(@"clockwise!!!");
     LPPoint rotationVector = {};
     rotationVector.y = -0.05;
@@ -158,6 +162,8 @@
 }
 
 - (IBAction)translateLeft:(id)sender {
+    EngineDemos *demo = [EngineDemos sharedManager];
+    demo.translateContinuous = NO;
     NSLog(@"translate left");
     LPPoint rotationVector = {};
     rotationVector.x = -5;
@@ -165,6 +171,8 @@
 }
 
 - (IBAction)translateRight:(id)sender {
+    EngineDemos *demo = [EngineDemos sharedManager];
+    demo.translateContinuous = NO;
     NSLog(@"translate right");
     LPPoint translationVector = {};
     translationVector.x = 5;
@@ -172,6 +180,8 @@
 }
 
 - (IBAction)scaleSmaller:(id)sender {
+    EngineDemos *demo = [EngineDemos sharedManager];
+    demo.scaleContinuous = NO;
     NSLog(@"scale smaller");
     LPPoint scaleVector = {};
     scaleVector.x =  -0.05;
@@ -181,6 +191,8 @@
 }
 
 - (IBAction)scaleLarger:(id)sender {
+    EngineDemos *demo = [EngineDemos sharedManager];
+    demo.scaleContinuous = NO;
     NSLog(@"scale larger");
     LPPoint scaleVector = {};
     scaleVector.x =  0.05;
@@ -191,14 +203,32 @@
 
 - (IBAction)rotateContinuous:(id)sender {
     NSLog(@"Activating continuous rotation mode");
+    EngineDemos *demo = [EngineDemos sharedManager];
+    if (demo.rotateContinuous) {
+        demo.rotateContinuous = NO;
+    } else {
+        demo.rotateContinuous = YES;
+    }
 }
 
 - (IBAction)translateContinuous:(id)sender {
     NSLog(@"Activating continuous translation mode");
+    EngineDemos *demo = [EngineDemos sharedManager];
+    if (demo.translateContinuous) {
+        demo.translateContinuous = NO;
+    } else {
+        demo.translateContinuous = YES;
+    }
 }
 
 - (IBAction)scaleContinuous:(id)sender {
     NSLog(@"Activation continuous scaling mode");
+    EngineDemos *demo = [EngineDemos sharedManager];
+    if (demo.scaleContinuous) {
+        demo.scaleContinuous = NO;
+    } else {
+        demo.scaleContinuous = YES;
+    }
 }
 
 @end
