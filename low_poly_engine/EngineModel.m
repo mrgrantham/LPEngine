@@ -171,8 +171,9 @@
     self.translation = point;
     self.rotation = point;
     self.rotationAxis = point;
-    self.scale = point;
-    
+    LPPoint scalePoint = {.x=1.0, .y=1.0, .z=1.0};
+    self.scale = scalePoint;
+    self.centerChanged = TRUE;
 }
 
 
