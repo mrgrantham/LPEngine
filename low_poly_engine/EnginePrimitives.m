@@ -404,7 +404,7 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
     
     static int16_t DeltaX;
     static int16_t DeltaZ;
-    static int16_t StepX;
+    static int16_t StepX = 1;
     static int16_t StepZ;
     static int16_t Error;
     static int16_t ErrorTmp;
@@ -420,7 +420,7 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
     DeltaX = leftX > rightX ? leftX - rightX : rightX - leftX;
     DeltaZ = -(leftZ > rightZ ? leftZ - rightZ : rightZ - leftZ);
     
-    StepX = leftX < rightX ? 1 : -1;
+//    StepX = leftX < rightX ? 1 : -1; // x is always from left to right
     StepZ = leftZ < rightZ ? 1 : -1;
     
     //Error = (DeltaX > DeltaZ ? DeltaX : -DeltaZ) >> 1;
