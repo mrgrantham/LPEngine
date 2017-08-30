@@ -687,7 +687,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efV-b5-mWO">
-                                <rect key="frame" x="18" y="220" width="146" height="30"/>
+                                <rect key="frame" x="18" y="220" width="203" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Rotate" id="CSV-rT-wML">
                                     <font key="font" size="14" name="Futura-Bold"/>
@@ -707,7 +707,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nkl-HT-vne">
-                                <rect key="frame" x="101" y="195" width="61" height="17"/>
+                                <rect key="frame" x="158" y="195" width="61" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="inline" title="&gt;" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sir-vl-6DP">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -717,8 +717,41 @@
                                     <action selector="rotateCounterClockwise:" target="m2S-Jp-Qdl" id="Gib-ov-vRT"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4wq-eg-Ro0">
+                                <rect key="frame" x="89" y="195" width="61" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="inline" title="∞" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vB8-yv-7fG">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="19" name="Futura-Medium"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="rotateCounterClockwise:" target="m2S-Jp-Qdl" id="sJ9-5q-tMr"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nkO-2O-aaB">
+                                <rect key="frame" x="89" y="133" width="61" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="inline" title="∞" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xv5-Ti-RUg">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="19" name="Futura-Medium"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="rotateCounterClockwise:" target="m2S-Jp-Qdl" id="Dmf-Qi-eRS"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7g4-ya-vcI">
+                                <rect key="frame" x="89" y="71" width="61" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="inline" title="∞" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="C05-YX-KPM">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="19" name="Futura-Medium"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="rotateCounterClockwise:" target="m2S-Jp-Qdl" id="1b2-XS-R8v"/>
+                                </connections>
+                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pfx-ht-7a4">
-                                <rect key="frame" x="18" y="158" width="146" height="30"/>
+                                <rect key="frame" x="18" y="158" width="203" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Translate" id="LAF-iC-Zoa">
                                     <font key="font" size="14" name="Futura-Bold"/>
@@ -738,7 +771,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="71U-5j-EAX">
-                                <rect key="frame" x="101" y="133" width="61" height="17"/>
+                                <rect key="frame" x="158" y="133" width="61" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="inline" title="&gt;" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="81l-xD-t6h">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -749,7 +782,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmE-vt-Nbz">
-                                <rect key="frame" x="18" y="96" width="146" height="30"/>
+                                <rect key="frame" x="18" y="96" width="203" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Scale" id="zGU-56-kIm">
                                     <font key="font" size="14" name="Futura-Bold"/>
@@ -769,7 +802,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pB2-Jn-U23">
-                                <rect key="frame" x="101" y="71" width="61" height="17"/>
+                                <rect key="frame" x="158" y="71" width="61" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="inline" title="&gt;" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fKq-pP-qS1">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
