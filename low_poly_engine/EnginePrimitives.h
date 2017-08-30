@@ -37,6 +37,7 @@ LPPoint LPPointMake(int16_t x, int16_t y, int16_t z) ;
 
 @property (nonatomic) Vertex *vertexData;
 @property (nonatomic) NSInteger vertexDataSize;
+@property (nonatomic) int16_t *depthBuffer;
 
 
 

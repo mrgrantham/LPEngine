@@ -18,7 +18,6 @@ static float virtualHeight;
 
 // notification to stop actions due to error
 static BOOL pauseFlag;
-static int16_t *depthBuffer;
 
 // Triangle helper structs
 static LPPoint DTB; // calculating Top-Bottom
@@ -113,11 +112,14 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
 }
 
 - (id) init {
-    self = [super init];
-    self.vertexData = nil;
-    self.vertexDataSize = 0;
-    [self resetDepthBuffer];
-    
+    if (self = [super init]) {
+        _depthBuffer = NULL;
+        _vertexData = nil;
+        _vertexDataSize = 0;
+        virtualWidth = 0;
+        virtualHeight = 0;
+        [self resetDepthBuffer];
+    }
     return self;
 }
 
@@ -198,8 +200,12 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
 }
 
 - (void) resetDepthBuffer {
-    depthBuffer = (int16_t *)malloc(virtualWidth * virtualHeight * sizeof(int16_t));
-    memset(depthBuffer, 0x80, virtualWidth * virtualHeight * sizeof(int16_t));
+    if (_depthBuffer == NULL && virtualHeight != 0 && virtualWidth != 0) {
+        _depthBuffer = (int16_t *)malloc(virtualWidth * virtualHeight * sizeof(int16_t));
+    }
+    if (virtualHeight != 0 && virtualWidth != 0) {
+        memset(_depthBuffer, 0x80, virtualWidth * virtualHeight * sizeof(int16_t));
+    }
 }
 
 - (void) drawHorizontalLineAtLeftPoint:(LPPoint) leftPoint RightPoint:(LPPoint)rightPoint {
@@ -444,9 +450,9 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
 //        NSLog(@"depthBuffer[%i]: %i z: %i", depthBufferIndex, depthBuffer[depthBufferIndex], z );
         //
 
-        if (x >= 0 && x < self.virtualWidth && y >= 0 && y < self.virtualHeight && z >= depthBuffer[depthBufferIndex] && z <= 0) {
+        if (x >= 0 && x < self.virtualWidth && y >= 0 && y < self.virtualHeight && z >= _depthBuffer[depthBufferIndex] && z <= 0) {
             [self drawPixelAtX:x Y:y];
-            depthBuffer[depthBufferIndex] = z;
+            _depthBuffer[depthBufferIndex] = z;
         }
         if(x == rightX) {break;}
         ErrorTmp = 2 * Error;
