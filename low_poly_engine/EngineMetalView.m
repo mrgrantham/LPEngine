@@ -236,4 +236,8 @@
     [demo resetArwing];
 }
 
+- (IBAction)engageFlight:(id)sender {
+    NSLog(@"WHEEEE IM FLYING!!!");
+}
+
 @end
