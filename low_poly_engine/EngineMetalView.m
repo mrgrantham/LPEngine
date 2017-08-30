@@ -160,14 +160,14 @@
 - (IBAction)translateLeft:(id)sender {
     NSLog(@"translate left");
     LPPoint rotationVector = {};
-    rotationVector.y = -0.05;
+    rotationVector.x = -5;
     [[[EngineDemos sharedManager] arwing] translateWithVector:rotationVector];
 }
 
 - (IBAction)translateRight:(id)sender {
     NSLog(@"translate right");
     LPPoint translationVector = {};
-    translationVector.y = -0.05;
+    translationVector.x = 5;
     [[[EngineDemos sharedManager] arwing] translateWithVector:translationVector];
 }
 
@@ -187,6 +187,18 @@
     scaleVector.y =  0.05;
     scaleVector.z =  0.05;
     [[[EngineDemos sharedManager] arwing] scaleWithVector:scaleVector];
+}
+
+- (IBAction)rotateContinuous:(id)sender {
+    NSLog(@"Activating continuous rotation mode");
+}
+
+- (IBAction)translateContinuous:(id)sender {
+    NSLog(@"Activating continuous translation mode");
+}
+
+- (IBAction)scaleContinuous:(id)sender {
+    NSLog(@"Activation continuous scaling mode");
 }
 
 @end

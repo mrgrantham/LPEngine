@@ -35,6 +35,9 @@
 - (IBAction)translateRight:(id)sender;
 - (IBAction)scaleSmaller:(id)sender;
 - (IBAction)scaleLarger:(id)sender;
+- (IBAction)rotateContinuous:(id)sender;
+- (IBAction)translateContinuous:(id)sender;
+- (IBAction)scaleContinuous:(id)sender;
 
 
 @end
