@@ -10,7 +10,7 @@
 #define EnginePrimitives_h
 #include <MetalKit/MetalKit.h>
 #include <Metal/Metal.h>
-
+#define NSLog //
 typedef struct LPPoint{
     float x;
     float y;
@@ -33,6 +33,7 @@ typedef struct Vertex {
 LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) ;
 
 LPPoint LPPointMake(int16_t x, int16_t y, int16_t z) ;
+NSString *NSStringFromLPPoint(LPPoint point);
 @interface EnginePrimitives : NSObject
 
 @property (nonatomic) Vertex *vertexData;
