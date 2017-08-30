@@ -36,6 +36,7 @@ typedef NS_ENUM(NSInteger, LPEngineDrawStyle) {
 @property (nonatomic, assign) LPPoint rotationAxis;
 @property (nonatomic, assign) LPPoint lightSource;
 @property (nonatomic, assign) LPPoint center;
+@property (nonatomic, assign) BOOL centerChanged;
 
 
 

@@ -89,7 +89,7 @@
 
 - (void)findVertexCenter {
     static LPPoint vertexCheck = {};
-    if (vertexCheck.x != self.translation.x || vertexCheck.y != self.translation.y || vertexCheck.z != self.translation.z) {
+    if (self.centerChanged) {
         [self transformVertices];
         LPPoint center = {};
         
@@ -112,6 +112,7 @@
         vertexCheck = self.translation;
         
         self.center = center;
+        self.centerChanged = NO;
     }
 
 }
@@ -123,6 +124,7 @@
     tempRotation.z += rotationVector.z;
     self.rotation = tempRotation;
     NSLog(@"New Rotation State: x %0.2f y %0.2f z %0.2f",self.rotation.x, self.rotation.y, self.rotation.z);
+    self.centerChanged = TRUE;
 }
 
 - (void)translateWithVector:(LPPoint)translationVector {
@@ -131,6 +133,7 @@
     tempTranslation.y += translationVector.y;
     tempTranslation.z += translationVector.z;
     self.translation = tempTranslation;
+    self.centerChanged = TRUE;
 }
 
 - (void)scaleWithVector:(LPPoint)scaleVector {
@@ -145,6 +148,7 @@
     } else {
         self.scale = tempScale;
     }
+    self.centerChanged = TRUE;
 }
 
 - (void)transformVertices {
@@ -152,7 +156,7 @@
         LPPoint temp = self.vertices[vertex];
         //EnginePrimitives *primitives = [EnginePrimitives sharedManager];
         temp = [EngineTransforms translatePoint:temp WithVector:self.translation];
-        temp = [EngineTransforms scalePoint:temp WithVector:self.scale];
+        temp = [EngineTransforms scalePoint:temp fromPoint:self.center WithVector:self.scale];
         temp = [EngineTransforms rotateAtXAxis:self.rotationAxis ForPoint:temp AtAngle:self.rotation.x];
         temp = [EngineTransforms rotateAtYAxis:self.rotationAxis ForPoint:temp AtAngle:self.rotation.y];
         temp = [EngineTransforms rotateAtZAxis:self.rotationAxis ForPoint:temp AtAngle:self.rotation.z];
