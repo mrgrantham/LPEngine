@@ -29,6 +29,12 @@
 - (void) createBuffer;
 - (void) registerShaders;
 - (void) sendToGPU;
+- (IBAction)rotateCounterClockwise:(id)sender;
+- (IBAction)rotateClockwise:(id)sender;
+- (IBAction)translateLeft:(id)sender;
+- (IBAction)translateRight:(id)sender;
+- (IBAction)scaleSmaller:(id)sender;
+- (IBAction)scaleLarger:(id)sender;
 
 
 @end

@@ -80,8 +80,8 @@
 
     [self.primitives setColorWithRed:200 Green:200 Blue:0];
 
-//    [EngineDemos triangleDemo];
-    [EngineDemos arwingDemo];
+//    [[EngineDemos sharedManager] triangleDemo];
+    [[EngineDemos sharedManager] arwingDemo];
     
     self.vertexData = self.primitives.vertexData;
     self.vertexDataSize = self.primitives.vertexDataSize;
@@ -141,6 +141,52 @@
         [commandBuffer presentDrawable:self.currentDrawable];
         [commandBuffer commit];
     }
+}
+
+- (IBAction)rotateCounterClockwise:(id)sender {
+    NSLog(@"counterclockwise!!!");
+    LPPoint rotationVector = {};
+    rotationVector.y = 0.05;
+    [[[EngineDemos sharedManager] arwing] rotateWithVector:rotationVector];
+}
+
+- (IBAction)rotateClockwise:(id)sender {
+    NSLog(@"clockwise!!!");
+    LPPoint rotationVector = {};
+    rotationVector.y = -0.05;
+    [[[EngineDemos sharedManager] arwing] rotateWithVector:rotationVector];
+}
+
+- (IBAction)translateLeft:(id)sender {
+    NSLog(@"translate left");
+    LPPoint rotationVector = {};
+    rotationVector.y = -0.05;
+    [[[EngineDemos sharedManager] arwing] translateWithVector:rotationVector];
+}
+
+- (IBAction)translateRight:(id)sender {
+    NSLog(@"translate right");
+    LPPoint translationVector = {};
+    translationVector.y = -0.05;
+    [[[EngineDemos sharedManager] arwing] translateWithVector:translationVector];
+}
+
+- (IBAction)scaleSmaller:(id)sender {
+    NSLog(@"scale smaller");
+    LPPoint scaleVector = {};
+    scaleVector.x =  -0.05;
+    scaleVector.y =  -0.05;
+    scaleVector.z =  -0.05;
+    [[[EngineDemos sharedManager] arwing] scaleWithVector:scaleVector];
+}
+
+- (IBAction)scaleLarger:(id)sender {
+    NSLog(@"scale larger");
+    LPPoint scaleVector = {};
+    scaleVector.x =  0.05;
+    scaleVector.y =  0.05;
+    scaleVector.z =  0.05;
+    [[[EngineDemos sharedManager] arwing] scaleWithVector:scaleVector];
 }
 
 @end

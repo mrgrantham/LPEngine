@@ -9,11 +9,15 @@
 #ifndef EngineDemos_h
 #define EngineDemos_h
 
+#import "EngineModel.h"
+
 @interface EngineDemos : NSObject
 
+@property (nonatomic, strong) EngineModel* arwing;
 
-+ (void) triangleDemo;
-+ (void) arwingDemo;
++ (id)sharedManager;
+- (void) triangleDemo;
+- (void) arwingDemo;
 
 @end
 

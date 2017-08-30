@@ -16,7 +16,16 @@
 
 @implementation EngineDemos
 
-+ (void)triangleDemo {
++ (id) sharedManager {
+    static EnginePrimitives *sharedEnginePrimitives = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedEnginePrimitives = [[self alloc] init];
+    });
+    return sharedEnginePrimitives;
+}
+
+- (void)triangleDemo {
     EnginePrimitives *prim = [EnginePrimitives sharedManager];
     
     static LPPoint _2Daxis;
@@ -46,18 +55,17 @@
     currentRadian = currentRadian >= (M_PI * 2) ? currentRadian - (M_PI * 2): currentRadian;
 }
 
-+ (void)arwingDemo {
+- (void)arwingDemo {
 //    EnginePrimitives *prim = [EnginePrimitives sharedManager];
-    static EngineModel *arwing = nil;
     static float currentRadian = 0.0;
-    if (arwing == nil) {
+    if (self.arwing == nil) {
         EngineModelInterface *modelProperties = [[EngineModelInterface alloc] init];
         modelProperties.vertices = (int16_t*)arwingVertices;
         modelProperties.vertexCount = sizeof(arwingVertices) / (sizeof(int16_t) * 3);
         modelProperties.faces = (int16_t*)arwingFaces;
         modelProperties.faceCount = sizeof(arwingFaces) / (sizeof(int16_t) * 3);
         
-        arwing = [[EngineModel alloc] initWithProperties:modelProperties];
+        self.arwing = [[EngineModel alloc] initWithProperties:modelProperties];
     }
     
 
@@ -68,19 +76,19 @@
 //    translation.z = 1;
 //    arwing.translation = translation;
     
-    static float radians = 0.4;
-    static LPPoint rotation = {};
-    rotation.y = radians;
-    arwing.rotation = rotation;
+//    static float radians = 0.4;
+//    static LPPoint rotation = {};
+//    rotation.y = radians;
+//    self.arwing.rotation = rotation;
     
 //    radians += 0.01;
 //    if (radians >= 2.0 * M_PI) radians = 0.0;
+    [[EnginePrimitives sharedManager] resetDepthBuffer];
+    [self.arwing findVertexCenter];
+    self.arwing.rotationAxis = self.arwing.center;
+    [self.arwing transformVertices];
     
-    [arwing findVertexCenter];
-    arwing.rotationAxis = arwing.center;
-    [arwing transformVertices];
-    
-    [arwing draw:LPEngineDrawSolid];
+    [self.arwing draw:LPEngineDrawSolid];
     
     currentRadian += 0.001;
     currentRadian = currentRadian >= (M_PI * 2) ? currentRadian - (M_PI * 2): currentRadian;
