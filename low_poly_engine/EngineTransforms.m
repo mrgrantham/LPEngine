@@ -128,12 +128,12 @@ static float _3Dmatrix[3][3];
 
 + (LPPoint) translatePoint:(LPPoint)point WithVector:(LPPoint)translationVector {
     static NSInteger count = 0;
-    NSLog(@"Entering Translate Point #%li",count);
+//    NSLog(@"Entering Translate Point #%li",count);
     LPPoint translatedPoint = point;
     translatedPoint.x = translationVector.x + translatedPoint.x;
     translatedPoint.y = translationVector.y + translatedPoint.y;
     translatedPoint.z = translationVector.z + translatedPoint.z;
-    NSLog(@"Exiting Translate Point #%li",count);
+//    NSLog(@"Exiting Translate Point #%li",count);
     count++;
     return translatedPoint;
 }
