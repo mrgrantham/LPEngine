@@ -33,7 +33,7 @@
         self.vertexData = nil;
         self.vertexDataSize = 0;
         
-        self.preferredFramesPerSecond = 30;
+        self.preferredFramesPerSecond = 60;
         
         [self.primitives setPixelWidth:2];
         [self.primitives setVirtualWidth:640];
