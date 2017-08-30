@@ -725,7 +725,7 @@
                                     <font key="font" size="19" name="Futura-Medium"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="rotateCounterClockwise:" target="m2S-Jp-Qdl" id="sJ9-5q-tMr"/>
+                                    <action selector="rotateContinuous:" target="m2S-Jp-Qdl" id="lxG-OH-w3O"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nkO-2O-aaB">
@@ -736,7 +736,7 @@
                                     <font key="font" size="19" name="Futura-Medium"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="rotateCounterClockwise:" target="m2S-Jp-Qdl" id="Dmf-Qi-eRS"/>
+                                    <action selector="translateContinuous:" target="m2S-Jp-Qdl" id="4RM-J5-dEo"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7g4-ya-vcI">
@@ -747,7 +747,7 @@
                                     <font key="font" size="19" name="Futura-Medium"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="rotateCounterClockwise:" target="m2S-Jp-Qdl" id="1b2-XS-R8v"/>
+                                    <action selector="scaleContinuous:" target="m2S-Jp-Qdl" id="blJ-LC-VUI"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pfx-ht-7a4">
