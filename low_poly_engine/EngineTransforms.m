@@ -131,7 +131,7 @@ static float _3Dmatrix[3][3];
     translatedPoint.x = translationVector.x + translatedPoint.x;
     translatedPoint.y = translationVector.y + translatedPoint.y;
     translatedPoint.z = translationVector.z + translatedPoint.z;
-
+    
     return translatedPoint;
 }
 

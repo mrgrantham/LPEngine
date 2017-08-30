@@ -434,7 +434,7 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
         }
         if (y < 0) {
             // stuff
-            NSLog(@"Y is negative %i", y);
+            NSLog(@"Y is negative %li", y);
         }
         if (x < 0) {
 //            NSLog(@"X is negative %i", x);
@@ -445,6 +445,8 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
         if (z >= depthBuffer[depthBufferIndex] && z <= 0 && x >= 0 && x < self.virtualWidth && y >= 0 && y < self.virtualHeight) {
             [self drawPixelAtX:x Y:y];
             depthBuffer[depthBufferIndex] = z;
+        } else if ((z < depthBuffer[depthBufferIndex] && depthBuffer[depthBufferIndex] == (int16_t)0x8080) || z > 0) {
+            NSLog(@"Z out of bounds");
         }
         if(x == rightX) {break;}
         ErrorTmp = 2 * Error;
