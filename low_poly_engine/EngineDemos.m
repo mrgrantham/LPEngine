@@ -82,7 +82,6 @@
 }
 
 - (void)arwingDemo {
-//    EnginePrimitives *prim = [EnginePrimitives sharedManager];
     static float currentRadian = 0.0;
 
 //    static float radians = 0.4;
@@ -92,6 +91,34 @@
     
 //    radians += 0.01;
 //    if (radians >= 2.0 * M_PI) radians = 0.0;
+    
+    if (self.rotateContinuous) {
+        static LPPoint rotationVector = {};
+        rotationVector.y = 0.02;
+        [self.arwing rotateWithVector:rotationVector];
+    }
+    if (self.translateContinuous) {
+        static float translationRadian = M_PI / 2;
+        static LPPoint translationVector = {};
+        translationVector.x = (sin(translationRadian) * 10) ;
+        [self.arwing translateWithVector:translationVector];
+        translationRadian += 0.1;
+        translationRadian = translationRadian >= (M_PI * 2) ? translationRadian - (M_PI * 2): translationRadian;
+    }
+    if (self.scaleContinuous) {
+        static float scaleRadian = 0.0;
+        static LPPoint scaleVector = {};
+        float sineValue = sin(scaleRadian);
+        NSLog(@"sineValue: %0.2f", sineValue);
+        scaleVector.x = sineValue * 0.01;
+        scaleVector.y = sineValue * 0.01;
+        scaleVector.z = sineValue * 0.01;
+
+        [self.arwing scaleWithVector:scaleVector];
+        scaleRadian += 0.1;
+        scaleRadian = scaleRadian >= (M_PI * 2) ? scaleRadian - (M_PI * 2): scaleRadian;
+    }
+    
     [[EnginePrimitives sharedManager] resetDepthBuffer];
     [self.arwing findVertexCenter];
     self.arwing.rotationAxis = self.arwing.center;
