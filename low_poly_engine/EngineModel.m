@@ -27,6 +27,7 @@
         LPPoint translation = {.x=0, .y=0, .z=0};
         LPPoint scale = {.x=1.0, .y=1.0, .z=1.0};
         LPPoint rotation = {.x=0, .y=0, .z=0};
+        
         _translation = translation;
         _scale = scale;
         _rotation = rotation;
@@ -113,6 +114,37 @@
         self.center = center;
     }
 
+}
+
+- (void)rotateWithVector:(LPPoint)rotationVector {
+    LPPoint tempRotation = self.rotation;
+    tempRotation.x += rotationVector.x;
+    tempRotation.y += rotationVector.y;
+    tempRotation.z += rotationVector.z;
+    self.rotation = tempRotation;
+    NSLog(@"New Rotation State: x %0.2f y %0.2f z %0.2f",self.rotation.x, self.rotation.y, self.rotation.z);
+}
+
+- (void)translateWithVector:(LPPoint)translationVector {
+    LPPoint tempTranslation = self.translation;
+    tempTranslation.x += translationVector.x;
+    tempTranslation.y += translationVector.y;
+    tempTranslation.z += translationVector.z;
+    self.translation = tempTranslation;
+}
+
+- (void)scaleWithVector:(LPPoint)scaleVector {
+    LPPoint tempScale = self.scale;
+    tempScale.x += scaleVector.x;
+    tempScale.y += scaleVector.y;
+    tempScale.z += scaleVector.z;
+    if (tempScale.x <= 0.0 ||
+        tempScale.y <= 0.0 ||
+        tempScale.z <= 0.0) {
+        NSLog(@"cannot scale below 0");
+    } else {
+        self.scale = tempScale;
+    }
 }
 
 - (void)transformVertices {

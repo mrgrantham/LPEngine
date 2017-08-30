@@ -47,6 +47,10 @@ typedef NS_ENUM(NSInteger, LPEngineDrawStyle) {
 
 - (void)findVertexCenter;
 
+- (void)rotateWithVector:(LPPoint)rotationVector;
+- (void)translateWithVector:(LPPoint)translationVector;
+- (void)scaleWithVector:(LPPoint)scaleVector;
+
 - (void)transformVertices;
 - (void)resetTransforms;
 
