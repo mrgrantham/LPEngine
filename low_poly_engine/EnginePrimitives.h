@@ -51,23 +51,23 @@ NSString *NSStringFromLPPoint(LPPoint point);
 - (void) setColorWithRed:(NSInteger)red Green: (NSInteger) green Blue:(NSInteger)blue ;
 
 - (CGSize) canvasSize;
-- (void) setPixelWidth:(NSInteger)pxWidth;
-- (void) setVirtualWidth:(NSInteger)width;
-- (void) setVirtualHeight:(NSInteger) height;
-- (float) virtualWidth;
-- (float) virtualHeight;
-- (void) resetDepthBuffer;
+- (void)setPixelWidth:(NSInteger)pxWidth;
+- (void)setVirtualWidth:(NSInteger)width;
+- (void)setVirtualHeight:(NSInteger) height;
+- (float)virtualWidth;
+- (float)virtualHeight;
+- (void)resetDepthBuffer;
 
-- (void) drawHorizontalLineAtLeftPoint:(LPPoint) leftPoint RightPoint:(LPPoint)rightPoint;
-- (void) drawHorizontalLineAtLeftX:(NSInteger)leftX LeftY:(NSInteger)leftY  RightX:(NSInteger)rightX  RightY:(NSInteger)rightY;
+- (void)drawHorizontalLineAtLeftPoint:(LPPoint) leftPoint RightPoint:(LPPoint)rightPoint;
+- (void)drawHorizontalLineAtLeftX:(NSInteger)leftX LeftY:(NSInteger)leftY  RightX:(NSInteger)rightX  RightY:(NSInteger)rightY;
     
     
     
-- (void) drawTriangleAtPoint1:(LPPoint*) p1 Point2:(LPPoint*) p2 Point3:(LPPoint*) p3;
-- (void) drawTriangleAtCopiedPoint1:(LPPoint) p1 Point2:(LPPoint) p2 Point3:(LPPoint) p3;
-- (void) drawTriangleAtX1:(NSInteger)x1 Y1:(NSInteger)y1 X2:(NSInteger)x2 Y2:(NSInteger)y2 X3:(NSInteger)x3 Y3:(NSInteger)y3;
-- (void) drawTriangle:(LPTriangle*) triangle;
-- (void) drawScanLineAtLeftX:(NSInteger)leftX RightX:(NSInteger)rightX LeftZ:(NSInteger)leftZ RightZ:(NSInteger)rightZ Y:(NSInteger)y;
+- (void)drawTriangleAtPoint1:(LPPoint*) p1 Point2:(LPPoint*) p2 Point3:(LPPoint*) p3;
+- (void)drawTriangleAtCopiedPoint1:(LPPoint) p1 Point2:(LPPoint) p2 Point3:(LPPoint) p3;
+- (void)drawTriangleAtX1:(NSInteger)x1 Y1:(NSInteger)y1 X2:(NSInteger)x2 Y2:(NSInteger)y2 X3:(NSInteger)x3 Y3:(NSInteger)y3;
+- (void)drawTriangle:(LPTriangle*) triangle;
+- (void)drawScanLineAtLeftX:(NSInteger)leftX RightX:(NSInteger)rightX LeftZ:(NSInteger)leftZ RightZ:(NSInteger)rightZ Y:(NSInteger)y;
 
 @end
 
