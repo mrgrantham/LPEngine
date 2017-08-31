@@ -33,7 +33,7 @@
         self.vertexData = nil;
         self.vertexDataSize = 0;
         
-        self.preferredFramesPerSecond = 60;
+        self.preferredFramesPerSecond = 24;
         
         [self.primitives setPixelWidth:2];
         [self.primitives setVirtualWidth:640];
@@ -238,6 +238,18 @@
 
 - (IBAction)engageFlight:(id)sender {
     NSLog(@"WHEEEE IM FLYING!!!");
+    LPPoint rotateVector = {};
+    rotateVector.y = M_PI;
+    EngineDemos *demo = [EngineDemos sharedManager];
+    [demo resetArwing];
+    [demo resetFlight];
+    [[demo arwing] rotateWithVector:rotateVector];
+    
+    if (demo.flyContinuous) {
+        demo.flyContinuous = NO;
+    } else {
+        demo.flyContinuous = YES;
+    }
 }
 
 @end

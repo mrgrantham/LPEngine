@@ -312,7 +312,7 @@ NSString *NSStringFromLPPoint(LPPoint point) {
                 [self drawScanLineAtLeftX:XL RightX:XR LeftZ:ZL RightZ:ZR Y:YL];
                 pointChanged = NO;
             }
-            if (YR >= (int32_t)middle.y) break;
+            if (YR >= (int32_t)middle.y || YL >= (int32_t)middle.y) break;
             if(YL <= YR) {        // if the left line < right increment only left
                 ETB.x -= DTB.x; if (ETB.x < 0) { ETB.x += DMaxTB; XL += STB.x; }
                 ETB.y -= DTB.y; if (ETB.y < 0) { ETB.y += DMaxTB; YL += STB.y; pointChanged = YES;}
@@ -341,7 +341,7 @@ NSString *NSStringFromLPPoint(LPPoint point) {
                 [self drawScanLineAtLeftX:XL RightX:XR LeftZ:ZL RightZ:ZR Y:YL];
                 pointChanged = NO;
             }
-            if (YR >= (int32_t)bottom.y) break;
+            if (YR >= (int32_t)bottom.y || YL >= (int32_t)bottom.y || XL == XR) break;
             if(YL <= YR) {        // if the left line < right increment only left
                 ETB.x -= DTB.x; if (ETB.x < 0) { ETB.x += DMaxTB; XL += STB.x; pointChanged = YES;}
                 ETB.y -= DTB.y; if (ETB.y < 0) { ETB.y += DMaxTB; YL += STB.y; pointChanged = YES;}
@@ -370,7 +370,7 @@ NSString *NSStringFromLPPoint(LPPoint point) {
                 [self drawScanLineAtLeftX:XL RightX:XR LeftZ:ZL RightZ:ZR Y:YL];
                 pointChanged = NO;
             }
-            if (YR >= (int32_t)middle.y) break;
+            if (YR >= (int32_t)middle.y || YL >= (int32_t)middle.y) break;
             if(YL <= YR) {        // if the left line < right increment only left
                 ETM.x -= DTM.x; if (ETM.x < 0) { ETM.x += DMaxTM; XL += STM.x; }
                 ETM.y -= DTM.y; if (ETM.y < 0) { ETM.y += DMaxTM; YL += STM.y;  pointChanged = YES;}
@@ -397,7 +397,7 @@ NSString *NSStringFromLPPoint(LPPoint point) {
                 [self drawScanLineAtLeftX:XL RightX:XR LeftZ:ZL RightZ:ZR Y:YL];
                 pointChanged = NO;
             }
-            if (YR >= (int32_t)bottom.y) {
+            if (YR >= (int32_t)bottom.y || YL >= (int32_t)bottom.y || XL == XR) {
 //                NSLog(@"bottom.z %li ZL %li ZR %li diff %li",bottom.z,ZL,ZR, (ZL - bottom.z));
                 break;
             }
@@ -458,7 +458,7 @@ NSString *NSStringFromLPPoint(LPPoint point) {
 
     if (leftX > rightX) {
         if ((leftX - rightX) > 4) {
-            NSLog(@"leftX %li rightX %li leftZ %li rightZ %li", leftX, rightX, leftZ, rightZ);
+//            NSLog(@"leftX %li rightX %li leftZ %li rightZ %li", leftX, rightX, leftZ, rightZ);
         }
         // sometimes the left calculation overshoots. this is to correct
         leftX = rightX;
