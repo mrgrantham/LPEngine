@@ -46,7 +46,10 @@
             _arwing.centerChanged = YES;
             [_arwing findVertexCenter];
             _rotateContinuous = YES;
-
+            
+//            _rotationRadians = {};
+//            _translationRadians = {};
+//            _scaleRadians = {};
         }
     }
     return self;
@@ -83,19 +86,11 @@
 }
 
 - (void)arwingDemo {
-    static float currentRadian = 0.0;
 
-//    static float radians = 0.4;
-//    static LPPoint rotation = {};
-//    rotation.y = radians;
-//    self.arwing.rotation = rotation;
-    
-//    radians += 0.01;
-//    if (radians >= 2.0 * M_PI) radians = 0.0;
     
     if (self.rotateContinuous) {
         static LPPoint rotationVector = {};
-        rotationVector.y = 0.02;
+        rotationVector.y = 0.04;
         [self.arwing rotateWithVector:rotationVector];
     }
     if (self.translateContinuous) {
@@ -103,7 +98,7 @@
         static LPPoint translationVector = {};
         translationVector.x = (sin(translationRadian) * 10) ;
         [self.arwing translateWithVector:translationVector];
-        translationRadian += 0.1;
+        translationRadian += 0.2;
         translationRadian = translationRadian >= (M_PI * 2) ? translationRadian - (M_PI * 2): translationRadian;
     }
     if (self.scaleContinuous) {
@@ -111,13 +106,42 @@
         static LPPoint scaleVector = {};
         float sineValue = sin(scaleRadian);
 //        NSLog(@"sineValue: %0.2f", sineValue);
-        scaleVector.x = sineValue * 0.01;
-        scaleVector.y = sineValue * 0.01;
-        scaleVector.z = sineValue * 0.01;
+        scaleVector.x = sineValue * 0.02;
+        scaleVector.y = sineValue * 0.02;
+        scaleVector.z = sineValue * 0.02;
 
         [self.arwing scaleWithVector:scaleVector];
         scaleRadian += 0.1;
         scaleRadian = scaleRadian >= (M_PI * 2) ? scaleRadian - (M_PI * 2): scaleRadian;
+    }
+    if (self.flyContinuous) {
+        static LPPoint translateVector = {};
+        float sineValue = sin(self.translationRadians.y - (M_PI/2));
+//        NSLog(@"Translation sineValue: %0.2f", sineValue);
+        translateVector.x = 0;
+        translateVector.y = sineValue * 4;
+        translateVector.z = 0;
+        [self.arwing translateWithVector:translateVector];
+        
+        sineValue = sin(self.rotationRadians.x - (M_PI/3));
+//        NSLog(@"Rotation sineValue: %0.2f",sineValue);
+        static LPPoint rotateVector = {};
+        //        NSLog(@"sineValue: %0.2f", sineValue);
+        rotateVector.x = sineValue * 0.007;
+        rotateVector.y = 0;
+        rotateVector.z = 0;
+        [self.arwing rotateWithVector:rotateVector];
+        
+        
+        LPPoint temp = self.translationRadians;
+        temp.y += 0.05;
+        temp.y = temp.y >= (M_PI * 2) ? temp.y - (M_PI * 2): temp.y;
+        self.translationRadians = temp;
+        
+        temp = self.rotationRadians;
+        temp.x += 0.05;
+        temp.x = temp.x >= (M_PI * 2) ? temp.x - (M_PI * 2): temp.x;
+        self.rotationRadians = temp;
     }
     
     [[EnginePrimitives sharedManager] resetDepthBuffer];
@@ -127,9 +151,6 @@
     
     [self.arwing draw:LPEngineDrawSolid];
     
-    currentRadian += 0.001;
-    currentRadian = currentRadian >= (M_PI * 2) ? currentRadian - (M_PI * 2): currentRadian;
-
 }
 
 - (void) resetArwing {
@@ -145,6 +166,17 @@
     translation.y = prim.virtualHeight / 4;
     translation.z = -800;
     self.arwing.translation = translation;
+}
+
+- (void) resetFlight {
+    LPPoint resetPoint = {};
+    self.scaleRadians = resetPoint;
+    
+    //resetPoint.y = M_PI/8;
+    self.translationRadians = resetPoint;
+
+    resetPoint.x = M_PI/2;
+    self.rotationRadians = resetPoint;
 }
 
 @end

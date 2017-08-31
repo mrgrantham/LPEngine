@@ -17,6 +17,13 @@
 @property (nonatomic, assign) BOOL rotateContinuous;
 @property (nonatomic, assign) BOOL translateContinuous;
 @property (nonatomic, assign) BOOL scaleContinuous;
+@property (nonatomic, assign) BOOL flyContinuous;
+//@property (nonatomic, assign) LPPoint flightRotation;
+//@property (nonatomic, assign) LPPoint flightTranslation;
+//@property (nonatomic, assign) LPPoint flightScaling;
+@property (nonatomic, assign) LPPoint rotationRadians;
+@property (nonatomic, assign) LPPoint translationRadians;
+@property (nonatomic, assign) LPPoint scaleRadians;
 
 
 + (id)sharedManager;
@@ -24,6 +31,7 @@
 - (void) triangleDemo;
 - (void) arwingDemo;
 - (void) resetArwing;
+- (void) resetFlight;
 
 @end
 
