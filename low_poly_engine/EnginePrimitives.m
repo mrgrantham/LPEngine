@@ -241,17 +241,18 @@ NSString *NSStringFromLPPoint(LPPoint point) {
     
     float edge = (middle.x - top.x) * (bottom.y - top.y) - (middle.y-top.y) * (bottom.x - top.x);
     
-    DTM.x = abs(top.x - middle.x);
-    DTM.y = abs(middle.y - top.y);
-    DTM.z = abs(top.z - middle.z);
     
-    DTB.x = abs(top.x - bottom.x);
-    DTB.y = abs(bottom.y-top.y);
-    DTB.z = abs(top.z - bottom.z);
+    DTM.x = abs((NSInteger)(top.x - middle.x) == 0? 1 : (top.x - middle.x));
+    DTM.y = abs((NSInteger)(middle.y - top.y) == 0? 1 : (middle.y - top.y));
+    DTM.z = abs((NSInteger)(top.z - middle.z) == 0? 1 : (top.z - middle.z));
     
-    DMB.x = abs(middle.x - bottom.x);
-    DMB.y = abs(bottom.y - middle.y);
-    DMB.z = abs(middle.z - bottom.z);
+    DTB.x = abs((NSInteger)(top.x - bottom.x) == 0? 1 : (top.x - bottom.x));
+    DTB.y = abs((NSInteger)(bottom.y-top.y) == 0? 1 : (bottom.y-top.y));
+    DTB.z = abs((NSInteger)(top.z - bottom.z) == 0? 1 : (top.z - bottom.z));
+    
+    DMB.x = abs((NSInteger)(middle.x - bottom.x) == 0? 1 : (middle.x - bottom.x));
+    DMB.y = abs((NSInteger)(bottom.y - middle.y) == 0? 1 : (bottom.y - middle.y));
+    DMB.z = abs((NSInteger)(middle.z - bottom.z) == 0? 1 : (middle.z - bottom.z));
     
     DMaxTM = DTM.x > DTM.y ? (DTM.x > DTM.z ? DTM.x : DTM.z) : (DTM.y > DTM.z ? DTM.y : DTM.z);
     DMaxTB = DTB.x > DTB.y ? (DTB.x > DTB.z ? DTB.x : DTB.z) : (DTB.y > DTB.z ? DTB.y : DTB.z);
@@ -343,12 +344,12 @@ NSString *NSStringFromLPPoint(LPPoint point) {
             }
             if (YR >= (int32_t)bottom.y || YL >= (int32_t)bottom.y || XL == XR) break;
             if(YL <= YR) {        // if the left line < right increment only left
-                ETB.x -= DTB.x; if (ETB.x < 0) { ETB.x += DMaxTB; XL += STB.x; pointChanged = YES;}
+                ETB.x -= DTB.x; if (ETB.x < 0) { ETB.x += DMaxTB; XL += STB.x; }
                 ETB.y -= DTB.y; if (ETB.y < 0) { ETB.y += DMaxTB; YL += STB.y; pointChanged = YES;}
                 ETB.z -= DTB.z; if (ETB.z < 0) { ETB.z += DMaxTB; ZL += STB.z; }
             }
             else if (YL > YR) {   // if the right line < left increment only
-                EMB.x -= DMB.x; if (EMB.x < 0) { EMB.x += DMaxMB; XR += SMB.x; pointChanged = YES;}
+                EMB.x -= DMB.x; if (EMB.x < 0) { EMB.x += DMaxMB; XR += SMB.x; }
                 EMB.y -= DMB.y; if (EMB.y < 0) { EMB.y += DMaxMB; YR += SMB.y; pointChanged = YES;}
                 EMB.z -= DMB.z; if (EMB.z < 0) { EMB.z += DMaxMB; ZR += SMB.z; }
             }
@@ -483,7 +484,7 @@ NSString *NSStringFromLPPoint(LPPoint point) {
     
     for(;;) {
         if(z > 0) {
-            NSLog(@"Z went positive");
+//            NSLog(@"Z went positive");
         }
 
         depthBufferIndex = x + (y * self.virtualWidth);

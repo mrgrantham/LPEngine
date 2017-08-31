@@ -23,6 +23,7 @@
 @property (nonatomic, strong) EnginePrimitives *primitives;
 @property (nonatomic) Vertex *vertexData;
 @property (nonatomic) NSInteger vertexDataSize;
+@property (nonatomic, strong) id <MTLLibrary> library;
 
 - (void) render;
 - (void) drawRect: (NSRect)dirtyRect;

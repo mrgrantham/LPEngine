@@ -33,7 +33,7 @@
         self.vertexData = nil;
         self.vertexDataSize = 0;
         
-        self.preferredFramesPerSecond = 24;
+        self.preferredFramesPerSecond = 60;
         
         [self.primitives setPixelWidth:2];
         [self.primitives setVirtualWidth:640];
@@ -47,13 +47,15 @@
             NSLog(@"window frame render %@",NSStringFromRect(frame) );
             [self.window setFrame:frame display:YES animate:YES];
         }
+        self.device = MTLCreateSystemDefaultDevice();
+        self.library = [self.device newDefaultLibrary];
 
     }
     return self;
 }
 
 - (void) render {
-    self.device = MTLCreateSystemDefaultDevice();
+//    self.device = MTLCreateSystemDefaultDevice();
     [self createBuffer];
     [self registerShaders];
     [self sendToGPU];
@@ -99,13 +101,17 @@
 //    }
 //    
     self.vertexBuffer = [self.device newBufferWithBytes: self.vertexData length: self.vertexDataSize * sizeof(Vertex) options: MTLResourceCPUCacheModeDefaultCache];
+//    self.vertexBuffer = [self.device newBufferWithBytesNoCopy: self.vertexData length: self.vertexDataSize * sizeof(Vertex) options: MTLResourceCPUCacheModeDefaultCache deallocator:^(void * _Nonnull pointer, NSUInteger length) {
     
+//    }];
+
 }
 
 - (void) registerShaders {
-    id <MTLLibrary> library = [self.device newDefaultLibrary];
-    id <MTLFunction> vertex_func = [library newFunctionWithName:@"vertex_func"];
-    id <MTLFunction> frag_func = [library newFunctionWithName:@"fragment_func"];
+//    id <MTLLibrary> library = [self.device newDefaultLibrary];
+    
+    id <MTLFunction> vertex_func = [self.library newFunctionWithName:@"vertex_func"];
+    id <MTLFunction> frag_func = [self.library newFunctionWithName:@"fragment_func"];
     
     MTLRenderPipelineDescriptor *renderPipelineDescriptor = [[MTLRenderPipelineDescriptor alloc] init];
     renderPipelineDescriptor.vertexFunction = vertex_func;
