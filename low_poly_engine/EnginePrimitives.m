@@ -241,23 +241,23 @@ NSString *NSStringFromLPPoint(LPPoint point) {
     
     float edge = (middle.x - top.x) * (bottom.y - top.y) - (middle.y-top.y) * (bottom.x - top.x);
     
-    DTM.x = (top.x > middle.x ? top.x - middle.x : middle.x - top.x);
-    DTM.y = (middle.y - top.y);
-    DTM.z = (top.x > middle.z ? top.z - middle.z : middle.z - top.z);
+    DTM.x = abs(top.x - middle.x);
+    DTM.y = abs(middle.y - top.y);
+    DTM.z = abs(top.z - middle.z);
     
-    DTB.x = (top.x > bottom.x ? top.x - bottom.x : bottom.x - top.x);
-    DTB.y = (bottom.y-top.y);
-    DTB.z = (top.z > bottom.z ? top.z - bottom.z : bottom.z - top.z);
+    DTB.x = abs(top.x - bottom.x);
+    DTB.y = abs(bottom.y-top.y);
+    DTB.z = abs(top.z - bottom.z);
     
-    DMB.x = (middle.x > bottom.x ? middle.x - bottom.x : bottom.x - middle.x);
-    DMB.y = (bottom.y - middle.y);
-    DMB.z = (middle.z > bottom.z ? middle.z - bottom.z : bottom.z - middle.z);
+    DMB.x = abs(middle.x - bottom.x);
+    DMB.y = abs(bottom.y - middle.y);
+    DMB.z = abs(middle.z - bottom.z);
     
     DMaxTM = DTM.x > DTM.y ? (DTM.x > DTM.z ? DTM.x : DTM.z) : (DTM.y > DTM.z ? DTM.y : DTM.z);
     DMaxTB = DTB.x > DTB.y ? (DTB.x > DTB.z ? DTB.x : DTB.z) : (DTB.y > DTB.z ? DTB.y : DTB.z);
     DMaxMB = DMB.x > DMB.y ? (DMB.x > DMB.z ? DMB.x : DMB.z) : (DMB.y > DMB.z ? DMB.y : DMB.z);
     
-    NSLog(@"\nDTM %@\n DTB %@\n DMB %@",NSStringFromLPPoint(DTM),NSStringFromLPPoint(DTB),NSStringFromLPPoint(DMB));
+//    NSLog(@"\nDTM %@\n DTB %@\n DMB %@",NSStringFromLPPoint(DTM),NSStringFromLPPoint(DTB),NSStringFromLPPoint(DMB));
     // Calculate steps from start to destination
     
     STM.x = ((NSInteger)top.x < (NSInteger)middle.x) ? 1 : -1;
@@ -325,9 +325,9 @@ NSString *NSStringFromLPPoint(LPPoint point) {
             }
         }
         // bottom half of triangle
-//        YR = middle.y;
-//        XR = middle.x;
-//        ZR = middle.z;
+        YR = middle.y;
+        XR = middle.x;
+        ZR = middle.z;
         int bottomcount = 0;
         for(;;){
 //            NSLog(@"BOTTOM RIGHT POINTING");
@@ -383,9 +383,9 @@ NSString *NSStringFromLPPoint(LPPoint point) {
             }
         }
         // bottom half of triangle
-//        YL = middle.y;
-//        XL = middle.x;
-//        ZL = middle.z;
+        YL = middle.y;
+        XL = middle.x;
+        ZL = middle.z;
         int bottomcount = 0;
         for(;;){
 //            NSLog(@"BOTTOM LEFT POINTING");
