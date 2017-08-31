@@ -15,6 +15,12 @@ struct Vertex {
     float4 color;
 };
 
+//struct VertexOut{
+//    float pointsize[[point_size]];
+//};
+//
+//const VertexOut.pointsize = 10.0;
+
 vertex Vertex vertex_func(constant Vertex *vertices [[buffer(0)]], uint vid [[vertex_id]]) {
     return vertices[vid];
 }
