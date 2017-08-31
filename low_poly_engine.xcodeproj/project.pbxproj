@@ -135,20 +135,7 @@
 				D76CBB0D1F46BF9F00D51490 /* EngineMetalView.h */,
 				D76CBB0B1F46BF8C00D51490 /* EngineMetalView.m */,
 				D7F6B8661F4A153300607F4E /* Arwing.h */,
-				D7F6B86D1F4A204800607F4E /* EngineModelInterfaceFactory.h */,
-				D7F6B86E1F4A204800607F4E /* EngineModelInterfaceFactory.m */,
-				D7F6B86A1F4A202200607F4E /* EngineModelInterface.h */,
-				D7F6B86B1F4A202200607F4E /* EngineModelInterface.m */,
-				D7F6B8691F4A15C500607F4E /* EngineModel.h */,
-				D7F6B8671F4A15B700607F4E /* EngineModel.m */,
-				D7F6B8701F4B5B9800607F4E /* EngineScene.h */,
-				D7F6B8711F4B5B9800607F4E /* EngineScene.m */,
-				D7F6B8631F480BC400607F4E /* EngineDemos.m */,
-				D7F6B8651F480BD500607F4E /* EngineDemos.h */,
-				D78240DD1F4767E3005CE3C9 /* EnginePrimitives.h */,
-				D78240DE1F4767FC005CE3C9 /* EnginePrimitives.m */,
-				D7F6B8601F48084F00607F4E /* EngineTransforms.h */,
-				D7F6B8611F48086F00607F4E /* EngineTransforms.m */,
+				D7D8D9881F57A02C00804C5E /* LPEngineCore */,
 				D76CBB0E1F46D96B00D51490 /* engineShaders.metal */,
 				D76CBADB1F46716700D51490 /* Assets.xcassets */,
 				D76CBADD1F46716700D51490 /* Main.storyboard */,
@@ -191,6 +178,27 @@
 				D76CBB031F46B6AD00D51490 /* Metal.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D7D8D9881F57A02C00804C5E /* LPEngineCore */ = {
+			isa = PBXGroup;
+			children = (
+				D7F6B86D1F4A204800607F4E /* EngineModelInterfaceFactory.h */,
+				D7F6B86E1F4A204800607F4E /* EngineModelInterfaceFactory.m */,
+				D7F6B86A1F4A202200607F4E /* EngineModelInterface.h */,
+				D7F6B86B1F4A202200607F4E /* EngineModelInterface.m */,
+				D7F6B8691F4A15C500607F4E /* EngineModel.h */,
+				D7F6B8671F4A15B700607F4E /* EngineModel.m */,
+				D7F6B8701F4B5B9800607F4E /* EngineScene.h */,
+				D7F6B8711F4B5B9800607F4E /* EngineScene.m */,
+				D7F6B8631F480BC400607F4E /* EngineDemos.m */,
+				D7F6B8651F480BD500607F4E /* EngineDemos.h */,
+				D78240DD1F4767E3005CE3C9 /* EnginePrimitives.h */,
+				D78240DE1F4767FC005CE3C9 /* EnginePrimitives.m */,
+				D7F6B8601F48084F00607F4E /* EngineTransforms.h */,
+				D7F6B8611F48086F00607F4E /* EngineTransforms.m */,
+			);
+			name = LPEngineCore;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -10,7 +10,7 @@
 #define EnginePrimitives_h
 #include <MetalKit/MetalKit.h>
 #include <Metal/Metal.h>
-#define NSLog //
+//#define NSLog //
 typedef struct LPPoint{
     float x;
     float y;
@@ -57,6 +57,8 @@ NSString *NSStringFromLPPoint(LPPoint point);
 - (float)virtualWidth;
 - (float)virtualHeight;
 - (void)resetDepthBuffer;
+
+- (void)debugWithTriangle:(LPTriangle)triangle;
 
 - (void)drawHorizontalLineAtLeftPoint:(LPPoint) leftPoint RightPoint:(LPPoint)rightPoint;
 - (void)drawHorizontalLineAtLeftX:(NSInteger)leftX LeftY:(NSInteger)leftY  RightX:(NSInteger)rightX  RightY:(NSInteger)rightY;

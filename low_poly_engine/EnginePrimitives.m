@@ -16,41 +16,6 @@ static int16_t pixelWidth;
 static float virtualWidth;
 static float virtualHeight;
 
-// notification to stop actions due to error
-static BOOL pauseFlag;
-
-// Triangle helper structs
-static LPPoint DTB; // calculating Top-Bottom
-static LPPoint DTM; // calculating Top-Middle
-static LPPoint DMB; // calculating Middle-Bottom
-
-static int32_t DMaxTM;
-static int32_t DMaxTB;
-static int32_t DMaxMB;
-
-static float remainingSteps;
-
-static LPPoint STB; // calculating Top-Bottom
-static LPPoint STM; // calculating Top-Middle
-static LPPoint SMB; // calculating Middle-Bottom
-
-// error calculation
-static LPPoint ETB; // calculating Top-Bottom Error
-static LPPoint ETM; // calculating Top-Middle Error
-static LPPoint EMB; // calculating Middle-Bottom Error
-
-// temp error holder for comparisons
-static int32_t E2L;
-static int32_t E2R;
-
-static LPPoint top;
-static LPPoint middle;
-static LPPoint bottom;
-
-static float YL,YR, XL, XR, ZL, ZR;
-static float setup_time;
-static float draw_time;
-
 static vector_float4 color;
 
 LPPoint LPPointMake(int16_t x, int16_t y, int16_t z) {
@@ -68,6 +33,11 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
     tempTriangle.p3 = p3;
     return tempTriangle;
 
+}
+
+NSString *NSStringFromLPPoint(LPPoint point) {
+    NSString *newString = [NSString stringWithFormat:@"{ %0.2f, %0.2f, %0.2f }",point.x,point.y,point.z];
+    return newString;
 }
 
 @implementation EnginePrimitives
@@ -221,6 +191,30 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
 - (void) drawTriangleAtPoint1:(LPPoint*) p1 Point2:(LPPoint*) p2 Point3:(LPPoint*) p3 {
     //setup_time = millis();
     
+    // Triangle helper structs
+    static LPPoint DTB; // calculating Top-Bottom
+    static LPPoint DTM; // calculating Top-Middle
+    static LPPoint DMB; // calculating Middle-Bottom
+    
+    static int32_t DMaxTM;
+    static int32_t DMaxTB;
+    static int32_t DMaxMB;
+    
+    static LPPoint STB = {.x=0, .y=1, .z=0}; // calculating Top-Bottom
+    static LPPoint STM = {.x=0, .y=1, .z=0}; // calculating Top-Middle
+    static LPPoint SMB = {.x=0, .y=1, .z=0}; // calculating Middle-Bottom
+    
+    // error calculation
+    static LPPoint ETB = {.x=0, .y=0, .z=0}; // calculating Top-Bottom Error
+    static LPPoint ETM = {.x=0, .y=0, .z=0}; // calculating Top-Middle Error
+    static LPPoint EMB = {.x=0, .y=0, .z=0}; // calculating Middle-Bottom Error
+    
+    static LPPoint top;
+    static LPPoint middle;
+    static LPPoint bottom;
+    
+    static NSInteger YL,YR, XL, XR, ZL, ZR;
+    
     if(p1->y < p2->y) {
         top = *p1;
         middle = *p2;
@@ -247,36 +241,33 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
     
     float edge = (middle.x - top.x) * (bottom.y - top.y) - (middle.y-top.y) * (bottom.x - top.x);
     
+    DTM.x = (top.x > middle.x ? top.x - middle.x : middle.x - top.x);
+    DTM.y = (middle.y - top.y);
+    DTM.z = (top.x > middle.z ? top.z - middle.z : middle.z - top.z);
     
-    DTM.x = top.x > middle.x ? top.x - middle.x : middle.x - top.x;
-    DTM.y = middle.y - top.y;
-    DTM.z = top.x > middle.z ? top.z - middle.z : middle.z - top.z;
+    DTB.x = (top.x > bottom.x ? top.x - bottom.x : bottom.x - top.x);
+    DTB.y = (bottom.y-top.y);
+    DTB.z = (top.z > bottom.z ? top.z - bottom.z : bottom.z - top.z);
     
-    DTB.x = top.x > bottom.x ? top.x - bottom.x : bottom.x - top.x;
-    DTB.y = bottom.y-top.y;
-    DTB.z = top.z > bottom.z ? top.z - bottom.z : bottom.z - top.z;
-    
-    DMB.x = middle.x > bottom.x ? middle.x - bottom.x : bottom.x - middle.x;
-    DMB.y = bottom.y - middle.y;
-    DMB.z = middle.z > bottom.z ? middle.z - bottom.z : bottom.z - middle.z;
+    DMB.x = (middle.x > bottom.x ? middle.x - bottom.x : bottom.x - middle.x);
+    DMB.y = (bottom.y - middle.y);
+    DMB.z = (middle.z > bottom.z ? middle.z - bottom.z : bottom.z - middle.z);
     
     DMaxTM = DTM.x > DTM.y ? (DTM.x > DTM.z ? DTM.x : DTM.z) : (DTM.y > DTM.z ? DTM.y : DTM.z);
     DMaxTB = DTB.x > DTB.y ? (DTB.x > DTB.z ? DTB.x : DTB.z) : (DTB.y > DTB.z ? DTB.y : DTB.z);
     DMaxMB = DMB.x > DMB.y ? (DMB.x > DMB.z ? DMB.x : DMB.z) : (DMB.y > DMB.z ? DMB.y : DMB.z);
     
+    NSLog(@"\nDTM %@\n DTB %@\n DMB %@",NSStringFromLPPoint(DTM),NSStringFromLPPoint(DTB),NSStringFromLPPoint(DMB));
     // Calculate steps from start to destination
     
-    STM.x = (top.x < middle.x) ? 1 : -1;
-    STM.y = 1;
-    STM.z = (top.z < middle.z) ? 1 : -1;
+    STM.x = ((NSInteger)top.x < (NSInteger)middle.x) ? 1 : -1;
+    STM.z = ((NSInteger)top.z < (NSInteger)middle.z) ? 1 : -1;
     
-    STB.x = (top.x < bottom.x) ? 1 : -1;
-    STB.y = 1;
-    STB.z = (top.z < bottom.z) ? 1 : -1;
+    STB.x = ((NSInteger)top.x < (NSInteger)bottom.x) ? 1 : -1;
+    STB.z = ((NSInteger)top.z < (NSInteger)bottom.z) ? 1 : -1;
     
-    SMB.x = (middle.x < bottom.x) ? 1 : -1;
-    SMB.y = 1;
-    SMB.z = (middle.z < bottom.z) ? 1 : -1;
+    SMB.x = ((NSInteger)middle.x < (NSInteger)bottom.x) ? 1 : -1;
+    SMB.z = ((NSInteger)middle.z < (NSInteger)bottom.z) ? 1 : -1;
     
     
     // calculate starting error
@@ -303,91 +294,141 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
     ZR = top.z;
     //text("SETUP TIME: " + (millis() - setup_time), 850,60);
     //draw_time = millis();
+    LPTriangle triangle = LPTriangleMake(top, middle, bottom);
+    [self debugWithTriangle:triangle];
+    static BOOL pointChanged = YES;
     
     if(edge > 0) {  // right pointing triangle
         
         // top half of triangle
         for(;;){
-            if(YL == YR) {
+//            NSLog(@"TOP RIGHT POINTING");
+//            NSLog(@"\nTop %@ \nMid %@ \nBot %@ \n LeftX %i RightX %i LeftZ %i RightZ %i YL %i YR %i",NSStringFromLPPoint(top),
+//                  NSStringFromLPPoint(middle),
+//                  NSStringFromLPPoint(bottom),
+//                  XL,XR,ZL,ZR,YL,YR);
+
+            if(YL == YR && pointChanged) {
                 [self drawScanLineAtLeftX:XL RightX:XR LeftZ:ZL RightZ:ZR Y:YL];
-                if (YL >= middle.y) break;
+                pointChanged = NO;
             }
+            if (YR >= (int32_t)middle.y) break;
             if(YL <= YR) {        // if the left line < right increment only left
                 ETB.x -= DTB.x; if (ETB.x < 0) { ETB.x += DMaxTB; XL += STB.x; }
-                ETB.y -= DTB.y; if (ETB.y < 0) { ETB.y += DMaxTB; YL += STB.y; }
+                ETB.y -= DTB.y; if (ETB.y < 0) { ETB.y += DMaxTB; YL += STB.y; pointChanged = YES;}
                 ETB.z -= DTB.z; if (ETB.z < 0) { ETB.z += DMaxTB; ZL += STB.z; }
             }
             else if (YL > YR) {   // if the right line < left increment only
                 ETM.x -= DTM.x; if (ETM.x < 0) { ETM.x += DMaxTM; XR += STM.x; }
-                ETM.y -= DTM.y; if (ETM.y < 0) { ETM.y += DMaxTM; YR += STM.y; }
+                ETM.y -= DTM.y; if (ETM.y < 0) { ETM.y += DMaxTM; YR += STM.y; pointChanged = YES;}
                 ETM.z -= DTM.z; if (ETM.z < 0) { ETM.z += DMaxTM; ZR += STM.z; }
             }
         }
         // bottom half of triangle
-        YR = middle.y;
-        XR = middle.x;
-        ZR = middle.z;
-        
+//        YR = middle.y;
+//        XR = middle.x;
+//        ZR = middle.z;
+        int bottomcount = 0;
         for(;;){
-            if(YL == YR) {
+//            NSLog(@"BOTTOM RIGHT POINTING");
+//            NSLog(@"\nTop %@ \nMid %@ \nBot %@ \n LeftX %i RightX %i LeftZ %i RightZ %i YL %i YR %i",NSStringFromLPPoint(top),
+//                  NSStringFromLPPoint(middle),
+//                  NSStringFromLPPoint(bottom),
+//                  XL,XR,ZL,ZR,YL,YR);
+
+            if((YL == YR) && pointChanged) {
                 // cout << "RIGHT BOTTOM XL " << XL << " XR " << XR << " ZL " << ZL << " ZR " << ZR << " Y " << YL << endl;
                 [self drawScanLineAtLeftX:XL RightX:XR LeftZ:ZL RightZ:ZR Y:YL];
-
-                if (YL >= bottom.y) break;
+                pointChanged = NO;
             }
+            if (YR >= (int32_t)bottom.y) break;
             if(YL <= YR) {        // if the left line < right increment only left
-                ETB.x -= DTB.x; if (ETB.x < 0) { ETB.x += DMaxTB; XL += STB.x; }
-                ETB.y -= DTB.y; if (ETB.y < 0) { ETB.y += DMaxTB; YL += STB.y; }
+                ETB.x -= DTB.x; if (ETB.x < 0) { ETB.x += DMaxTB; XL += STB.x; pointChanged = YES;}
+                ETB.y -= DTB.y; if (ETB.y < 0) { ETB.y += DMaxTB; YL += STB.y; pointChanged = YES;}
                 ETB.z -= DTB.z; if (ETB.z < 0) { ETB.z += DMaxTB; ZL += STB.z; }
             }
             else if (YL > YR) {   // if the right line < left increment only
-                EMB.x -= DMB.x; if (EMB.x < 0) { EMB.x += DMaxMB; XR += SMB.x; }
-                EMB.y -= DMB.y; if (EMB.y < 0) { EMB.y += DMaxMB; YR += SMB.y; }
+                EMB.x -= DMB.x; if (EMB.x < 0) { EMB.x += DMaxMB; XR += SMB.x; pointChanged = YES;}
+                EMB.y -= DMB.y; if (EMB.y < 0) { EMB.y += DMaxMB; YR += SMB.y; pointChanged = YES;}
                 EMB.z -= DMB.z; if (EMB.z < 0) { EMB.z += DMaxMB; ZR += SMB.z; }
             }
+            bottomcount++;
+        }
+        if (bottomcount < 1) {
+//            NSLog(@"bottom right pointing triangle didnt draw");
         }
     }
     else { // Case with middle point on left side of triangle
         // top half of triangle
         for(;;){
-            if(YL == YR) {
+//            NSLog(@"TOP LEFT POINTING");
+//            NSLog(@"\nTop %@ \nMid %@ \nBot %@ \n LeftX %i RightX %i LeftZ %i RightZ %i YL %i YR %i",NSStringFromLPPoint(top),
+//                  NSStringFromLPPoint(middle),
+//                  NSStringFromLPPoint(bottom),
+//                  XL,XR,ZL,ZR,YL,YR);
+            if(YL == YR && pointChanged) {
                 [self drawScanLineAtLeftX:XL RightX:XR LeftZ:ZL RightZ:ZR Y:YL];
-                if (YR >= middle.y) break;
+                pointChanged = NO;
             }
+            if (YR >= (int32_t)middle.y) break;
             if(YL <= YR) {        // if the left line < right increment only left
                 ETM.x -= DTM.x; if (ETM.x < 0) { ETM.x += DMaxTM; XL += STM.x; }
-                ETM.y -= DTM.y; if (ETM.y < 0) { ETM.y += DMaxTM; YL += STM.y; }
+                ETM.y -= DTM.y; if (ETM.y < 0) { ETM.y += DMaxTM; YL += STM.y;  pointChanged = YES;}
                 ETM.z -= DTM.z; if (ETM.z < 0) { ETM.z += DMaxTM; ZL += STM.z; }
             }
             else if (YL > YR) {   // if the right line < left increment only
                 ETB.x -= DTB.x; if (ETB.x < 0) { ETB.x += DMaxTB; XR += STB.x; }
-                ETB.y -= DTB.y; if (ETB.y < 0) { ETB.y += DMaxTB; YR += STB.y; }
+                ETB.y -= DTB.y; if (ETB.y < 0) { ETB.y += DMaxTB; YR += STB.y;  pointChanged = YES;}
                 ETB.z -= DTB.z; if (ETB.z < 0) { ETB.z += DMaxTB; ZR += STB.z; }
             }
         }
         // bottom half of triangle
-        YL = middle.y;
-        XL = middle.x;
-        ZL = middle.z;
+//        YL = middle.y;
+//        XL = middle.x;
+//        ZL = middle.z;
+        int bottomcount = 0;
         for(;;){
-            if(YL == YR) {
+//            NSLog(@"BOTTOM LEFT POINTING");
+//            NSLog(@"\nTop %@ \nMid %@ \nBot %@ \n LeftX %i RightX %i LeftZ %i RightZ %i YL %i YR %i",NSStringFromLPPoint(top),
+//                  NSStringFromLPPoint(middle),
+//                  NSStringFromLPPoint(bottom),
+//                  XL,XR,ZL,ZR,YL,YR);
+            if(YL == YR && pointChanged) {
                 [self drawScanLineAtLeftX:XL RightX:XR LeftZ:ZL RightZ:ZR Y:YL];
-                if (YR >= bottom.y) break;
+                pointChanged = NO;
+            }
+            if (YR >= (int32_t)bottom.y) {
+//                NSLog(@"bottom.z %li ZL %li ZR %li diff %li",bottom.z,ZL,ZR, (ZL - bottom.z));
+                break;
             }
             if(YL <= YR) {        // if the left line < right increment only left
                 EMB.x -= DMB.x; if (EMB.x < 0) { EMB.x += DMaxMB; XL += SMB.x; }
-                EMB.y -= DMB.y; if (EMB.y < 0) { EMB.y += DMaxMB; YL += SMB.y; }
+                EMB.y -= DMB.y; if (EMB.y < 0) { EMB.y += DMaxMB; YL += SMB.y;  pointChanged = YES;}
                 EMB.z -= DMB.z; if (EMB.z < 0) { EMB.z += DMaxMB; ZL += SMB.z; }
             }
             else if (YL > YR) {   // if the right line < left increment only
                 ETB.x -= DTB.x; if (ETB.x < 0) { ETB.x += DMaxTB; XR += STB.x; }
-                ETB.y -= DTB.y; if (ETB.y < 0) { ETB.y += DMaxTB; YR += STB.y; }
+                ETB.y -= DTB.y; if (ETB.y < 0) { ETB.y += DMaxTB; YR += STB.y;  pointChanged = YES;}
                 ETB.z -= DTB.z; if (ETB.z < 0) { ETB.z += DMaxTB; ZR += STB.z; }
             }
+            bottomcount++;
+        }
+        if (bottomcount < 1) {
+//            NSLog(@"bottom left pointing triangle didnt draw");
         }
     }
-    //text("DRAW TIME: " + (millis() - draw_time), 850,80);
 }
+
+- (void)debugWithTriangle:(LPTriangle)triangle {
+    static LPPoint prevTop = {};
+    static LPPoint prevMid = {};
+    static LPPoint prevBot = {};
+//    NSLog(@"\nPrev Triangle %@ %@ %@ \nCurr Triangle %@ %@ %@",NSStringFromLPPoint(prevTop),NSStringFromLPPoint(prevMid),NSStringFromLPPoint(prevBot),NSStringFromLPPoint(triangle.p1),NSStringFromLPPoint(triangle.p2),NSStringFromLPPoint(triangle.p3));
+    prevTop = triangle.p1;
+    prevMid = triangle.p2;
+    prevBot = triangle.p3;
+}
+
 - (void) drawTriangleAtCopiedPoint1:(LPPoint) p1 Point2:(LPPoint) p2 Point3:(LPPoint) p3 {
     [self drawTriangleAtPoint1:&p1 Point2:&p2 Point3:&p3];
 }
@@ -402,20 +443,22 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
 
 - (void) drawScanLineAtLeftX:(NSInteger)leftX RightX:(NSInteger)rightX LeftZ:(NSInteger)leftZ RightZ:(NSInteger)rightZ Y:(NSInteger)y {
     
-    static int16_t DeltaX;
-    static int16_t DeltaZ;
-    static int16_t StepX = 1;
-    static int16_t StepZ;
-    static int16_t Error;
-    static int16_t ErrorComparison;
-    static int16_t ErrorTmp;
-    static int16_t x;
-    static int16_t z;
+    static NSInteger DeltaX;
+    static NSInteger DeltaZ;
+    static NSInteger StepX = 1; // No need to calculate since always from left to right
+    static NSInteger StepZ;
+    static NSInteger Error;
+    static NSInteger DeltaMax;
+    static NSInteger ErrorX;
+    static NSInteger ErrorZ;
+    static NSInteger x;
+    static NSInteger z;
     static long int depthBufferIndex; // needs to be a huge number. uint16_t might be enough i havent done the calculations. but int16_t definitely isnt
-    
+//    NSLog(@"leftX %li rightX %li leftZ %li rightZ %li", leftX, rightX, leftZ, rightZ);
+
     if (leftX > rightX) {
         if ((leftX - rightX) > 4) {
-            NSLog(@"leftX %li rightX %li", leftX, rightX);
+            NSLog(@"leftX %li rightX %li leftZ %li rightZ %li", leftX, rightX, leftZ, rightZ);
         }
         // sometimes the left calculation overshoots. this is to correct
         leftX = rightX;
@@ -423,14 +466,16 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
     DeltaX = rightX - leftX;
     DeltaZ = leftZ > rightZ ? leftZ - rightZ : rightZ - leftZ;
     
-//    StepX = leftX < rightX ? 1 : -1; // x is always from left to right
     StepZ = leftZ < rightZ ? 1 : -1;
     
-    Error = DeltaX > DeltaZ ? DeltaZ : DeltaX;
-    ErrorComparison = DeltaX < DeltaZ ? DeltaZ : DeltaX;
+
+
+    DeltaMax = DeltaX < DeltaZ ? DeltaZ : DeltaX;
     
-    static BOOL xIsBigger = NO;
-    xIsBigger = DeltaX > DeltaZ? YES : NO;
+    ErrorX = DeltaMax >> 1;
+    ErrorZ = DeltaMax >> 1;
+//    ErrorX = 0;
+//    ErrorZ = 0;
     
     x=leftX;
     z=leftZ;
@@ -440,43 +485,27 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
         if(z > 0) {
             NSLog(@"Z went positive");
         }
-        if (y < 0) {
-            // stuff
-            //NSLog(@"Y is negative %li", y);
-        }
-        if (x < 0) {
-//            NSLog(@"X is negative %i", x);
-        }
-        depthBufferIndex = x + (y * self.virtualWidth);
 
-//        NSLog(@"depthBuffer[%i]: %i z: %i", depthBufferIndex, depthBuffer[depthBufferIndex], z );
-        //
+        depthBufferIndex = x + (y * self.virtualWidth);
 
         if (x >= 0 && x < self.virtualWidth && y >= 0 && y < self.virtualHeight && z >= _depthBuffer[depthBufferIndex] && z <= 0) {
             [self drawPixelAtX:x Y:y];
             _depthBuffer[depthBufferIndex] = z;
+        } else if (x >= 0 && x < self.virtualWidth && y >= 0 && y < self.virtualHeight && z < _depthBuffer[depthBufferIndex] && z <= 0){
+//            NSLog(@"z %li leftZ %li rightZ %li diff %li",z,leftZ,rightZ,z-rightZ);
+//            NSLog(@"StepX %i StepZ %i DeltaX %i DeltaZ %i ErrorZ %i ErrorX %i LeftX %i RightX %i LeftZ %i RightZ %i x %i z %i",StepX,StepZ,DeltaX,DeltaZ,ErrorZ,ErrorX,leftX,rightX,leftZ,rightZ,x,z);
         }
-        if(x == rightX) {break;}
-        ErrorTmp = Error;
-        if (ErrorTmp >= ErrorComparison) {
-            Error -= ErrorComparison;
-            if (xIsBigger) {
-                z += StepZ;
-            } else {
-                x += StepX;
+        if(x == rightX) {
+            if (abs(z - rightZ) > 3) {
+//                NSLog(@"z %li leftZ %li rightZ %li diff %li",z,leftZ,rightZ,z-rightZ);
+//                NSLog(@"StepX %i StepZ %i DeltaX %i DeltaZ %i ErrorZ %i ErrorX %i LeftX %i RightX %i LeftZ %i RightZ %i x %i z %i",StepX,StepZ,DeltaX,DeltaZ,ErrorZ,ErrorX,leftX,rightX,leftZ,rightZ,x,z);
             }
-        } else {
-            if (xIsBigger) {
-                Error += DeltaZ;
-            } else {
-                Error += DeltaX;
-            }
+            break;
         }
-        if (xIsBigger) {
-            x += StepX;
-        } else {
-            z += StepZ;
-        }
+        
+        ErrorX -= DeltaX; if (ErrorX < 0) { ErrorX += DeltaMax; x += StepX;}
+        ErrorZ -= DeltaZ; if (ErrorZ < 0) { ErrorZ += DeltaMax; z += StepZ;}
+        
 //        NSLog(@"StepX %i StepZ %i DeltaX %i DeltaZ %i Error %i ErrorComparison %i LeftX %i RightX %i LeftZ %i RightZ %i x %i z %i",StepX,StepZ,DeltaX,DeltaZ,Error,ErrorComparison,leftX,rightX,leftZ,rightZ,x,z);
     }
 }
