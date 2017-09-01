@@ -40,6 +40,32 @@ NSString *NSStringFromLPPoint(LPPoint point) {
     return newString;
 }
 
+static Vertex *vertexData;
+static NSInteger vertexDataSize;
+
+Vertex *addVertex(Vertex vertex,Vertex *source,NSInteger *sourceSize) {
+    static NSInteger multiplier = 0;
+    static const NSInteger sizeIncreaseMargin = 300000;
+    Vertex *tempSource;
+    if (source == nil) {
+        NSLog(@"Initial Allocation");
+        source = malloc(sizeof(Vertex) * sizeIncreaseMargin * (multiplier+1));
+        multiplier++;
+    } else if (*sourceSize >= (sizeIncreaseMargin * multiplier)) {
+        tempSource = malloc(sizeof(Vertex) * sizeIncreaseMargin * (multiplier + 1));
+        memcpy(tempSource, source, *sourceSize * sizeof(Vertex));
+        free(source);
+        source = tempSource;
+        multiplier++;
+        NSLog(@"source size %li",(long)*sourceSize);
+    }
+    memcpy(&source[*sourceSize], &vertex, sizeof(Vertex));
+    
+    
+    (*sourceSize)++;
+    return source;
+}
+
 @implementation EnginePrimitives
 
 - (void) clearVertices {
@@ -128,14 +154,14 @@ NSString *NSStringFromLPPoint(LPPoint point) {
     lowerRight.color    = color;
     
     // Upper Left Tiangle
-    self.vertexData = [self addVertex:upperLeft To:self.vertexData OfSize:&_vertexDataSize];
-    self.vertexData = [self addVertex:upperRight To:self.vertexData OfSize:&_vertexDataSize];
-    self.vertexData = [self addVertex:lowerLeft To:self.vertexData OfSize:&_vertexDataSize];
+    self.vertexData = addVertex(upperLeft, self.vertexData, &_vertexDataSize);
+    self.vertexData = addVertex(upperRight, self.vertexData, &_vertexDataSize);
+    self.vertexData = addVertex(lowerLeft, self.vertexData, &_vertexDataSize);
 
     // Lower Right Triangle
-    self.vertexData = [self addVertex:lowerRight To:self.vertexData OfSize:&_vertexDataSize];
-    self.vertexData = [self addVertex:upperRight To:self.vertexData OfSize:&_vertexDataSize];
-    self.vertexData = [self addVertex:lowerLeft To:self.vertexData OfSize:&_vertexDataSize];
+    self.vertexData = addVertex(lowerRight, self.vertexData, &_vertexDataSize);
+    self.vertexData = addVertex(upperRight, self.vertexData, &_vertexDataSize);
+    self.vertexData = addVertex(lowerLeft, self.vertexData, &_vertexDataSize);
 }
 
 - (void) setColorWithRed:(NSInteger)red Green: (NSInteger) green Blue:(NSInteger)blue {
