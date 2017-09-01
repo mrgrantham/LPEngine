@@ -43,7 +43,7 @@ NSString *NSStringFromLPPoint(LPPoint point) {
 static Vertex *vertexData;
 static NSInteger vertexDataSize;
 
-Vertex *addVertex(Vertex vertex,Vertex *source,NSInteger *sourceSize) {
+static inline Vertex *addVertex(Vertex vertex,Vertex *source,NSInteger *sourceSize) {
     static NSInteger multiplier = 0;
     static const NSInteger sizeIncreaseMargin = 300000;
     Vertex *tempSource;
