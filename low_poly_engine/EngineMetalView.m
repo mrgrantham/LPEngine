@@ -128,9 +128,11 @@
 }
 
 - (void) sendToGPU {
-    MTLRenderPassDescriptor *renderPassDescriptor = [[MTLRenderPassDescriptor alloc] init];
+//    MTLRenderPassDescriptor *renderPassDescriptor = [[MTLRenderPassDescriptor alloc] init];
+    MTLRenderPassDescriptor *renderPassDescriptor = self.currentRenderPassDescriptor;
+
     if (renderPassDescriptor != nil && self.currentDrawable != nil) {
-        renderPassDescriptor.colorAttachments[0].texture = self.currentDrawable.texture;
+//        renderPassDescriptor.colorAttachments[0].texture = self.currentDrawable.texture;
         renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0.2f, 0.2f, 0.8f, 1.0f);
         renderPassDescriptor.colorAttachments[0].loadAction = MTLLoadActionClear;
         NSObject <MTLCommandBuffer>*commandBuffer = self.device.newCommandQueue.commandBuffer;
