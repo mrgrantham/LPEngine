@@ -50,8 +50,6 @@
         self.device = MTLCreateSystemDefaultDevice();
         self.library = [self.device newDefaultLibrary];
         [self registerShaders];
-
-
     }
     return self;
 }
