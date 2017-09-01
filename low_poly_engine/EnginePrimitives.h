@@ -36,6 +36,7 @@ LPPoint LPPointMake(int16_t x, int16_t y, int16_t z) ;
 NSString *NSStringFromLPPoint(LPPoint point);
 
 //Vertex *addVertex(Vertex vertex,Vertex *source,NSInteger *sourceSize);
+void drawPixelAt(NSInteger x, NSInteger y);
 
 
 @interface EnginePrimitives : NSObject

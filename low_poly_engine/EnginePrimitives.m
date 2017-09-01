@@ -66,6 +66,50 @@ static inline Vertex *addVertex(Vertex vertex,Vertex *source,NSInteger *sourceSi
     return source;
 }
 
+void drawPixelAt(NSInteger x, NSInteger y) {
+    // just adds pixel vertex to vertex_data for 2 triangles
+    static Vertex upperLeft;
+    static Vertex upperRight;
+    static Vertex lowerLeft;
+    static Vertex lowerRight;
+    
+    
+    upperLeft.position  = (vector_float4){  ((( x * pixelWidth )/  canvas.width) * 2) - 1.0,
+        ((( y * pixelWidth )/ canvas.height) * 2) - 1.0,
+        0,
+        1.0};
+    
+    upperRight.position = (vector_float4){ (((( x * pixelWidth ) + pixelWidth ) /  canvas.width) * 2) - 1.0,
+        (((y * pixelWidth ) / canvas.height) * 2) - 1.0,
+        0,
+        1.0};
+    
+    lowerLeft.position  = (vector_float4){  ((( x * pixelWidth ) /  canvas.width) * 2) - 1.0,
+        ((( ( y * pixelWidth ) + pixelWidth) / canvas.height) * 2) - 1.0,
+        0,
+        1.0};
+    
+    lowerRight.position = (vector_float4){ (((( x * pixelWidth ) + pixelWidth) / canvas.width) * 2) - 1.0,
+        (((( y * pixelWidth ) + pixelWidth )/ canvas.height) * 2) - 1.0,
+        0,
+        1.0};
+    
+    upperLeft.color     = color;
+    upperRight.color    = color;
+    lowerLeft.color     = color;
+    lowerRight.color    = color;
+    
+    // Upper Left Tiangle
+    vertexData = addVertex(upperLeft, vertexData, &vertexDataSize);
+    vertexData = addVertex(upperRight, vertexData, &vertexDataSize);
+    vertexData = addVertex(lowerLeft, vertexData, &vertexDataSize);
+    
+    // Lower Right Triangle
+    vertexData = addVertex(lowerRight, vertexData, &vertexDataSize);
+    vertexData = addVertex(upperRight, vertexData, &vertexDataSize);
+    vertexData = addVertex(lowerLeft, vertexData, &vertexDataSize);
+}
+
 @implementation EnginePrimitives
 
 - (void) clearVertices {
@@ -524,7 +568,7 @@ static inline Vertex *addVertex(Vertex vertex,Vertex *source,NSInteger *sourceSi
         depthBufferIndex = x + (y * self.virtualWidth);
 
         if (x >= 0 && x < self.virtualWidth && y >= 0 && y < self.virtualHeight && z >= _depthBuffer[depthBufferIndex] && z <= 0) {
-            [self drawPixelAtX:x Y:y];
+            drawPixelAt(x, y);
             _depthBuffer[depthBufferIndex] = z;
         } else if (x >= 0 && x < self.virtualWidth && y >= 0 && y < self.virtualHeight && z < _depthBuffer[depthBufferIndex] && z <= 0){
 //            NSLog(@"z %li leftZ %li rightZ %li diff %li",z,leftZ,rightZ,z-rightZ);
