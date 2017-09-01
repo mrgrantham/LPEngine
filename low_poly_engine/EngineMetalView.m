@@ -49,6 +49,8 @@
         }
         self.device = MTLCreateSystemDefaultDevice();
         self.library = [self.device newDefaultLibrary];
+        [self registerShaders];
+
 
     }
     return self;
@@ -57,7 +59,6 @@
 - (void) render {
 //    self.device = MTLCreateSystemDefaultDevice();
     [self createBuffer];
-    [self registerShaders];
     [self sendToGPU];
     
     CGSize canvasSize = [self.primitives canvasSize];
