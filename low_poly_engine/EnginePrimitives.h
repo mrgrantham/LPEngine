@@ -40,14 +40,16 @@ Vertex *addVertex(Vertex vertex,Vertex *source,NSInteger *sourceSize);
 
 @interface EnginePrimitives : NSObject
 
-@property (nonatomic) Vertex *vertexData;
-@property (nonatomic) NSInteger vertexDataSize;
+
 @property (nonatomic) int16_t *depthBuffer;
 
 
 
 - (void) clearVertices;
 - (Vertex *)addVertex:(Vertex)vertex To:(Vertex*)source OfSize:(NSInteger*)sourceSize;
+
+- (Vertex *)vertexData;
+- (NSInteger)vertexDataSize;
 
 + (id) sharedManager;
 
