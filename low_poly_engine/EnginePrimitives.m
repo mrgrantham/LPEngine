@@ -66,7 +66,7 @@ static inline Vertex *addVertex(Vertex vertex,Vertex *source,NSInteger *sourceSi
     return source;
 }
 
-void drawPixelAt(NSInteger x, NSInteger y) {
+static inline void drawPixelAt(NSInteger x, NSInteger y) {
     // just adds pixel vertex to vertex_data for 2 triangles
     static Vertex upperLeft;
     static Vertex upperRight;
