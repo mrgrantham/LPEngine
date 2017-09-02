@@ -80,18 +80,6 @@
                                 Point2:&self.transformedVertices[(NSInteger)*(point + 1)]
                                 Point3:&self.transformedVertices[(NSInteger)*(point + 2)]];
             
-//            NSLog(@"Face[%i] X1 %0.0f Y1 %0.0f Z1 %0.0f X2 %0.0f Y2 %0.0f Z2 %0.0f X3 %0.0f  Y3 %0.0f Z3 %0.0f",
-//                  face,
-//                  self.transformedVertices[(NSInteger)*(point + 0)].x,
-//                  self.transformedVertices[(NSInteger)*(point + 0)].y,
-//                  self.transformedVertices[(NSInteger)*(point + 0)].z,
-//                  self.transformedVertices[(NSInteger)*(point + 1)].x,
-//                  self.transformedVertices[(NSInteger)*(point + 1)].y,
-//                  self.transformedVertices[(NSInteger)*(point + 1)].z,
-//                  self.transformedVertices[(NSInteger)*(point + 2)].x,
-//                  self.transformedVertices[(NSInteger)*(point + 2)].y,
-//                  self.transformedVertices[(NSInteger)*(point + 2)].z
-//                  );
         }
     } else {
     }
