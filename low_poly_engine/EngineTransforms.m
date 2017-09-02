@@ -155,5 +155,27 @@ static float _3Dmatrix[3][3];
     return scaledPoint;
 }
 
++ (LPPoint) projectionTransformWithPoint:(LPPoint)point withCamera:(LPPoint)camera {
+
+    static LPPoint _2Dpoint = {};
+    static LPPoint D = {};
+    
+    
+    // more complex if camera viewport is rotated
+    D.x = point.x - camera.x;
+    D.y = point.y - camera.y;
+    D.z = point.z - camera.z;
+    
+    _2Dpoint.x = (NSInteger)(-camera.z * D.x / (float)D.z);
+    _2Dpoint.y = (NSInteger)(-camera.z * D.y / (float)D.z);
+    _2Dpoint.z = (NSInteger)D.z;
+    
+    _2Dpoint.x += camera.x;
+    _2Dpoint.y += camera.y;
+    _2Dpoint.z += camera.z;
+    
+    return _2Dpoint;
+}
+
 
 @end
