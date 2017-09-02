@@ -59,7 +59,8 @@ typedef NS_ENUM(NSInteger, LPEngineDrawStyle) {
 
 - (void)printVertex;
 - (void)printFaces;
-
+- (void)printNormals;
+- (void)printLightFactors;
 
 @end
 

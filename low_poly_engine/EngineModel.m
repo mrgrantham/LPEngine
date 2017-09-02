@@ -180,15 +180,29 @@
 
 
 - (void)printVertex {
-    NSLog(@"--VERTICES-- [vertex count: %i]",self.engineModelProperties.vertexCount);
-    for (int vertex = 0; vertex < self.engineModelProperties.vertexCount; vertex++) {
-        NSLog(@"{ %f, %f, %f }",self.vertices[vertex].x,self.vertices[vertex].y,self.vertices[vertex].z);
+    NSLog(@"--VERTICES-- [vertex count: %i]",self.vertexCount);
+    for (int vertex = 0; vertex < self.vertexCount; vertex++) {
+        NSLog(@"%@",NSStringFromLPPoint(self.vertices[vertex]));
     }
 }
 - (void)printFaces {
-    NSLog(@"--FACES-- [face count: %i]",self.engineModelProperties.faceCount);
+    NSLog(@"--FACES-- [face count: %i]",self.faceCount);
     for (int face = 0; face < self.engineModelProperties.faceCount; face++) {
-        NSLog(@"{ %f, %f, %f }",self.faces[face].x,self.faces[face].y,self.faces[face].z);
+        NSLog(@"%@",NSStringFromLPPoint(self.faces[face]));
+    }
+}
+
+- (void)printNormals {
+    NSLog(@"--NORMALS-- [normal count: %i]",self.faceCount);
+    for (int face = 0; face < self.faceCount; face++) {
+        NSLog(@"%@",NSStringFromLPPoint(self.normals[face]));
+    }
+}
+
+- (void)printLightFactors {
+    NSLog(@"--LIGHT FACTORS-- [normal count: %i]",self.faceCount);
+    for (int face = 0; face < self.faceCount; face++) {
+        NSLog(@"%0.2f",_lightFactors[face]);
     }
 }
 
