@@ -45,7 +45,16 @@
             _arwing.scale = scale;
             _arwing.centerChanged = YES;
             [_arwing findVertexCenter];
-            _rotateContinuous = YES;
+            _rotateContinuous = NO;
+            
+            
+            
+            // break in to separate method later
+            LPPoint rotateVector = {};
+            rotateVector.y = 3*M_PI/4;
+            [self resetArwing];
+            [self resetFlight];
+            [_arwing rotateWithVector:rotateVector];
             
 //            _rotationRadians = {};
 //            _translationRadians = {};
@@ -86,19 +95,19 @@
 }
 
 - (void)arwingDemo {
+    static LPPoint translationVector = {};
 
     
     if (self.rotateContinuous) {
         static LPPoint rotationVector = {};
-        rotationVector.y = 0.04;
+        rotationVector.y = 0.015;
         [self.arwing rotateWithVector:rotationVector];
     }
     if (self.translateContinuous) {
         static float translationRadian = M_PI / 2;
-        static LPPoint translationVector = {};
-        translationVector.x = (sin(translationRadian) * 10) ;
+        translationVector.x = (sin(translationRadian) * 50) ;
         [self.arwing translateWithVector:translationVector];
-        translationRadian += 0.2;
+        translationRadian += 0.1;
         translationRadian = translationRadian >= (M_PI * 2) ? translationRadian - (M_PI * 2): translationRadian;
     }
     if (self.scaleContinuous) {
@@ -119,7 +128,7 @@
         float sineValue = sin(self.translationRadians.y - (M_PI/2));
 //        NSLog(@"Translation sineValue: %0.2f", sineValue);
         translateVector.x = 0;
-        translateVector.y = sineValue * 4;
+        translateVector.y = sineValue * 5;
         translateVector.z = 0;
         [self.arwing translateWithVector:translateVector];
         
@@ -127,19 +136,19 @@
 //        NSLog(@"Rotation sineValue: %0.2f",sineValue);
         static LPPoint rotateVector = {};
         //        NSLog(@"sineValue: %0.2f", sineValue);
-        rotateVector.x = sineValue * 0.2;
+        rotateVector.x = sineValue * 0.17;
         rotateVector.y = self.arwing.rotation.y;
         rotateVector.z = 0;
         self.arwing.rotation = rotateVector;
         
         
         LPPoint temp = self.translationRadians;
-        temp.y += 0.05;
+        temp.y += 0.02;
         temp.y = temp.y >= (M_PI * 2) ? temp.y - (M_PI * 2): temp.y;
         self.translationRadians = temp;
         
         temp = self.rotationRadians;
-        temp.x += 0.05;
+        temp.x += 0.02;
         temp.x = temp.x >= (M_PI * 2) ? temp.x - (M_PI * 2): temp.x;
         self.rotationRadians = temp;
     }
