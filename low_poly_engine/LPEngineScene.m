@@ -6,9 +6,9 @@
 //  Copyright © 2017 DEV. All rights reserved.
 //
 
-#import "EngineScene.h"
+#import "LPEngineScene.h"
 
-@implementation EngineScene
+@implementation LPEngineScene
 
 - (NSInteger)addModel:(LPEngineModel *)model {
     NSInteger temp = 1;

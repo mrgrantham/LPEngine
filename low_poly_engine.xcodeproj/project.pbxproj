@@ -25,7 +25,7 @@
 		D7F6B8681F4A15B700607F4E /* LPEngineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8671F4A15B700607F4E /* LPEngineModel.m */; };
 		D7F6B86C1F4A202200607F4E /* LPEngineModelInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B86B1F4A202200607F4E /* LPEngineModelInterface.m */; };
 		D7F6B86F1F4A204800607F4E /* LPEngineModelInterfaceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B86E1F4A204800607F4E /* LPEngineModelInterfaceFactory.m */; };
-		D7F6B8721F4B5B9800607F4E /* EngineScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8711F4B5B9800607F4E /* EngineScene.m */; };
+		D7F6B8721F4B5B9800607F4E /* LPEngineScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8711F4B5B9800607F4E /* LPEngineScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,8 +80,8 @@
 		D7F6B86B1F4A202200607F4E /* LPEngineModelInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineModelInterface.m; sourceTree = "<group>"; };
 		D7F6B86D1F4A204800607F4E /* LPEngineModelInterfaceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEngineModelInterfaceFactory.h; sourceTree = "<group>"; };
 		D7F6B86E1F4A204800607F4E /* LPEngineModelInterfaceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineModelInterfaceFactory.m; sourceTree = "<group>"; };
-		D7F6B8701F4B5B9800607F4E /* EngineScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineScene.h; sourceTree = "<group>"; };
-		D7F6B8711F4B5B9800607F4E /* EngineScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineScene.m; sourceTree = "<group>"; };
+		D7F6B8701F4B5B9800607F4E /* LPEngineScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEngineScene.h; sourceTree = "<group>"; };
+		D7F6B8711F4B5B9800607F4E /* LPEngineScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,8 +198,8 @@
 				D7F6B8671F4A15B700607F4E /* LPEngineModel.m */,
 				D7D676921F5B606200D790F2 /* LPEngineDemoAnimations.h */,
 				D7D676931F5B606200D790F2 /* LPEngineDemoAnimations.m */,
-				D7F6B8701F4B5B9800607F4E /* EngineScene.h */,
-				D7F6B8711F4B5B9800607F4E /* EngineScene.m */,
+				D7F6B8701F4B5B9800607F4E /* LPEngineScene.h */,
+				D7F6B8711F4B5B9800607F4E /* LPEngineScene.m */,
 				D7F6B8631F480BC400607F4E /* EngineDemos.m */,
 				D7F6B8651F480BD500607F4E /* EngineDemos.h */,
 				D78240DD1F4767E3005CE3C9 /* EnginePrimitives.h */,
@@ -346,7 +346,7 @@
 				D7D676941F5B606200D790F2 /* LPEngineDemoAnimations.m in Sources */,
 				D76CBB0F1F46D96B00D51490 /* engineShaders.metal in Sources */,
 				D76CBB0C1F46BF8C00D51490 /* EngineMetalView.m in Sources */,
-				D7F6B8721F4B5B9800607F4E /* EngineScene.m in Sources */,
+				D7F6B8721F4B5B9800607F4E /* LPEngineScene.m in Sources */,
 				D7F6B86C1F4A202200607F4E /* LPEngineModelInterface.m in Sources */,
 				D76CBAD71F46716700D51490 /* main.m in Sources */,
 				D7F6B8621F48086F00607F4E /* EngineTransforms.m in Sources */,

@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger, LPEngineModelTransform) {
 };
 
 
-@interface EngineScene : NSObject
+@interface LPEngineScene : NSObject
 
 - (NSInteger)addModel:(LPEngineModel *)model;
 - (void)transformModelWithID:(NSInteger)modelID
