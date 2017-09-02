@@ -161,6 +161,7 @@
         temp = [EngineTransforms rotateAtXAxis:self.rotationAxis ForPoint:temp AtAngle:self.rotation.x];
         temp = [EngineTransforms rotateAtYAxis:self.rotationAxis ForPoint:temp AtAngle:self.rotation.y];
         temp = [EngineTransforms rotateAtZAxis:self.rotationAxis ForPoint:temp AtAngle:self.rotation.z];
+        temp = [EngineTransforms projectionTransformWithPoint:temp withCamera:[[EnginePrimitives sharedManager] camera]];
         self.transformedVertices[vertex] = temp;
     }
     
