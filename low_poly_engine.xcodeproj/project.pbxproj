@@ -17,7 +17,7 @@
 		D76CBB061F46B6B400D51490 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76CBB051F46B6B400D51490 /* MetalKit.framework */; };
 		D76CBB0C1F46BF8C00D51490 /* EngineMetalView.m in Sources */ = {isa = PBXBuildFile; fileRef = D76CBB0B1F46BF8C00D51490 /* EngineMetalView.m */; };
 		D76CBB0F1F46D96B00D51490 /* engineShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = D76CBB0E1F46D96B00D51490 /* engineShaders.metal */; };
-		D78240DF1F4767FC005CE3C9 /* EnginePrimitives.m in Sources */ = {isa = PBXBuildFile; fileRef = D78240DE1F4767FC005CE3C9 /* EnginePrimitives.m */; };
+		D78240DF1F4767FC005CE3C9 /* LPEnginePrimitives.m in Sources */ = {isa = PBXBuildFile; fileRef = D78240DE1F4767FC005CE3C9 /* LPEnginePrimitives.m */; };
 		D7BB820D1F5B2A8E0035D58F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BB820C1F5B2A8E0035D58F /* Accelerate.framework */; };
 		D7D676941F5B606200D790F2 /* LPEngineDemoAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D676931F5B606200D790F2 /* LPEngineDemoAnimations.m */; };
 		D7F6B8621F48086F00607F4E /* EngineTransforms.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8611F48086F00607F4E /* EngineTransforms.m */; };
@@ -64,8 +64,8 @@
 		D76CBB0B1F46BF8C00D51490 /* EngineMetalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineMetalView.m; sourceTree = "<group>"; };
 		D76CBB0D1F46BF9F00D51490 /* EngineMetalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineMetalView.h; sourceTree = "<group>"; };
 		D76CBB0E1F46D96B00D51490 /* engineShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = engineShaders.metal; sourceTree = "<group>"; };
-		D78240DD1F4767E3005CE3C9 /* EnginePrimitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnginePrimitives.h; sourceTree = "<group>"; };
-		D78240DE1F4767FC005CE3C9 /* EnginePrimitives.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnginePrimitives.m; sourceTree = "<group>"; };
+		D78240DD1F4767E3005CE3C9 /* LPEnginePrimitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEnginePrimitives.h; sourceTree = "<group>"; };
+		D78240DE1F4767FC005CE3C9 /* LPEnginePrimitives.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEnginePrimitives.m; sourceTree = "<group>"; };
 		D7BB820C1F5B2A8E0035D58F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		D7D676921F5B606200D790F2 /* LPEngineDemoAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEngineDemoAnimations.h; sourceTree = "<group>"; };
 		D7D676931F5B606200D790F2 /* LPEngineDemoAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineDemoAnimations.m; sourceTree = "<group>"; };
@@ -202,8 +202,8 @@
 				D7F6B8711F4B5B9800607F4E /* LPEngineScene.m */,
 				D7F6B8631F480BC400607F4E /* LPEngineDemos.m */,
 				D7F6B8651F480BD500607F4E /* LPEngineDemos.h */,
-				D78240DD1F4767E3005CE3C9 /* EnginePrimitives.h */,
-				D78240DE1F4767FC005CE3C9 /* EnginePrimitives.m */,
+				D78240DD1F4767E3005CE3C9 /* LPEnginePrimitives.h */,
+				D78240DE1F4767FC005CE3C9 /* LPEnginePrimitives.m */,
 				D7F6B8601F48084F00607F4E /* EngineTransforms.h */,
 				D7F6B8611F48086F00607F4E /* EngineTransforms.m */,
 			);
@@ -342,7 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D78240DF1F4767FC005CE3C9 /* EnginePrimitives.m in Sources */,
+				D78240DF1F4767FC005CE3C9 /* LPEnginePrimitives.m in Sources */,
 				D7D676941F5B606200D790F2 /* LPEngineDemoAnimations.m in Sources */,
 				D76CBB0F1F46D96B00D51490 /* engineShaders.metal in Sources */,
 				D76CBB0C1F46BF8C00D51490 /* EngineMetalView.m in Sources */,

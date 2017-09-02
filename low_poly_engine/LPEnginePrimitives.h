@@ -44,7 +44,7 @@ LPPoint normalize(LPPoint point);
 //void drawPixelAt(NSInteger x, NSInteger y);
 
 
-@interface EnginePrimitives : NSObject
+@interface LPEnginePrimitives : NSObject
 
 
 @property (nonatomic) int16_t *depthBuffer;
