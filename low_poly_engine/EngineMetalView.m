@@ -11,7 +11,7 @@
 #import <Cocoa/Cocoa.h>
 #import <Metal/Metal.h>
 #import <MetalKit/MetalKit.h>
-#import "EnginePrimitives.h"
+#import "LPEnginePrimitives.h"
 #import "LPEngineDemos.h"
 
 
@@ -19,7 +19,7 @@
 
 - (id) init {
     self = [super init];
-    self.primitives = [EnginePrimitives sharedManager];
+    self.primitives = [LPEnginePrimitives sharedManager];
     self.vertexData = nil;
     self.vertexDataSize = 0;
 
@@ -29,7 +29,7 @@
 
 - (id) initWithCoder:(NSCoder *)coder {
     if ((self = [super initWithCoder:coder])){
-        self.primitives = [EnginePrimitives sharedManager];
+        self.primitives = [LPEnginePrimitives sharedManager];
         self.vertexData = nil;
         self.vertexDataSize = 0;
         

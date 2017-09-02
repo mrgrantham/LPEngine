@@ -9,7 +9,7 @@
 #ifndef EngineTransforms_h
 #define EngineTransforms_h
 
-#import "EnginePrimitives.h"
+#import "LPEnginePrimitives.h"
 
 @interface EngineTransforms : NSObject
 

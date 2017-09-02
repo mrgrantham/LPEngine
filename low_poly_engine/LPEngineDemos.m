@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "EnginePrimitives.h"
+#import "LPEnginePrimitives.h"
 #import "EngineTransforms.h"
 #import "LPEngineDemos.h"
 #import "LPEngineModel.h"
@@ -17,7 +17,7 @@
 @implementation LPEngineDemos
 
 + (id) sharedManager {
-    static EnginePrimitives *sharedEnginePrimitives = nil;
+    static LPEnginePrimitives *sharedEnginePrimitives = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedEnginePrimitives = [[self alloc] init];
@@ -37,7 +37,7 @@
             
             _arwing = [[LPEngineModel alloc] initWithProperties:modelProperties];
             LPPoint translation = {};
-            EnginePrimitives *prim = [EnginePrimitives sharedManager];
+            LPEnginePrimitives *prim = [LPEnginePrimitives sharedManager];
             translation.x = prim.virtualWidth / 2;
             translation.y = prim.virtualHeight / 4;
             translation.z = -800;
@@ -66,7 +66,7 @@
 }
 
 - (void)triangleDemo {
-    EnginePrimitives *prim = [EnginePrimitives sharedManager];
+    LPEnginePrimitives *prim = [LPEnginePrimitives sharedManager];
     
     static LPPoint _2Daxis;
     static float currentRadian = 0.0;
@@ -154,7 +154,7 @@
         self.rotationRadians = temp;
     }
     
-    [[EnginePrimitives sharedManager] resetDepthBuffer];
+    [[LPEnginePrimitives sharedManager] resetDepthBuffer];
     [self.arwing findVertexCenter];
     self.arwing.rotationAxis = self.arwing.center;
     [self.arwing transformVertices];
@@ -164,7 +164,7 @@
 }
 
 - (void) resetArwing {
-    EnginePrimitives *prim = [EnginePrimitives sharedManager];
+    LPEnginePrimitives *prim = [LPEnginePrimitives sharedManager];
     self.scaleContinuous = NO;
     self.rotateContinuous = NO;
     self.translateContinuous = NO;

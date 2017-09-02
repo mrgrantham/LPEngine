@@ -12,7 +12,7 @@
 #import <Cocoa/Cocoa.h>
 #import <Metal/Metal.h>
 #import <MetalKit/MetalKit.h>
-#import "EnginePrimitives.h"
+#import "LPEnginePrimitives.h"
 
 @interface EngineMetalView : MTKView
 
@@ -20,7 +20,7 @@
 //@property (nonatomic, weak) NSObject <MTLRenderCommandEncoder> *commandEncoder;
 @property (nonatomic, strong) id<MTLRenderPipelineState> renderPipelineState;
 @property (nonatomic, strong) id <MTLBuffer> vertexBuffer;
-@property (nonatomic, strong) EnginePrimitives *primitives;
+@property (nonatomic, strong) LPEnginePrimitives *primitives;
 @property (nonatomic) Vertex *vertexData;
 @property (nonatomic) NSInteger vertexDataSize;
 @property (nonatomic, strong) id <MTLLibrary> library;

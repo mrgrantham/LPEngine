@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "EnginePrimitives.h"
+#import "LPEnginePrimitives.h"
 
 @interface LPEngineModelInterface : NSObject
 

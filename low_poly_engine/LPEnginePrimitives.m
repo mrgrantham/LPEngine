@@ -160,7 +160,7 @@ static inline void drawPixelAt(NSInteger x, NSInteger y) {
 //    vertexData = addVertex(lowerLeft, vertexData, &vertexDataSize);
 }
 
-@implementation EnginePrimitives
+@implementation LPEnginePrimitives
 
 - (void) clearVertices {
     if (vertexData != NULL) {
@@ -202,7 +202,7 @@ static inline void drawPixelAt(NSInteger x, NSInteger y) {
 }
 
 + (id) sharedManager {
-    static EnginePrimitives *sharedEnginePrimitives = nil;
+    static LPEnginePrimitives *sharedEnginePrimitives = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedEnginePrimitives = [[self alloc] init];

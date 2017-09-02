@@ -9,7 +9,7 @@
 #ifndef EngineModel_h
 #define EngineModel_h
 
-#import "EnginePrimitives.h"
+#import "LPEnginePrimitives.h"
 #import "LPEngineModelInterface.h"
 
 typedef NS_ENUM(NSInteger, LPEngineDrawStyle) {

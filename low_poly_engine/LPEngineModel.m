@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "LPEngineModel.h"
-#import "EnginePrimitives.h"
+#import "LPEnginePrimitives.h"
 #import "EngineTransforms.h"
 
 @implementation LPEngineModel
@@ -71,7 +71,7 @@
 }
 
 - (void)draw:(LPEngineDrawStyle)drawStyle {
-    EnginePrimitives *prim = [EnginePrimitives sharedManager];
+    LPEnginePrimitives *prim = [LPEnginePrimitives sharedManager];
     if (drawStyle == LPEngineDrawSolid) {
 //        NSLog(@"==STARTING FRAME==");
         for(int face = 0; face < self.engineModelProperties.faceCount; face++) {
@@ -186,7 +186,7 @@
         temp = self.transformedVertices[vertex];
         //EnginePrimitives *primitives = [EnginePrimitives sharedManager];
         
-        temp = [EngineTransforms projectionTransformWithPoint:temp withCamera:[[EnginePrimitives sharedManager] camera]];
+        temp = [EngineTransforms projectionTransformWithPoint:temp withCamera:[[LPEnginePrimitives sharedManager] camera]];
         self.transformedVertices[vertex] = temp;
     }
     

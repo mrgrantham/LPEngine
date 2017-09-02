@@ -7,7 +7,7 @@
 //
 
 #import "LPEngineDemoAnimations.h"
-#import "EnginePrimitives.h"
+#import "LPEnginePrimitives.h"
 
 @implementation LPEngineDemoAnimations
 
