@@ -21,7 +21,7 @@
 		D7BB820D1F5B2A8E0035D58F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BB820C1F5B2A8E0035D58F /* Accelerate.framework */; };
 		D7D676941F5B606200D790F2 /* LPEngineDemoAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D676931F5B606200D790F2 /* LPEngineDemoAnimations.m */; };
 		D7F6B8621F48086F00607F4E /* EngineTransforms.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8611F48086F00607F4E /* EngineTransforms.m */; };
-		D7F6B8641F480BC400607F4E /* EngineDemos.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8631F480BC400607F4E /* EngineDemos.m */; };
+		D7F6B8641F480BC400607F4E /* LPEngineDemos.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8631F480BC400607F4E /* LPEngineDemos.m */; };
 		D7F6B8681F4A15B700607F4E /* LPEngineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8671F4A15B700607F4E /* LPEngineModel.m */; };
 		D7F6B86C1F4A202200607F4E /* LPEngineModelInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B86B1F4A202200607F4E /* LPEngineModelInterface.m */; };
 		D7F6B86F1F4A204800607F4E /* LPEngineModelInterfaceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B86E1F4A204800607F4E /* LPEngineModelInterfaceFactory.m */; };
@@ -71,8 +71,8 @@
 		D7D676931F5B606200D790F2 /* LPEngineDemoAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineDemoAnimations.m; sourceTree = "<group>"; };
 		D7F6B8601F48084F00607F4E /* EngineTransforms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineTransforms.h; sourceTree = "<group>"; };
 		D7F6B8611F48086F00607F4E /* EngineTransforms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineTransforms.m; sourceTree = "<group>"; };
-		D7F6B8631F480BC400607F4E /* EngineDemos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineDemos.m; sourceTree = "<group>"; };
-		D7F6B8651F480BD500607F4E /* EngineDemos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineDemos.h; sourceTree = "<group>"; };
+		D7F6B8631F480BC400607F4E /* LPEngineDemos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineDemos.m; sourceTree = "<group>"; };
+		D7F6B8651F480BD500607F4E /* LPEngineDemos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEngineDemos.h; sourceTree = "<group>"; };
 		D7F6B8661F4A153300607F4E /* Arwing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arwing.h; sourceTree = "<group>"; };
 		D7F6B8671F4A15B700607F4E /* LPEngineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineModel.m; sourceTree = "<group>"; };
 		D7F6B8691F4A15C500607F4E /* LPEngineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEngineModel.h; sourceTree = "<group>"; };
@@ -200,8 +200,8 @@
 				D7D676931F5B606200D790F2 /* LPEngineDemoAnimations.m */,
 				D7F6B8701F4B5B9800607F4E /* LPEngineScene.h */,
 				D7F6B8711F4B5B9800607F4E /* LPEngineScene.m */,
-				D7F6B8631F480BC400607F4E /* EngineDemos.m */,
-				D7F6B8651F480BD500607F4E /* EngineDemos.h */,
+				D7F6B8631F480BC400607F4E /* LPEngineDemos.m */,
+				D7F6B8651F480BD500607F4E /* LPEngineDemos.h */,
 				D78240DD1F4767E3005CE3C9 /* EnginePrimitives.h */,
 				D78240DE1F4767FC005CE3C9 /* EnginePrimitives.m */,
 				D7F6B8601F48084F00607F4E /* EngineTransforms.h */,
@@ -350,7 +350,7 @@
 				D7F6B86C1F4A202200607F4E /* LPEngineModelInterface.m in Sources */,
 				D76CBAD71F46716700D51490 /* main.m in Sources */,
 				D7F6B8621F48086F00607F4E /* EngineTransforms.m in Sources */,
-				D7F6B8641F480BC400607F4E /* EngineDemos.m in Sources */,
+				D7F6B8641F480BC400607F4E /* LPEngineDemos.m in Sources */,
 				D76CBAD41F46716700D51490 /* AppDelegate.m in Sources */,
 				D7F6B86F1F4A204800607F4E /* LPEngineModelInterfaceFactory.m in Sources */,
 				D7F6B8681F4A15B700607F4E /* LPEngineModel.m in Sources */,

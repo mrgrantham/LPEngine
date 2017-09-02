@@ -11,7 +11,7 @@
 
 #import "LPEngineModel.h"
 
-@interface EngineDemos : NSObject
+@interface LPEngineDemos : NSObject
 
 @property (nonatomic, strong) LPEngineModel* arwing;
 @property (nonatomic, assign) BOOL rotateContinuous;

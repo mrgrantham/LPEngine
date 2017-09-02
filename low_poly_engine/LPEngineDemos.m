@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "EnginePrimitives.h"
 #import "EngineTransforms.h"
-#import "EngineDemos.h"
+#import "LPEngineDemos.h"
 #import "LPEngineModel.h"
 #import "LPEngineModelInterface.h"
 #import "Arwing.h"
 
-@implementation EngineDemos
+@implementation LPEngineDemos
 
 + (id) sharedManager {
     static EnginePrimitives *sharedEnginePrimitives = nil;
