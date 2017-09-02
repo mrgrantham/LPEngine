@@ -152,13 +152,29 @@
 
 - (void)transformVertices {
     for (int vertex = 0; vertex < self.vertexCount; vertex++) {
-        LPPoint temp = self.vertices[vertex];
+        static LPPoint temp;
+        temp = self.vertices[vertex];
         //EnginePrimitives *primitives = [EnginePrimitives sharedManager];
         temp = [EngineTransforms translatePoint:temp WithVector:self.translation];
         temp = [EngineTransforms scalePoint:temp fromPoint:self.center WithVector:self.scale];
         temp = [EngineTransforms rotateAtXAxis:self.rotationAxis ForPoint:temp AtAngle:self.rotation.x];
         temp = [EngineTransforms rotateAtYAxis:self.rotationAxis ForPoint:temp AtAngle:self.rotation.y];
         temp = [EngineTransforms rotateAtZAxis:self.rotationAxis ForPoint:temp AtAngle:self.rotation.z];
+        self.transformedVertices[vertex] = temp;
+        
+    }
+    // calculate light for each face before the
+    for (int face = 0; face < self.faceCount; face++) {
+        self.lightFactors[face] = [self findLightFactor:self.normals[face] ];
+        
+    }
+//    [self printLightFactors];
+    
+    for (int vertex = 0; vertex < self.vertexCount; vertex++) {
+        static LPPoint temp;
+        temp = self.transformedVertices[vertex];
+        //EnginePrimitives *primitives = [EnginePrimitives sharedManager];
+        
         temp = [EngineTransforms projectionTransformWithPoint:temp withCamera:[[EnginePrimitives sharedManager] camera]];
         self.transformedVertices[vertex] = temp;
     }
