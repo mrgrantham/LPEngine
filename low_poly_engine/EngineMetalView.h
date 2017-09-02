@@ -24,6 +24,9 @@
 @property (nonatomic) Vertex *vertexData;
 @property (nonatomic) NSInteger vertexDataSize;
 @property (nonatomic, strong) id <MTLLibrary> library;
+@property (weak) IBOutlet NSTextField *lightDirectionX;
+@property (weak) IBOutlet NSTextField *lightDirectionY;
+@property (weak) IBOutlet NSTextField *lightDirectionZ;
 
 - (void) render;
 - (void) drawRect: (NSRect)dirtyRect;

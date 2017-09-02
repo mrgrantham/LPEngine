@@ -270,5 +270,31 @@
         demo.flyContinuous = YES;
     }
 }
+- (IBAction)updateLightSourceX:(NSSlider*)sender {
+    LPPoint temp = {};
+    temp = [[[EngineDemos sharedManager] arwing] lightSource];
+    float factor = (float)(sender.intValue) / 100.0;
+    temp.x = factor;
+    [[EngineDemos sharedManager] arwing].lightSource = temp;
+    self.lightDirectionX.stringValue = [NSString stringWithFormat:@"X %1.2f",factor];
+}
+- (IBAction)updateLightSourceY:(NSSlider*)sender {
+    LPPoint temp = {};
+    temp = [[[EngineDemos sharedManager] arwing] lightSource];
+    float factor = (float)(sender.intValue) / 100.0;
+    temp.y = factor;
+    [[EngineDemos sharedManager] arwing].lightSource = temp;
+    self.lightDirectionY.stringValue = [NSString stringWithFormat:@"Y %1.2f",factor];
+    
+}
+- (IBAction)updateLightSourceZ:(NSSlider*)sender {
+    LPPoint temp = {};
+    temp = [[[EngineDemos sharedManager] arwing] lightSource];
+    float factor = (float)(sender.intValue) / 100.0;
+    temp.z = factor;
+    [[EngineDemos sharedManager] arwing].lightSource = temp;
+    self.lightDirectionZ.stringValue = [NSString stringWithFormat:@"Z %1.2f",factor];
+}
+
 
 @end
