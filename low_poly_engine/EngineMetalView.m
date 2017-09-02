@@ -45,6 +45,7 @@
         if (!CGSizeEqualToSize(self.window.frame.size,canvasSize)) {
             NSRect frame = [self.window frame];
             frame.size = canvasSize;
+//            frame.origin = CGPointMake(50, 50);
             NSLog(@"window frame render %@",NSStringFromRect(frame) );
             [self.window setFrame:frame display:YES animate:YES];
         }
