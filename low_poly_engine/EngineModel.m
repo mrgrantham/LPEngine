@@ -18,8 +18,12 @@
     if (self = [super init]) {
         _engineModelProperties = engineModelProperties;
         _faces = malloc(sizeof(LPPoint) * engineModelProperties.faceCount);
+        _normals = malloc(sizeof(LPPoint) * engineModelProperties.faceCount);
+        _lightFactors = malloc(sizeof(float) * engineModelProperties.faceCount);
         _vertices = malloc(sizeof(LPPoint) * engineModelProperties.vertexCount);
         memset(_faces,0,sizeof(LPPoint) * engineModelProperties.faceCount);
+        memset(_normals,0,sizeof(LPPoint) * engineModelProperties.faceCount);
+        memset(_lightFactors,0,sizeof(float) * engineModelProperties.faceCount);
         memset(_vertices,0,sizeof(LPPoint) * engineModelProperties.vertexCount);
         _vertexCount = engineModelProperties.vertexCount;
         _faceCount = engineModelProperties.faceCount;
