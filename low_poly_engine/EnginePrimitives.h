@@ -36,6 +36,10 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) ;
 LPPoint LPPointMake(int16_t x, int16_t y, int16_t z) ;
 NSString *NSStringFromLPPoint(LPPoint point);
 
+LPPoint pointSubtract(LPPoint p1, LPPoint p2);
+LPPoint pointCrossProduct(LPPoint p1, LPPoint p2);
+float pointDotProduct(LPPoint p1, LPPoint p2);
+LPPoint normalize(LPPoint point);
 //Vertex *addVertex(Vertex vertex,Vertex *source,NSInteger *sourceSize);
 //void drawPixelAt(NSInteger x, NSInteger y);
 

@@ -41,6 +41,48 @@ NSString *NSStringFromLPPoint(LPPoint point) {
     return newString;
 }
 
+LPPoint pointSubtract(LPPoint p1, LPPoint p2) {
+    LPPoint temp = {};
+    temp.x = p1.x - p2.x;
+    temp.y = p1.y - p2.y;
+    temp.z = p1.z - p2.z;
+    return temp;
+    
+}
+
+LPPoint pointCrossProduct(LPPoint p1, LPPoint p2) {
+    LPPoint result;
+    
+    result.x = p1.y * p2.z - p1.z * p2.y;
+    result.y = p1.z * p2.x - p1.x * p2.z;
+    result.z = p1.x * p2.y - p1.y * p2.x;
+    
+    return result;
+}
+
+float pointDotProduct(LPPoint p1, LPPoint p2) {
+    float result;
+    
+    result = p1.x * p2.x + p1.y * p2.y + p1.z * p2.z;
+    
+    return result;
+}
+
+LPPoint normalize(LPPoint point) {
+    
+    float absX = abs(point.x);
+    float absY = abs(point.y);
+    float absZ = abs(point.z);
+    
+    float max = (absX > absY) ? (absZ > absX) ? absZ : absX : (absZ > absY) ? absZ : absY;
+    NSLog(@"max %0.2f",max);
+    point.x = point.x / max;
+    point.y = point.y / max;
+    point.z = point.z / max;
+    
+    return point;
+}
+
 static Vertex *vertexData;
 static NSInteger vertexDataSize;
 
