@@ -26,6 +26,8 @@ typedef NS_ENUM(NSInteger, LPEngineDrawStyle) {
 
 @property (nonatomic, readonly) LPPoint *vertices;
 @property (nonatomic, readonly) LPPoint *faces;
+@property (nonatomic, readonly) LPPoint *normals;
+@property (nonatomic, readonly) float *lightFactors;
 @property (nonatomic, readonly) NSInteger vertexCount;
 @property (nonatomic, readonly) NSInteger faceCount;
 
