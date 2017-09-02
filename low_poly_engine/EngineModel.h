@@ -55,6 +55,7 @@ typedef NS_ENUM(NSInteger, LPEngineDrawStyle) {
 - (void)scaleWithVector:(LPPoint)scaleVector;
 
 - (void)transformVertices;
+- (float)findLightFactor:(LPPoint)normal;
 - (void)resetTransforms;
 
 - (void)printVertex;

@@ -165,6 +165,10 @@
     
 }
 
+- (float)findLightFactor:(LPPoint)normal {
+    return pointDotProduct(normal, self.lightSource);
+}
+
 - (void)resetTransforms {
     LPPoint point = {.x=0, .y=0, .z=0};
     self.translation = point;
