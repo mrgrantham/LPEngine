@@ -75,7 +75,17 @@
     if (drawStyle == LPEngineDrawSolid) {
 //        NSLog(@"==STARTING FRAME==");
         for(int face = 0; face < self.engineModelProperties.faceCount; face++) {
-            [prim setColorWithRed:((face * 6) + 100) % 255 Green:((face * 6) + 100) % 255 Blue:((face * 6) + 100) % 255];
+            static NSInteger red;
+            static NSInteger green;
+            static NSInteger blue;
+            red = (NSInteger)(self.lightFactors[face] * 40.0 + 150);
+            green = (NSInteger)((self.lightFactors[face] * 40.0) + 150);
+            blue = (NSInteger)((self.lightFactors[face] * 40.0) + 150);
+            red = red > 255? 255 : red;
+            green = green > 255 ? 255 : green;
+            blue = blue > 255 ? 255 : blue;
+//            NSLog(@"color for face with lightfactor %0.2f red: %li green: %li blue: %li",self.lightFactors[face] ,red,green,blue);
+            [prim setColorWithRed:red Green:green Blue:blue];
             float *point = (float*)&self.faces[face];
             [prim drawTriangleAtPoint1:&self.transformedVertices[(NSInteger)*(point + 0)]
                                 Point2:&self.transformedVertices[(NSInteger)*(point + 1)]
