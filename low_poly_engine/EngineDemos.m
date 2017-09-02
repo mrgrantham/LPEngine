@@ -123,14 +123,14 @@
         translateVector.z = 0;
         [self.arwing translateWithVector:translateVector];
         
-        sineValue = sin(self.rotationRadians.x - (M_PI/3));
+        sineValue = sin(self.rotationRadians.x + (1.22   *M_PI));
 //        NSLog(@"Rotation sineValue: %0.2f",sineValue);
         static LPPoint rotateVector = {};
         //        NSLog(@"sineValue: %0.2f", sineValue);
-        rotateVector.x = sineValue * 0.007;
-        rotateVector.y = 0;
+        rotateVector.x = sineValue * 0.2;
+        rotateVector.y = self.arwing.rotation.y;
         rotateVector.z = 0;
-        [self.arwing rotateWithVector:rotateVector];
+        self.arwing.rotation = rotateVector;
         
         
         LPPoint temp = self.translationRadians;
