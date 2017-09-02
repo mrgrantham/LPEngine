@@ -536,9 +536,9 @@ static inline void drawPixelAt(NSInteger x, NSInteger y) {
 //    NSLog(@"leftX %li rightX %li leftZ %li rightZ %li", leftX, rightX, leftZ, rightZ);
 
     if (leftX > rightX) {
-        if ((leftX - rightX) > 4) {
+//        if ((leftX - rightX) > 4) {
 //            NSLog(@"leftX %li rightX %li leftZ %li rightZ %li", leftX, rightX, leftZ, rightZ);
-        }
+//        }
         // sometimes the left calculation overshoots. this is to correct
         leftX = rightX;
     }
@@ -561,27 +561,30 @@ static inline void drawPixelAt(NSInteger x, NSInteger y) {
 
     
     for(;;) {
-        if(z > 0) {
+//        if(z > 0) {
 //            NSLog(@"Z went positive");
-        }
+//        }
 
-        depthBufferIndex = x + (y * self.virtualWidth);
+        depthBufferIndex = x + (y * virtualWidth);
+        static NSInteger currentDepth;
+        currentDepth = _depthBuffer[depthBufferIndex];
 
-        if (x >= 0 && x < self.virtualWidth && y >= 0 && y < self.virtualHeight && z >= _depthBuffer[depthBufferIndex] && z <= 0) {
+        if (x >= 0 && x < virtualWidth && y >= 0 && y < virtualHeight && z >= currentDepth && z <= 0) {
             drawPixelAt(x, y);
             _depthBuffer[depthBufferIndex] = z;
-        } else if (x >= 0 && x < self.virtualWidth && y >= 0 && y < self.virtualHeight && z < _depthBuffer[depthBufferIndex] && z <= 0){
+        }
+//        else if (x >= 0 && x < self.virtualWidth && y >= 0 && y < self.virtualHeight && z < currentDepth && z <= 0){
 //            NSLog(@"z %li leftZ %li rightZ %li diff %li",z,leftZ,rightZ,z-rightZ);
 //            NSLog(@"StepX %i StepZ %i DeltaX %i DeltaZ %i ErrorZ %i ErrorX %i LeftX %i RightX %i LeftZ %i RightZ %i x %i z %i",StepX,StepZ,DeltaX,DeltaZ,ErrorZ,ErrorX,leftX,rightX,leftZ,rightZ,x,z);
-        }
+//        }
         if(x == rightX) {
-            if (abs(z - rightZ) > 3) {
+//            if (abs(z - rightZ) > 3) {
 //                NSLog(@"z %li leftZ %li rightZ %li diff %li",z,leftZ,rightZ,z-rightZ);
 //                NSLog(@"StepX %i StepZ %i DeltaX %i DeltaZ %i ErrorZ %i ErrorX %i LeftX %i RightX %i LeftZ %i RightZ %i x %i z %i",StepX,StepZ,DeltaX,DeltaZ,ErrorZ,ErrorX,leftX,rightX,leftZ,rightZ,x,z);
-            }
+//            }
             break;
         }
-        
+
         ErrorX -= DeltaX; if (ErrorX < 0) { ErrorX += DeltaMax; x += StepX;}
         ErrorZ -= DeltaZ; if (ErrorZ < 0) { ErrorZ += DeltaMax; z += StepZ;}
         
