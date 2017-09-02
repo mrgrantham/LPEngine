@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "EngineModelInterface.h"
 
-@interface EngineModelInterfaceFactory : NSObject
+@interface LPEngineModelInterfaceFactory : NSObject
 
 + (EngineModelInterface *)defaultInterface;
 

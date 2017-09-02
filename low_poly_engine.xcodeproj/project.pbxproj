@@ -24,7 +24,7 @@
 		D7F6B8641F480BC400607F4E /* EngineDemos.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8631F480BC400607F4E /* EngineDemos.m */; };
 		D7F6B8681F4A15B700607F4E /* LPEngineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8671F4A15B700607F4E /* LPEngineModel.m */; };
 		D7F6B86C1F4A202200607F4E /* LPEngineModelInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B86B1F4A202200607F4E /* LPEngineModelInterface.m */; };
-		D7F6B86F1F4A204800607F4E /* EngineModelInterfaceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B86E1F4A204800607F4E /* EngineModelInterfaceFactory.m */; };
+		D7F6B86F1F4A204800607F4E /* LPEngineModelInterfaceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B86E1F4A204800607F4E /* LPEngineModelInterfaceFactory.m */; };
 		D7F6B8721F4B5B9800607F4E /* EngineScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8711F4B5B9800607F4E /* EngineScene.m */; };
 /* End PBXBuildFile section */
 
@@ -78,8 +78,8 @@
 		D7F6B8691F4A15C500607F4E /* LPEngineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEngineModel.h; sourceTree = "<group>"; };
 		D7F6B86A1F4A202200607F4E /* LPEngineModelInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEngineModelInterface.h; sourceTree = "<group>"; };
 		D7F6B86B1F4A202200607F4E /* LPEngineModelInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineModelInterface.m; sourceTree = "<group>"; };
-		D7F6B86D1F4A204800607F4E /* EngineModelInterfaceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineModelInterfaceFactory.h; sourceTree = "<group>"; };
-		D7F6B86E1F4A204800607F4E /* EngineModelInterfaceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineModelInterfaceFactory.m; sourceTree = "<group>"; };
+		D7F6B86D1F4A204800607F4E /* LPEngineModelInterfaceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEngineModelInterfaceFactory.h; sourceTree = "<group>"; };
+		D7F6B86E1F4A204800607F4E /* LPEngineModelInterfaceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineModelInterfaceFactory.m; sourceTree = "<group>"; };
 		D7F6B8701F4B5B9800607F4E /* EngineScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineScene.h; sourceTree = "<group>"; };
 		D7F6B8711F4B5B9800607F4E /* EngineScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,8 +190,8 @@
 		D7D8D9881F57A02C00804C5E /* LPEngineCore */ = {
 			isa = PBXGroup;
 			children = (
-				D7F6B86D1F4A204800607F4E /* EngineModelInterfaceFactory.h */,
-				D7F6B86E1F4A204800607F4E /* EngineModelInterfaceFactory.m */,
+				D7F6B86D1F4A204800607F4E /* LPEngineModelInterfaceFactory.h */,
+				D7F6B86E1F4A204800607F4E /* LPEngineModelInterfaceFactory.m */,
 				D7F6B86A1F4A202200607F4E /* LPEngineModelInterface.h */,
 				D7F6B86B1F4A202200607F4E /* LPEngineModelInterface.m */,
 				D7F6B8691F4A15C500607F4E /* LPEngineModel.h */,
@@ -352,7 +352,7 @@
 				D7F6B8621F48086F00607F4E /* EngineTransforms.m in Sources */,
 				D7F6B8641F480BC400607F4E /* EngineDemos.m in Sources */,
 				D76CBAD41F46716700D51490 /* AppDelegate.m in Sources */,
-				D7F6B86F1F4A204800607F4E /* EngineModelInterfaceFactory.m in Sources */,
+				D7F6B86F1F4A204800607F4E /* LPEngineModelInterfaceFactory.m in Sources */,
 				D7F6B8681F4A15B700607F4E /* LPEngineModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
