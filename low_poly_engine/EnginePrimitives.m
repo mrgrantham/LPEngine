@@ -70,9 +70,9 @@ float pointDotProduct(LPPoint p1, LPPoint p2) {
 
 LPPoint normalize(LPPoint point) {
     
-    float absX = abs(point.x);
-    float absY = abs(point.y);
-    float absZ = abs(point.z);
+    float absX = fabsf(point.x);
+    float absY = fabsf(point.y);
+    float absZ = fabsf(point.z);
     
     float max = (absX > absY) ? (absZ > absX) ? absZ : absX : (absZ > absY) ? absZ : absY;
     NSLog(@"max %0.2f",max);
@@ -405,17 +405,17 @@ static inline void drawPixelAt(NSInteger x, NSInteger y) {
     float edge = (middle.x - top.x) * (bottom.y - top.y) - (middle.y-top.y) * (bottom.x - top.x);
     
     
-    DTM.x = abs((NSInteger)(top.x - middle.x) == 0? 1 : (top.x - middle.x));
-    DTM.y = abs((NSInteger)(middle.y - top.y) == 0? 1 : (middle.y - top.y));
-    DTM.z = abs((NSInteger)(top.z - middle.z) == 0? 1 : (top.z - middle.z));
+    DTM.x = fabsf((NSInteger)(top.x - middle.x) == 0? 1 : (top.x - middle.x));
+    DTM.y = fabsf((NSInteger)(middle.y - top.y) == 0? 1 : (middle.y - top.y));
+    DTM.z = fabsf((NSInteger)(top.z - middle.z) == 0? 1 : (top.z - middle.z));
     
-    DTB.x = abs((NSInteger)(top.x - bottom.x) == 0? 1 : (top.x - bottom.x));
-    DTB.y = abs((NSInteger)(bottom.y-top.y) == 0? 1 : (bottom.y-top.y));
-    DTB.z = abs((NSInteger)(top.z - bottom.z) == 0? 1 : (top.z - bottom.z));
+    DTB.x = fabsf((NSInteger)(top.x - bottom.x) == 0? 1 : (top.x - bottom.x));
+    DTB.y = fabsf((NSInteger)(bottom.y-top.y) == 0? 1 : (bottom.y-top.y));
+    DTB.z = fabsf((NSInteger)(top.z - bottom.z) == 0? 1 : (top.z - bottom.z));
     
-    DMB.x = abs((NSInteger)(middle.x - bottom.x) == 0? 1 : (middle.x - bottom.x));
-    DMB.y = abs((NSInteger)(bottom.y - middle.y) == 0? 1 : (bottom.y - middle.y));
-    DMB.z = abs((NSInteger)(middle.z - bottom.z) == 0? 1 : (middle.z - bottom.z));
+    DMB.x = fabsf((NSInteger)(middle.x - bottom.x) == 0? 1 : (middle.x - bottom.x));
+    DMB.y = fabsf((NSInteger)(bottom.y - middle.y) == 0? 1 : (bottom.y - middle.y));
+    DMB.z = fabsf((NSInteger)(middle.z - bottom.z) == 0? 1 : (middle.z - bottom.z));
     
     DMaxTM = DTM.x > DTM.y ? (DTM.x > DTM.z ? DTM.x : DTM.z) : (DTM.y > DTM.z ? DTM.y : DTM.z);
     DMaxTB = DTB.x > DTB.y ? (DTB.x > DTB.z ? DTB.x : DTB.z) : (DTB.y > DTB.z ? DTB.y : DTB.z);
@@ -611,7 +611,6 @@ static inline void drawPixelAt(NSInteger x, NSInteger y) {
     static NSInteger DeltaZ;
     static NSInteger StepX = 1; // No need to calculate since always from left to right
     static NSInteger StepZ;
-    static NSInteger Error;
     static NSInteger DeltaMax;
     static NSInteger ErrorX;
     static NSInteger ErrorZ;
