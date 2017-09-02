@@ -50,9 +50,14 @@
         }
         
         for (int face = 0; face < engineModelProperties.faceCount; face++) {
-            _faces[face] = LPPointMake(engineModelProperties.faces[(face * 3) + 0],
-                                      engineModelProperties.faces[(face * 3) + 1],
-                                      engineModelProperties.faces[(face * 3) + 2]);
+            float faceIndex1 =engineModelProperties.faces[(face * 3) + 0];
+            float faceIndex2 =engineModelProperties.faces[(face * 3) + 1];
+            float faceIndex3 =engineModelProperties.faces[(face * 3) + 2];
+
+            _faces[face] = LPPointMake(faceIndex1,
+                                      faceIndex2,
+                                      faceIndex3);
+            _normals[face] = [EngineTransforms calculateSurfaceNormalWithPlane:LPTriangleMake(_vertices[(NSInteger)faceIndex1], _vertices[(NSInteger)faceIndex2], _vertices[(NSInteger)faceIndex3])];
         }
         
         [self printVertex];
