@@ -50,7 +50,7 @@
             [self.window setFrame:frame display:YES animate:YES];
         }
         self.device = MTLCreateSystemDefaultDevice();
-        NSLog(@"\nDevice: %@ \nDescription: %@ \n maxThreadsPerThreadgroup: width %li height %li depth %li \n recommendedMaxWorkingSize: %lu",self.device.name,self.device.description, self.device.maxThreadsPerThreadgroup.width,self.device.maxThreadsPerThreadgroup.height,self.device.maxThreadsPerThreadgroup.depth,self.device.recommendedMaxWorkingSetSize);
+        NSLog(@"\nDevice: %@ \nDescription: %@ \n maxThreadsPerThreadgroup: width %li height %li depth %li \n recommendedMaxWorkingSize: %llu",self.device.name,self.device.description, self.device.maxThreadsPerThreadgroup.width,self.device.maxThreadsPerThreadgroup.height,self.device.maxThreadsPerThreadgroup.depth,self.device.recommendedMaxWorkingSetSize);
         self.library = [self.device newDefaultLibrary];
         [self registerShaders];
         
