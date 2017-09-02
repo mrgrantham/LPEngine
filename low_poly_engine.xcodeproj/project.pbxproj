@@ -18,6 +18,7 @@
 		D76CBB0C1F46BF8C00D51490 /* EngineMetalView.m in Sources */ = {isa = PBXBuildFile; fileRef = D76CBB0B1F46BF8C00D51490 /* EngineMetalView.m */; };
 		D76CBB0F1F46D96B00D51490 /* engineShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = D76CBB0E1F46D96B00D51490 /* engineShaders.metal */; };
 		D78240DF1F4767FC005CE3C9 /* EnginePrimitives.m in Sources */ = {isa = PBXBuildFile; fileRef = D78240DE1F4767FC005CE3C9 /* EnginePrimitives.m */; };
+		D7BB820D1F5B2A8E0035D58F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BB820C1F5B2A8E0035D58F /* Accelerate.framework */; };
 		D7F6B8621F48086F00607F4E /* EngineTransforms.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8611F48086F00607F4E /* EngineTransforms.m */; };
 		D7F6B8641F480BC400607F4E /* EngineDemos.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8631F480BC400607F4E /* EngineDemos.m */; };
 		D7F6B8681F4A15B700607F4E /* EngineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8671F4A15B700607F4E /* EngineModel.m */; };
@@ -64,6 +65,7 @@
 		D76CBB0E1F46D96B00D51490 /* engineShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = engineShaders.metal; sourceTree = "<group>"; };
 		D78240DD1F4767E3005CE3C9 /* EnginePrimitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnginePrimitives.h; sourceTree = "<group>"; };
 		D78240DE1F4767FC005CE3C9 /* EnginePrimitives.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnginePrimitives.m; sourceTree = "<group>"; };
+		D7BB820C1F5B2A8E0035D58F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		D7F6B8601F48084F00607F4E /* EngineTransforms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineTransforms.h; sourceTree = "<group>"; };
 		D7F6B8611F48086F00607F4E /* EngineTransforms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineTransforms.m; sourceTree = "<group>"; };
 		D7F6B8631F480BC400607F4E /* EngineDemos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineDemos.m; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7BB820D1F5B2A8E0035D58F /* Accelerate.framework in Frameworks */,
 				D76CBB061F46B6B400D51490 /* MetalKit.framework in Frameworks */,
 				D76CBB041F46B6AD00D51490 /* Metal.framework in Frameworks */,
 			);
@@ -174,6 +177,7 @@
 		D76CBB021F46B6AC00D51490 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D7BB820C1F5B2A8E0035D58F /* Accelerate.framework */,
 				D76CBB051F46B6B400D51490 /* MetalKit.framework */,
 				D76CBB031F46B6AD00D51490 /* Metal.framework */,
 			);
