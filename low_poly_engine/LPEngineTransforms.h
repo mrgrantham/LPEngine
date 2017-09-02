@@ -11,7 +11,7 @@
 
 #import "LPEnginePrimitives.h"
 
-@interface EngineTransforms : NSObject
+@interface LPEngineTransforms : NSObject
 
 + (LPPoint) rotate2DAtAxis:(LPPoint)axis ForPoint:(LPPoint)point AtAngle:(float) radians;
 + (LPPoint) rotateAtAxis: (LPPoint) axis ForPoint:(LPPoint) point AtAngles:(LPPoint) radianVector;
