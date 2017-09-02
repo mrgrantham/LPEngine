@@ -33,6 +33,7 @@
             modelProperties.vertexCount = sizeof(arwingVertices) / (sizeof(int16_t) * 3);
             modelProperties.faces = (int16_t*)arwingFaces;
             modelProperties.faceCount = sizeof(arwingFaces) / (sizeof(int16_t) * 3);
+            modelProperties.lightSource = LPPointMake(1, -1, -1);
             
             _arwing = [[EngineModel alloc] initWithProperties:modelProperties];
             LPPoint translation = {};
