@@ -11,7 +11,7 @@
 #import "EngineTransforms.h"
 #import "EngineDemos.h"
 #import "LPEngineModel.h"
-#import "EngineModelInterface.h"
+#import "LPEngineModelInterface.h"
 #import "Arwing.h"
 
 @implementation EngineDemos
@@ -28,7 +28,7 @@
 - (id) init {
     if (self = [super init]) {
         if (_arwing == nil) {
-            EngineModelInterface *modelProperties = [[EngineModelInterface alloc] init];
+            LPEngineModelInterface *modelProperties = [[LPEngineModelInterface alloc] init];
             modelProperties.vertices = (int16_t*)arwingVertices;
             modelProperties.vertexCount = sizeof(arwingVertices) / (sizeof(int16_t) * 3);
             modelProperties.faces = (int16_t*)arwingFaces;

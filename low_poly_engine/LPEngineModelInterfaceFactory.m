@@ -7,14 +7,14 @@
 //
 
 #import "LPEngineModelInterfaceFactory.h"
-#import "EngineModelInterface.h"
+#import "LPEngineModelInterface.h"
 
 @implementation LPEngineModelInterfaceFactory
 
 
 
-+ (EngineModelInterface *)defaultInterface {
-    EngineModelInterface *interface = [[EngineModelInterface alloc] init];
++ (LPEngineModelInterface *)defaultInterface {
+    LPEngineModelInterface *interface = [[LPEngineModelInterface alloc] init];
     // ...
     return interface;
 }

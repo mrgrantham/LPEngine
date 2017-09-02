@@ -13,7 +13,7 @@
 
 @implementation LPEngineModel
 
-- (id)initWithProperties:(EngineModelInterface *)engineModelProperties {
+- (id)initWithProperties:(LPEngineModelInterface *)engineModelProperties {
 
     if (self = [super init]) {
         _engineModelProperties = engineModelProperties;

@@ -10,7 +10,7 @@
 #define EngineModel_h
 
 #import "EnginePrimitives.h"
-#import "EngineModelInterface.h"
+#import "LPEngineModelInterface.h"
 
 typedef NS_ENUM(NSInteger, LPEngineDrawStyle) {
     LPEngineDrawSolid,
@@ -21,7 +21,7 @@ typedef NS_ENUM(NSInteger, LPEngineDrawStyle) {
 
 @property (nonatomic, assign) vector_float4 *drawableVerticesSolid;
 @property (nonatomic, assign) vector_float4 *drawableVerticesWireframe;
-@property (nonatomic, readonly) EngineModelInterface *engineModelProperties;
+@property (nonatomic, readonly) LPEngineModelInterface *engineModelProperties;
 
 
 @property (nonatomic, readonly) LPPoint *vertices;
@@ -44,7 +44,7 @@ typedef NS_ENUM(NSInteger, LPEngineDrawStyle) {
 
 
 - (id)init NS_UNAVAILABLE;
-- (id)initWithProperties:(EngineModelInterface *)engineModelProperties NS_DESIGNATED_INITIALIZER;
+- (id)initWithProperties:(LPEngineModelInterface *)engineModelProperties NS_DESIGNATED_INITIALIZER;
 
 - (void)draw:(LPEngineDrawStyle)drawStyle;
 

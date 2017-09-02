@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "EngineModelInterface.h"
+#import "LPEngineModelInterface.h"
 
 @interface LPEngineModelInterfaceFactory : NSObject
 
-+ (EngineModelInterface *)defaultInterface;
++ (LPEngineModelInterface *)defaultInterface;
 
 @end
