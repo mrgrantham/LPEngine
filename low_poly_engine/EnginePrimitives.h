@@ -28,6 +28,7 @@ typedef struct LPTriangle{
 typedef struct Vertex {
     vector_float4 position;
     vector_float4 color;
+    float pointsize;
 } Vertex;
 
 LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) ;

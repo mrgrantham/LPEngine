@@ -17,6 +17,7 @@ static float virtualWidth;
 static float virtualHeight;
 
 static vector_float4 color;
+static float pointSize = 10;
 
 LPPoint LPPointMake(int16_t x, int16_t y, int16_t z) {
     LPPoint newPoint;
@@ -59,6 +60,7 @@ static inline Vertex *addVertex(Vertex vertex,Vertex *source,NSInteger *sourceSi
         multiplier++;
         NSLog(@"source size %li",(long)*sourceSize);
     }
+    vertex.pointsize = pointSize;
     memcpy(&source[*sourceSize], &vertex, sizeof(Vertex));
     
     
@@ -68,46 +70,52 @@ static inline Vertex *addVertex(Vertex vertex,Vertex *source,NSInteger *sourceSi
 
 static inline void drawPixelAt(NSInteger x, NSInteger y) {
     // just adds pixel vertex to vertex_data for 2 triangles
-    static Vertex upperLeft;
-    static Vertex upperRight;
-    static Vertex lowerLeft;
-    static Vertex lowerRight;
+    static Vertex point;
     
-    
-    upperLeft.position  = (vector_float4){  ((( x * pixelWidth )/  canvas.width) * 2) - 1.0,
-        ((( y * pixelWidth )/ canvas.height) * 2) - 1.0,
-        0,
-        1.0};
-    
-    upperRight.position = (vector_float4){ (((( x * pixelWidth ) + pixelWidth ) /  canvas.width) * 2) - 1.0,
-        (((y * pixelWidth ) / canvas.height) * 2) - 1.0,
-        0,
-        1.0};
-    
-    lowerLeft.position  = (vector_float4){  ((( x * pixelWidth ) /  canvas.width) * 2) - 1.0,
-        ((( ( y * pixelWidth ) + pixelWidth) / canvas.height) * 2) - 1.0,
-        0,
-        1.0};
-    
-    lowerRight.position = (vector_float4){ (((( x * pixelWidth ) + pixelWidth) / canvas.width) * 2) - 1.0,
-        (((( y * pixelWidth ) + pixelWidth )/ canvas.height) * 2) - 1.0,
-        0,
-        1.0};
-    
-    upperLeft.color     = color;
-    upperRight.color    = color;
-    lowerLeft.color     = color;
-    lowerRight.color    = color;
-    
-    // Upper Left Tiangle
-    vertexData = addVertex(upperLeft, vertexData, &vertexDataSize);
-    vertexData = addVertex(upperRight, vertexData, &vertexDataSize);
-    vertexData = addVertex(lowerLeft, vertexData, &vertexDataSize);
-    
-    // Lower Right Triangle
-    vertexData = addVertex(lowerRight, vertexData, &vertexDataSize);
-    vertexData = addVertex(upperRight, vertexData, &vertexDataSize);
-    vertexData = addVertex(lowerLeft, vertexData, &vertexDataSize);
+    point.position = (vector_float4){((( (x * pixelWidth) + (pixelWidth>>1) )/  canvas.width) * 2) - 1.0,((( (y * pixelWidth)  + (pixelWidth>>1)  )/ canvas.height) * 2) - 1.0, 0, 1.0};
+    point.color = color;
+    point.pointsize = pointSize;
+    vertexData = addVertex(point, vertexData, &vertexDataSize);
+    //    static Vertex upperLeft;
+//    static Vertex upperRight;
+//    static Vertex lowerLeft;
+//    static Vertex lowerRight;
+//    
+//    
+//    upperLeft.position  = (vector_float4){  ((( x * pixelWidth )/  canvas.width) * 2) - 1.0,
+//        ((( y * pixelWidth )/ canvas.height) * 2) - 1.0,
+//        0,
+//        1.0};
+//    
+//    upperRight.position = (vector_float4){ (((( x * pixelWidth ) + pixelWidth ) /  canvas.width) * 2) - 1.0,
+//        (((y * pixelWidth ) / canvas.height) * 2) - 1.0,
+//        0,
+//        1.0};
+//    
+//    lowerLeft.position  = (vector_float4){  ((( x * pixelWidth ) /  canvas.width) * 2) - 1.0,
+//        ((( ( y * pixelWidth ) + pixelWidth) / canvas.height) * 2) - 1.0,
+//        0,
+//        1.0};
+//    
+//    lowerRight.position = (vector_float4){ (((( x * pixelWidth ) + pixelWidth) / canvas.width) * 2) - 1.0,
+//        (((( y * pixelWidth ) + pixelWidth )/ canvas.height) * 2) - 1.0,
+//        0,
+//        1.0};
+//    
+//    upperLeft.color     = color;
+//    upperRight.color    = color;
+//    lowerLeft.color     = color;
+//    lowerRight.color    = color;
+//    
+//    // Upper Left Tiangle
+//    vertexData = addVertex(upperLeft, vertexData, &vertexDataSize);
+//    vertexData = addVertex(upperRight, vertexData, &vertexDataSize);
+//    vertexData = addVertex(lowerLeft, vertexData, &vertexDataSize);
+//    
+//    // Lower Right Triangle
+//    vertexData = addVertex(lowerRight, vertexData, &vertexDataSize);
+//    vertexData = addVertex(upperRight, vertexData, &vertexDataSize);
+//    vertexData = addVertex(lowerLeft, vertexData, &vertexDataSize);
 }
 
 @implementation EnginePrimitives
@@ -135,6 +143,7 @@ static inline void drawPixelAt(NSInteger x, NSInteger y) {
         multiplier++;
         NSLog(@"source size %li",(long)*sourceSize);
     }
+    vertex.pointsize = pointSize;
     memcpy(&source[*sourceSize], &vertex, sizeof(Vertex));
 
     
@@ -227,16 +236,40 @@ static inline void drawPixelAt(NSInteger x, NSInteger y) {
 
 - (void) setPixelWidth:(NSInteger)pxWidth {
     pixelWidth = pxWidth;
+    float scaleFactor;
+    scaleFactor = [[NSScreen mainScreen] backingScaleFactor];
+    NSLog(@"Scale Factor: %0.2f",scaleFactor);
+    
+    pointSize = ((canvas.height*scaleFactor)/virtualHeight);
 }
 
 - (void) setVirtualWidth:(NSInteger)width {
     canvas.width = width * pixelWidth;
     virtualWidth = width;
+    float scaleFactor;
+    scaleFactor = [[NSScreen mainScreen] backingScaleFactor];
+    NSLog(@"Scale Factor: %0.2f",scaleFactor);
+    
+    pointSize = ((canvas.height*scaleFactor)/virtualHeight);
 }
 
 - (void) setVirtualHeight:(NSInteger) height {
     canvas.height = height * pixelWidth;
     virtualHeight = height;
+    
+//    NSScreen *screen = [NSScreen mainScreen];
+//    NSDictionary *description = [screen deviceDescription];
+//    NSSize displayPixelSize = [[description objectForKey:NSDeviceSize] sizeValue];
+//    CGSize displayPhysicalSize = CGDisplayScreenSize([[description objectForKey:@"NSScreenNumber"] unsignedIntValue]);
+//    NSLog(@"displayPhysicalSize: %@ \n displayPixelSize: %@",NSStringFromSize(displayPhysicalSize),NSStringFromSize(displayPixelSize));
+//    NSLog(@"DPI is %0.2f",(displayPixelSize.width / displayPhysicalSize.width) * 25.4f);
+    
+    float scaleFactor;
+    scaleFactor = [[NSScreen mainScreen] backingScaleFactor];
+    NSLog(@"Scale Factor: %0.2f",scaleFactor);
+    
+    pointSize = ((canvas.height*scaleFactor)/virtualHeight);
+
 }
 
 - (float) virtualWidth {
@@ -566,10 +599,9 @@ static inline void drawPixelAt(NSInteger x, NSInteger y) {
 //        }
 
         depthBufferIndex = x + (y * virtualWidth);
-        static NSInteger currentDepth;
-        currentDepth = _depthBuffer[depthBufferIndex];
 
-        if (x >= 0 && x < virtualWidth && y >= 0 && y < virtualHeight && z >= currentDepth && z <= 0) {
+
+        if (x >= 0 && x < virtualWidth && y >= 0 && y < virtualHeight && z >= _depthBuffer[depthBufferIndex] && z <= 0) {
             drawPixelAt(x, y);
             _depthBuffer[depthBufferIndex] = z;
         }
