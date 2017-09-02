@@ -62,6 +62,7 @@
         
         [self printVertex];
         [self printFaces];
+        [self printNormals];
         [self findVertexCenter];
         
     }
