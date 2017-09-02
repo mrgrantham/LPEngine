@@ -51,6 +51,10 @@
         NSLog(@"\nDevice: %@ \nDescription: %@ \n maxThreadsPerThreadgroup: width %li height %li depth %li \n recommendedMaxWorkingSize: %lu",self.device.name,self.device.description, self.device.maxThreadsPerThreadgroup.width,self.device.maxThreadsPerThreadgroup.height,self.device.maxThreadsPerThreadgroup.depth,self.device.recommendedMaxWorkingSetSize);
         self.library = [self.device newDefaultLibrary];
         [self registerShaders];
+        
+        MTLRenderPassDescriptor *renderPassDescriptor = self.currentRenderPassDescriptor;
+        renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0.2f, 0.2f, 0.8f, 1.0f);
+        renderPassDescriptor.colorAttachments[0].loadAction = MTLLoadActionClear;
     }
     return self;
 }
