@@ -10,7 +10,7 @@
 
 @implementation EngineScene
 
-- (NSInteger)addModel:(EngineModel *)model {
+- (NSInteger)addModel:(LPEngineModel *)model {
     NSInteger temp = 1;
     
     return temp;
