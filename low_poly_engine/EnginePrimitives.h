@@ -44,6 +44,7 @@ NSString *NSStringFromLPPoint(LPPoint point);
 
 
 @property (nonatomic) int16_t *depthBuffer;
+@property (nonatomic) LPPoint camera;
 
 
 
@@ -65,6 +66,7 @@ NSString *NSStringFromLPPoint(LPPoint point);
 - (float)virtualWidth;
 - (float)virtualHeight;
 - (void)resetDepthBuffer;
+- (void)centerCamera;
 
 - (void)debugWithTriangle:(LPTriangle)triangle;
 
