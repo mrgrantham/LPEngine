@@ -55,6 +55,8 @@
         MTLRenderPassDescriptor *renderPassDescriptor = self.currentRenderPassDescriptor;
         renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0.2f, 0.2f, 0.8f, 1.0f);
         renderPassDescriptor.colorAttachments[0].loadAction = MTLLoadActionClear;
+        
+
     }
     return self;
 }
