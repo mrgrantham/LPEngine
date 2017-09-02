@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "LPEnginePrimitives.h"
-#import "EngineTransforms.h"
+#import "LPEngineTransforms.h"
 #import "LPEngineDemos.h"
 #import "LPEngineModel.h"
 #import "LPEngineModelInterface.h"
@@ -78,13 +78,13 @@
 
     static LPTriangle tempTriangle = {0};
     
-    tempTriangle.p1 = [EngineTransforms rotate2DAtAxis:_2Daxis
+    tempTriangle.p1 = [LPEngineTransforms rotate2DAtAxis:_2Daxis
                                              ForPoint:testTriangle.p1
                                                AtAngle:currentRadian];
-    tempTriangle.p2 = [EngineTransforms rotate2DAtAxis:_2Daxis
+    tempTriangle.p2 = [LPEngineTransforms rotate2DAtAxis:_2Daxis
                                              ForPoint:testTriangle.p2
                                                AtAngle:currentRadian];
-    tempTriangle.p3 = [EngineTransforms rotate2DAtAxis:_2Daxis
+    tempTriangle.p3 = [LPEngineTransforms rotate2DAtAxis:_2Daxis
                                              ForPoint:testTriangle.p3
                                                AtAngle:currentRadian];
 

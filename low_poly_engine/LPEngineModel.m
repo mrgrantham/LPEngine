@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LPEngineModel.h"
 #import "LPEnginePrimitives.h"
-#import "EngineTransforms.h"
+#import "LPEngineTransforms.h"
 
 @implementation LPEngineModel
 
@@ -57,7 +57,7 @@
             _faces[face] = LPPointMake(faceIndex1,
                                       faceIndex2,
                                       faceIndex3);
-            _normals[face] = [EngineTransforms calculateSurfaceNormalWithPlane:LPTriangleMake(_vertices[(NSInteger)faceIndex1], _vertices[(NSInteger)faceIndex2], _vertices[(NSInteger)faceIndex3])];
+            _normals[face] = [LPEngineTransforms calculateSurfaceNormalWithPlane:LPTriangleMake(_vertices[(NSInteger)faceIndex1], _vertices[(NSInteger)faceIndex2], _vertices[(NSInteger)faceIndex3])];
         }
         
         [self printVertex];
@@ -166,11 +166,11 @@
         static LPPoint temp;
         temp = self.vertices[vertex];
         //EnginePrimitives *primitives = [EnginePrimitives sharedManager];
-        temp = [EngineTransforms translatePoint:temp WithVector:self.translation];
-        temp = [EngineTransforms scalePoint:temp fromPoint:self.center WithVector:self.scale];
-        temp = [EngineTransforms rotateAtXAxis:self.rotationAxis ForPoint:temp AtAngle:self.rotation.x];
-        temp = [EngineTransforms rotateAtYAxis:self.rotationAxis ForPoint:temp AtAngle:self.rotation.y];
-        temp = [EngineTransforms rotateAtZAxis:self.rotationAxis ForPoint:temp AtAngle:self.rotation.z];
+        temp = [LPEngineTransforms translatePoint:temp WithVector:self.translation];
+        temp = [LPEngineTransforms scalePoint:temp fromPoint:self.center WithVector:self.scale];
+        temp = [LPEngineTransforms rotateAtXAxis:self.rotationAxis ForPoint:temp AtAngle:self.rotation.x];
+        temp = [LPEngineTransforms rotateAtYAxis:self.rotationAxis ForPoint:temp AtAngle:self.rotation.y];
+        temp = [LPEngineTransforms rotateAtZAxis:self.rotationAxis ForPoint:temp AtAngle:self.rotation.z];
         self.transformedVertices[vertex] = temp;
         
     }
@@ -186,7 +186,7 @@
         temp = self.transformedVertices[vertex];
         //EnginePrimitives *primitives = [EnginePrimitives sharedManager];
         
-        temp = [EngineTransforms projectionTransformWithPoint:temp withCamera:[[LPEnginePrimitives sharedManager] camera]];
+        temp = [LPEngineTransforms projectionTransformWithPoint:temp withCamera:[[LPEnginePrimitives sharedManager] camera]];
         self.transformedVertices[vertex] = temp;
     }
     
