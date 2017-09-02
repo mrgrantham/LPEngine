@@ -12,7 +12,7 @@
 #import <Metal/Metal.h>
 #import <MetalKit/MetalKit.h>
 #import "EnginePrimitives.h"
-#import "EngineDemos.h"
+#import "LPEngineDemos.h"
 
 
 @implementation EngineMetalView
@@ -91,7 +91,7 @@
     [self.primitives setColorWithRed:200 Green:200 Blue:200];
 
 //    [[EngineDemos sharedManager] triangleDemo];
-    [[EngineDemos sharedManager] arwingDemo];
+    [[LPEngineDemos sharedManager] arwingDemo];
     
     self.vertexData = self.primitives.vertexData;
     self.vertexDataSize = self.primitives.vertexDataSize;
@@ -163,66 +163,66 @@
 }
 
 - (IBAction)rotateCounterClockwise:(id)sender {
-    EngineDemos *demo = [EngineDemos sharedManager];
+    LPEngineDemos *demo = [LPEngineDemos sharedManager];
     demo.rotateContinuous = NO;
     NSLog(@"counterclockwise!!!");
     LPPoint rotationVector = {};
     rotationVector.y = 0.05;
-    [[[EngineDemos sharedManager] arwing] rotateWithVector:rotationVector];
+    [[[LPEngineDemos sharedManager] arwing] rotateWithVector:rotationVector];
 }
 
 - (IBAction)rotateClockwise:(id)sender {
-    EngineDemos *demo = [EngineDemos sharedManager];
+    LPEngineDemos *demo = [LPEngineDemos sharedManager];
     demo.rotateContinuous = NO;
     NSLog(@"clockwise!!!");
     LPPoint rotationVector = {};
     rotationVector.y = -0.05;
-    [[[EngineDemos sharedManager] arwing] rotateWithVector:rotationVector];
+    [[[LPEngineDemos sharedManager] arwing] rotateWithVector:rotationVector];
 }
 
 - (IBAction)translateLeft:(id)sender {
-    EngineDemos *demo = [EngineDemos sharedManager];
+    LPEngineDemos *demo = [LPEngineDemos sharedManager];
     demo.translateContinuous = NO;
     NSLog(@"translate left");
     LPPoint rotationVector = {};
     rotationVector.x = -5;
-    [[[EngineDemos sharedManager] arwing] translateWithVector:rotationVector];
+    [[[LPEngineDemos sharedManager] arwing] translateWithVector:rotationVector];
 }
 
 - (IBAction)translateRight:(id)sender {
-    EngineDemos *demo = [EngineDemos sharedManager];
+    LPEngineDemos *demo = [LPEngineDemos sharedManager];
     demo.translateContinuous = NO;
     NSLog(@"translate right");
     LPPoint translationVector = {};
     translationVector.x = 5;
-    [[[EngineDemos sharedManager] arwing] translateWithVector:translationVector];
+    [[[LPEngineDemos sharedManager] arwing] translateWithVector:translationVector];
 }
 
 - (IBAction)scaleSmaller:(id)sender {
-    EngineDemos *demo = [EngineDemos sharedManager];
+    LPEngineDemos *demo = [LPEngineDemos sharedManager];
     demo.scaleContinuous = NO;
     NSLog(@"scale smaller");
     LPPoint scaleVector = {};
     scaleVector.x =  -0.05;
     scaleVector.y =  -0.05;
     scaleVector.z =  -0.05;
-    [[[EngineDemos sharedManager] arwing] scaleWithVector:scaleVector];
+    [[[LPEngineDemos sharedManager] arwing] scaleWithVector:scaleVector];
 }
 
 - (IBAction)scaleLarger:(id)sender {
-    EngineDemos *demo = [EngineDemos sharedManager];
+    LPEngineDemos *demo = [LPEngineDemos sharedManager];
     demo.scaleContinuous = NO;
     NSLog(@"scale larger");
     LPPoint scaleVector = {};
     scaleVector.x =  0.05;
     scaleVector.y =  0.05;
     scaleVector.z =  0.05;
-    [[[EngineDemos sharedManager] arwing] scaleWithVector:scaleVector];
+    [[[LPEngineDemos sharedManager] arwing] scaleWithVector:scaleVector];
 }
 
 - (IBAction)rotateContinuous:(id)sender {
     NSLog(@"Activating continuous rotation mode");
-    EngineDemos *demo = [EngineDemos sharedManager];
+    LPEngineDemos *demo = [LPEngineDemos sharedManager];
     if (demo.rotateContinuous) {
         demo.rotateContinuous = NO;
     } else {
@@ -232,7 +232,7 @@
 
 - (IBAction)translateContinuous:(id)sender {
     NSLog(@"Activating continuous translation mode");
-    EngineDemos *demo = [EngineDemos sharedManager];
+    LPEngineDemos *demo = [LPEngineDemos sharedManager];
     if (demo.translateContinuous) {
         demo.translateContinuous = NO;
     } else {
@@ -242,7 +242,7 @@
 
 - (IBAction)scaleContinuous:(id)sender {
     NSLog(@"Activation continuous scaling mode");
-    EngineDemos *demo = [EngineDemos sharedManager];
+    LPEngineDemos *demo = [LPEngineDemos sharedManager];
     if (demo.scaleContinuous) {
         demo.scaleContinuous = NO;
     } else {
@@ -251,7 +251,7 @@
 }
 
 - (IBAction)resetDemo:(id)sender {
-    EngineDemos *demo = [EngineDemos sharedManager];
+    LPEngineDemos *demo = [LPEngineDemos sharedManager];
     [demo resetArwing];
 }
 
@@ -259,7 +259,7 @@
     NSLog(@"WHEEEE IM FLYING!!!");
     LPPoint rotateVector = {};
     rotateVector.y = 3*M_PI/4;
-    EngineDemos *demo = [EngineDemos sharedManager];
+    LPEngineDemos *demo = [LPEngineDemos sharedManager];
     [demo resetArwing];
     [demo resetFlight];
     [[demo arwing] rotateWithVector:rotateVector];
@@ -272,27 +272,27 @@
 }
 - (IBAction)updateLightSourceX:(NSSlider*)sender {
     LPPoint temp = {};
-    temp = [[[EngineDemos sharedManager] arwing] lightSource];
+    temp = [[[LPEngineDemos sharedManager] arwing] lightSource];
     float factor = (float)(sender.intValue) / 100.0;
     temp.x = factor;
-    [[EngineDemos sharedManager] arwing].lightSource = temp;
+    [[LPEngineDemos sharedManager] arwing].lightSource = temp;
     self.lightDirectionX.stringValue = [NSString stringWithFormat:@"X %1.2f",factor];
 }
 - (IBAction)updateLightSourceY:(NSSlider*)sender {
     LPPoint temp = {};
-    temp = [[[EngineDemos sharedManager] arwing] lightSource];
+    temp = [[[LPEngineDemos sharedManager] arwing] lightSource];
     float factor = (float)(sender.intValue) / 100.0;
     temp.y = factor;
-    [[EngineDemos sharedManager] arwing].lightSource = temp;
+    [[LPEngineDemos sharedManager] arwing].lightSource = temp;
     self.lightDirectionY.stringValue = [NSString stringWithFormat:@"Y %1.2f",factor];
     
 }
 - (IBAction)updateLightSourceZ:(NSSlider*)sender {
     LPPoint temp = {};
-    temp = [[[EngineDemos sharedManager] arwing] lightSource];
+    temp = [[[LPEngineDemos sharedManager] arwing] lightSource];
     float factor = (float)(sender.intValue) / 100.0;
     temp.z = factor;
-    [[EngineDemos sharedManager] arwing].lightSource = temp;
+    [[LPEngineDemos sharedManager] arwing].lightSource = temp;
     self.lightDirectionZ.stringValue = [NSString stringWithFormat:@"Z %1.2f",factor];
 }
 
