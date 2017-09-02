@@ -39,6 +39,7 @@
         [self.primitives setVirtualWidth:640];
         [self.primitives setVirtualHeight:480];
         [self.primitives resetDepthBuffer];
+        [self.primitives centerCamera];
         
         CGSize canvasSize = [self.primitives canvasSize];
         if (!CGSizeEqualToSize(self.window.frame.size,canvasSize)) {
@@ -256,7 +257,7 @@
 - (IBAction)engageFlight:(id)sender {
     NSLog(@"WHEEEE IM FLYING!!!");
     LPPoint rotateVector = {};
-    rotateVector.y = M_PI;
+    rotateVector.y = 3*M_PI/4;
     EngineDemos *demo = [EngineDemos sharedManager];
     [demo resetArwing];
     [demo resetFlight];
