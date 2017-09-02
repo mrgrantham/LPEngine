@@ -9,11 +9,11 @@
 #ifndef EngineDemos_h
 #define EngineDemos_h
 
-#import "EngineModel.h"
+#import "LPEngineModel.h"
 
 @interface EngineDemos : NSObject
 
-@property (nonatomic, strong) EngineModel* arwing;
+@property (nonatomic, strong) LPEngineModel* arwing;
 @property (nonatomic, assign) BOOL rotateContinuous;
 @property (nonatomic, assign) BOOL translateContinuous;
 @property (nonatomic, assign) BOOL scaleContinuous;

@@ -19,10 +19,11 @@
 		D76CBB0F1F46D96B00D51490 /* engineShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = D76CBB0E1F46D96B00D51490 /* engineShaders.metal */; };
 		D78240DF1F4767FC005CE3C9 /* EnginePrimitives.m in Sources */ = {isa = PBXBuildFile; fileRef = D78240DE1F4767FC005CE3C9 /* EnginePrimitives.m */; };
 		D7BB820D1F5B2A8E0035D58F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BB820C1F5B2A8E0035D58F /* Accelerate.framework */; };
+		D7D676941F5B606200D790F2 /* LPEngineDemoAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D676931F5B606200D790F2 /* LPEngineDemoAnimations.m */; };
 		D7F6B8621F48086F00607F4E /* EngineTransforms.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8611F48086F00607F4E /* EngineTransforms.m */; };
 		D7F6B8641F480BC400607F4E /* EngineDemos.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8631F480BC400607F4E /* EngineDemos.m */; };
-		D7F6B8681F4A15B700607F4E /* EngineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8671F4A15B700607F4E /* EngineModel.m */; };
-		D7F6B86C1F4A202200607F4E /* EngineModelInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B86B1F4A202200607F4E /* EngineModelInterface.m */; };
+		D7F6B8681F4A15B700607F4E /* LPEngineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8671F4A15B700607F4E /* LPEngineModel.m */; };
+		D7F6B86C1F4A202200607F4E /* LPEngineModelInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B86B1F4A202200607F4E /* LPEngineModelInterface.m */; };
 		D7F6B86F1F4A204800607F4E /* EngineModelInterfaceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B86E1F4A204800607F4E /* EngineModelInterfaceFactory.m */; };
 		D7F6B8721F4B5B9800607F4E /* EngineScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8711F4B5B9800607F4E /* EngineScene.m */; };
 /* End PBXBuildFile section */
@@ -66,15 +67,17 @@
 		D78240DD1F4767E3005CE3C9 /* EnginePrimitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnginePrimitives.h; sourceTree = "<group>"; };
 		D78240DE1F4767FC005CE3C9 /* EnginePrimitives.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnginePrimitives.m; sourceTree = "<group>"; };
 		D7BB820C1F5B2A8E0035D58F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		D7D676921F5B606200D790F2 /* LPEngineDemoAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEngineDemoAnimations.h; sourceTree = "<group>"; };
+		D7D676931F5B606200D790F2 /* LPEngineDemoAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineDemoAnimations.m; sourceTree = "<group>"; };
 		D7F6B8601F48084F00607F4E /* EngineTransforms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineTransforms.h; sourceTree = "<group>"; };
 		D7F6B8611F48086F00607F4E /* EngineTransforms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineTransforms.m; sourceTree = "<group>"; };
 		D7F6B8631F480BC400607F4E /* EngineDemos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineDemos.m; sourceTree = "<group>"; };
 		D7F6B8651F480BD500607F4E /* EngineDemos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineDemos.h; sourceTree = "<group>"; };
 		D7F6B8661F4A153300607F4E /* Arwing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arwing.h; sourceTree = "<group>"; };
-		D7F6B8671F4A15B700607F4E /* EngineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineModel.m; sourceTree = "<group>"; };
-		D7F6B8691F4A15C500607F4E /* EngineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineModel.h; sourceTree = "<group>"; };
-		D7F6B86A1F4A202200607F4E /* EngineModelInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineModelInterface.h; sourceTree = "<group>"; };
-		D7F6B86B1F4A202200607F4E /* EngineModelInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineModelInterface.m; sourceTree = "<group>"; };
+		D7F6B8671F4A15B700607F4E /* LPEngineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineModel.m; sourceTree = "<group>"; };
+		D7F6B8691F4A15C500607F4E /* LPEngineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEngineModel.h; sourceTree = "<group>"; };
+		D7F6B86A1F4A202200607F4E /* LPEngineModelInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEngineModelInterface.h; sourceTree = "<group>"; };
+		D7F6B86B1F4A202200607F4E /* LPEngineModelInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineModelInterface.m; sourceTree = "<group>"; };
 		D7F6B86D1F4A204800607F4E /* EngineModelInterfaceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineModelInterfaceFactory.h; sourceTree = "<group>"; };
 		D7F6B86E1F4A204800607F4E /* EngineModelInterfaceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineModelInterfaceFactory.m; sourceTree = "<group>"; };
 		D7F6B8701F4B5B9800607F4E /* EngineScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineScene.h; sourceTree = "<group>"; };
@@ -189,10 +192,12 @@
 			children = (
 				D7F6B86D1F4A204800607F4E /* EngineModelInterfaceFactory.h */,
 				D7F6B86E1F4A204800607F4E /* EngineModelInterfaceFactory.m */,
-				D7F6B86A1F4A202200607F4E /* EngineModelInterface.h */,
-				D7F6B86B1F4A202200607F4E /* EngineModelInterface.m */,
-				D7F6B8691F4A15C500607F4E /* EngineModel.h */,
-				D7F6B8671F4A15B700607F4E /* EngineModel.m */,
+				D7F6B86A1F4A202200607F4E /* LPEngineModelInterface.h */,
+				D7F6B86B1F4A202200607F4E /* LPEngineModelInterface.m */,
+				D7F6B8691F4A15C500607F4E /* LPEngineModel.h */,
+				D7F6B8671F4A15B700607F4E /* LPEngineModel.m */,
+				D7D676921F5B606200D790F2 /* LPEngineDemoAnimations.h */,
+				D7D676931F5B606200D790F2 /* LPEngineDemoAnimations.m */,
 				D7F6B8701F4B5B9800607F4E /* EngineScene.h */,
 				D7F6B8711F4B5B9800607F4E /* EngineScene.m */,
 				D7F6B8631F480BC400607F4E /* EngineDemos.m */,
@@ -338,16 +343,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				D78240DF1F4767FC005CE3C9 /* EnginePrimitives.m in Sources */,
+				D7D676941F5B606200D790F2 /* LPEngineDemoAnimations.m in Sources */,
 				D76CBB0F1F46D96B00D51490 /* engineShaders.metal in Sources */,
 				D76CBB0C1F46BF8C00D51490 /* EngineMetalView.m in Sources */,
 				D7F6B8721F4B5B9800607F4E /* EngineScene.m in Sources */,
-				D7F6B86C1F4A202200607F4E /* EngineModelInterface.m in Sources */,
+				D7F6B86C1F4A202200607F4E /* LPEngineModelInterface.m in Sources */,
 				D76CBAD71F46716700D51490 /* main.m in Sources */,
 				D7F6B8621F48086F00607F4E /* EngineTransforms.m in Sources */,
 				D7F6B8641F480BC400607F4E /* EngineDemos.m in Sources */,
 				D76CBAD41F46716700D51490 /* AppDelegate.m in Sources */,
 				D7F6B86F1F4A204800607F4E /* EngineModelInterfaceFactory.m in Sources */,
-				D7F6B8681F4A15B700607F4E /* EngineModel.m in Sources */,
+				D7F6B8681F4A15B700607F4E /* LPEngineModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

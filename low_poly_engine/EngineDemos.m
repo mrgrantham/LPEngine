@@ -10,7 +10,7 @@
 #import "EnginePrimitives.h"
 #import "EngineTransforms.h"
 #import "EngineDemos.h"
-#import "EngineModel.h"
+#import "LPEngineModel.h"
 #import "EngineModelInterface.h"
 #import "Arwing.h"
 
@@ -35,7 +35,7 @@
             modelProperties.faceCount = sizeof(arwingFaces) / (sizeof(int16_t) * 3);
             modelProperties.lightSource = LPPointMake(1, -1, -1);
             
-            _arwing = [[EngineModel alloc] initWithProperties:modelProperties];
+            _arwing = [[LPEngineModel alloc] initWithProperties:modelProperties];
             LPPoint translation = {};
             EnginePrimitives *prim = [EnginePrimitives sharedManager];
             translation.x = prim.virtualWidth / 2;
