@@ -147,10 +147,13 @@
         
         [commandEncoder setRenderPipelineState:self.renderPipelineState];
         [commandEncoder setVertexBuffer:self.vertexBuffer offset: 0 atIndex: 0 ];
-        [commandEncoder drawPrimitives:MTLPrimitiveTypeTriangle
-                           vertexStart: 0
-                           vertexCount: self.vertexDataSize
-                         instanceCount: 1 ];
+        if (self.vertexDataSize != 0) {
+
+            [commandEncoder drawPrimitives:MTLPrimitiveTypePoint
+                               vertexStart: 0
+                               vertexCount: self.vertexDataSize
+                             instanceCount: 1 ];
+        }
         [commandEncoder endEncoding];
         [commandBuffer presentDrawable:self.currentDrawable];
         [commandBuffer commit];
