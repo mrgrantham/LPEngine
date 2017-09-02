@@ -41,7 +41,7 @@
             translation.y = prim.virtualHeight / 4;
             translation.z = -800;
             _arwing.translation = translation;
-            LPPoint scale = {.x=0.8, .y=0.8, .z=0.8};
+            LPPoint scale = {.x=2.0, .y=2.0, .z=2.0};
             _arwing.scale = scale;
             _arwing.centerChanged = YES;
             [_arwing findVertexCenter];
@@ -159,7 +159,7 @@
     self.rotateContinuous = NO;
     self.translateContinuous = NO;
     [self.arwing resetTransforms];
-    LPPoint scale = {.x=0.8, .y=0.8, .z=0.8};
+    LPPoint scale = {.x=2.0, .y=2.0, .z=2.0};
     self.arwing.scale = scale;
     LPPoint translation = {};
     translation.x = prim.virtualWidth / 2;
