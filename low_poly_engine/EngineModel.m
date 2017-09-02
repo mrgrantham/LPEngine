@@ -35,6 +35,7 @@
         _translation = translation;
         _scale = scale;
         _rotation = rotation;
+        _lightSource = engineModelProperties.lightSource;
 
         _transformedVertices = malloc(sizeof(LPPoint) * engineModelProperties.vertexCount);
         NSLog(@"Face Count: %i Vertex Count: %i",engineModelProperties.faceCount,engineModelProperties.vertexCount);
