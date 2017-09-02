@@ -22,7 +22,7 @@
 + (LPPoint) translatePoint:(LPPoint)point WithVector:(LPPoint)translationVector;
 + (LPPoint) scalePoint:(LPPoint)point fromPoint:(LPPoint)centerPoint WithVector:(LPPoint)scaleVector;
 + (LPPoint) projectionTransformWithPoint:(LPPoint)point withCamera:(LPPoint)camera;
-
++ (LPPoint) calculateSurfaceNormalWithPlane:(LPTriangle)plane;
 @end
 
 #endif /* EngineTransforms_h */

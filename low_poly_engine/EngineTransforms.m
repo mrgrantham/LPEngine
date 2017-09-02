@@ -178,4 +178,17 @@ static float _3Dmatrix[3][3];
 }
 
 
++ (LPPoint) calculateSurfaceNormalWithPlane:(LPTriangle)plane {
+    static LPPoint e1 = {};
+    static LPPoint e2 = {};
+    static LPPoint normal = {};
+    e1 = pointSubtract(plane.p2, plane.p1);
+    e2 = pointSubtract(plane.p3, plane.p2);
+    normal = pointCrossProduct(e1, e2);
+    normal = normalize(normal);
+    return normal;
+ }
+
+
+
 @end
