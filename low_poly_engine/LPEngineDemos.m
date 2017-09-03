@@ -33,8 +33,10 @@
             modelProperties.vertexCount = sizeof(arwingVertices) / (sizeof(int16_t) * 3);
             modelProperties.faces = (int16_t*)arwingFaces;
             modelProperties.faceCount = sizeof(arwingFaces) / (sizeof(int16_t) * 3);
-            modelProperties.lightSource = LPPointMake(1, -1, -1);
-            
+            LPPoint lightSource = {.x=0.5, .y=0.8, .z=0.5};
+            modelProperties.lightSource = lightSource;
+            NSLog(@"light source: %@", NSStringFromLPPoint(modelProperties.lightSource));
+
             _arwing = [[LPEngineModel alloc] initWithProperties:modelProperties];
             LPPoint translation = {};
             LPEnginePrimitives *prim = [LPEnginePrimitives sharedManager];
