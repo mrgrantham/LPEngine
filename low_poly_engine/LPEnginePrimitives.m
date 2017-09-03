@@ -75,7 +75,7 @@ LPPoint normalize(LPPoint point) {
     float absZ = fabsf(point.z);
     
     float max = (absX > absY) ? (absZ > absX) ? absZ : absX : (absZ > absY) ? absZ : absY;
-    NSLog(@"max %0.2f",max);
+//    NSLog(@"max %0.2f",max);
     point.x = point.x / max;
     point.y = point.y / max;
     point.z = point.z / max;
