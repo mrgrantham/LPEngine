@@ -108,7 +108,8 @@
 //        }
 //    }
 //    
-    self.vertexBuffer = [self.device newBufferWithBytes: self.vertexData length: self.vertexDataSize * sizeof(Vertex) options: MTLResourceCPUCacheModeDefaultCache];
+//    self.vertexBuffer = [self.device newBufferWithBytes: self.vertexData length: self.vertexDataSize * sizeof(Vertex) options: MTLResourceCPUCacheModeDefaultCache];
+    self.vertexBuffer = [self.device newBufferWithBytesNoCopy: self.vertexData length: getVertexMemoryAllocationSize() options: MTLResourceCPUCacheModeDefaultCache deallocator:nil];
 //    self.vertexBuffer = [self.device newBufferWithBytesNoCopy: self.vertexData length: self.vertexDataSize * sizeof(Vertex) options: MTLResourceCPUCacheModeDefaultCache deallocator:^(void * _Nonnull pointer, NSUInteger length) {
     
 //    }];
