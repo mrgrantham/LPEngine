@@ -862,7 +862,7 @@
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="58A-Ct-WDL">
                                 <rect key="frame" x="18" y="70" width="203" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="-100" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="Dtg-tJ-bZo"/>
+                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="-100" maxValue="100" doubleValue="80" tickMarkPosition="above" sliderType="linear" id="Dtg-tJ-bZo"/>
                                 <connections>
                                     <action selector="updateLightSourceY:" target="m2S-Jp-Qdl" id="h5O-QV-vy8"/>
                                 </connections>
