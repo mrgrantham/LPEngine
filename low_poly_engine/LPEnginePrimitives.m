@@ -226,7 +226,7 @@ static inline void drawScanLine(NSInteger leftX, NSInteger rightX, NSInteger lef
 
 - (id) init {
     if (self = [super init]) {
-        _depthBuffer = NULL;
+        depthBuffer = NULL;
         vertexData = NULL;
         vertexDataSize = 0;
         virtualWidth = 0;
@@ -337,11 +337,11 @@ static inline void drawScanLine(NSInteger leftX, NSInteger rightX, NSInteger lef
 }
 
 - (void) resetDepthBuffer {
-    if (_depthBuffer == NULL && virtualHeight != 0 && virtualWidth != 0) {
-        _depthBuffer = (int16_t *)malloc(virtualWidth * virtualHeight * sizeof(int16_t));
+    if (depthBuffer == NULL && virtualHeight != 0 && virtualWidth != 0) {
+        depthBuffer = (int16_t *)malloc(virtualWidth * virtualHeight * sizeof(int16_t));
     }
     if (virtualHeight != 0 && virtualWidth != 0) {
-        memset(_depthBuffer, 0x80, virtualWidth * virtualHeight * sizeof(int16_t));
+        memset(depthBuffer, 0x80, virtualWidth * virtualHeight * sizeof(int16_t));
     }
 }
 
@@ -487,7 +487,8 @@ static inline void drawScanLine(NSInteger leftX, NSInteger rightX, NSInteger lef
 //                  XL,XR,ZL,ZR,YL,YR);
 
             if(YL == YR && pointChanged) {
-                [self drawScanLineAtLeftX:XL RightX:XR LeftZ:ZL RightZ:ZR Y:YL];
+//                [self drawScanLineAtLeftX:XL RightX:XR LeftZ:ZL RightZ:ZR Y:YL];
+                drawScanLine(XL, XR, ZL, ZR, YL);
                 pointChanged = NO;
             }
             if (YR >= (int32_t)middle.y || YL >= (int32_t)middle.y) break;
@@ -516,7 +517,8 @@ static inline void drawScanLine(NSInteger leftX, NSInteger rightX, NSInteger lef
 
             if((YL == YR) && pointChanged) {
                 // cout << "RIGHT BOTTOM XL " << XL << " XR " << XR << " ZL " << ZL << " ZR " << ZR << " Y " << YL << endl;
-                [self drawScanLineAtLeftX:XL RightX:XR LeftZ:ZL RightZ:ZR Y:YL];
+//                [self drawScanLineAtLeftX:XL RightX:XR LeftZ:ZL RightZ:ZR Y:YL];
+                drawScanLine(XL, XR, ZL, ZR, YL);
                 pointChanged = NO;
             }
             if (YR >= (int32_t)bottom.y || YL >= (int32_t)bottom.y || XL == XR) break;
@@ -545,7 +547,8 @@ static inline void drawScanLine(NSInteger leftX, NSInteger rightX, NSInteger lef
 //                  NSStringFromLPPoint(bottom),
 //                  XL,XR,ZL,ZR,YL,YR);
             if(YL == YR && pointChanged) {
-                [self drawScanLineAtLeftX:XL RightX:XR LeftZ:ZL RightZ:ZR Y:YL];
+//                [self drawScanLineAtLeftX:XL RightX:XR LeftZ:ZL RightZ:ZR Y:YL];
+                drawScanLine(XL, XR, ZL, ZR, YL);
                 pointChanged = NO;
             }
             if (YR >= (int32_t)middle.y || YL >= (int32_t)middle.y) break;
@@ -572,7 +575,8 @@ static inline void drawScanLine(NSInteger leftX, NSInteger rightX, NSInteger lef
 //                  NSStringFromLPPoint(bottom),
 //                  XL,XR,ZL,ZR,YL,YR);
             if(YL == YR && pointChanged) {
-                [self drawScanLineAtLeftX:XL RightX:XR LeftZ:ZL RightZ:ZR Y:YL];
+//                [self drawScanLineAtLeftX:XL RightX:XR LeftZ:ZL RightZ:ZR Y:YL];
+                drawScanLine(XL, XR, ZL, ZR, YL);
                 pointChanged = NO;
             }
             if (YR >= (int32_t)bottom.y || YL >= (int32_t)bottom.y || XL == XR) {
