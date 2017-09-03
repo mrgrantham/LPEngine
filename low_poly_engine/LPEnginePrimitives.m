@@ -10,7 +10,7 @@
 #import <Cocoa/Cocoa.h>
 #import "LPEnginePrimitives.h"
 
-static NSSize canvas;
+static CGSize canvas;
 
 static int16_t pixelWidth;
 static float virtualWidth;
@@ -301,7 +301,7 @@ static inline void drawPixelAt(NSInteger x, NSInteger y) {
     
 //    NSScreen *screen = [NSScreen mainScreen];
 //    NSDictionary *description = [screen deviceDescription];
-//    NSSize displayPixelSize = [[description objectForKey:NSDeviceSize] sizeValue];
+//    CGSize displayPixelSize = [[description objectForKey:NSDeviceSize] sizeValue];
 //    CGSize displayPhysicalSize = CGDisplayScreenSize([[description objectForKey:@"NSScreenNumber"] unsignedIntValue]);
 //    NSLog(@"displayPhysicalSize: %@ \n displayPixelSize: %@",NSStringFromSize(displayPhysicalSize),NSStringFromSize(displayPixelSize));
 //    NSLog(@"DPI is %0.2f",(displayPixelSize.width / displayPhysicalSize.width) * 25.4f);
