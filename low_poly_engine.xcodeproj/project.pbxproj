@@ -71,7 +71,7 @@
 		D76CBB0D1F46BF9F00D51490 /* EngineMetalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = EngineMetalView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D76CBB0E1F46D96B00D51490 /* engineShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = engineShaders.metal; sourceTree = "<group>"; };
 		D78240DD1F4767E3005CE3C9 /* LPEnginePrimitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEnginePrimitives.h; sourceTree = "<group>"; };
-		D78240DE1F4767FC005CE3C9 /* LPEnginePrimitives.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEnginePrimitives.m; sourceTree = "<group>"; };
+		D78240DE1F4767FC005CE3C9 /* LPEnginePrimitives.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LPEnginePrimitives.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D7BB820C1F5B2A8E0035D58F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		D7D676921F5B606200D790F2 /* LPEngineDemoAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEngineDemoAnimations.h; sourceTree = "<group>"; };
 		D7D676931F5B606200D790F2 /* LPEngineDemoAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineDemoAnimations.m; sourceTree = "<group>"; };

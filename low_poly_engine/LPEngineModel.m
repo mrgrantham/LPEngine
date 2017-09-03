@@ -19,10 +19,12 @@
         _engineModelProperties = engineModelProperties;
         _faces = malloc(sizeof(LPPoint) * engineModelProperties.faceCount);
         _normals = malloc(sizeof(LPPoint) * engineModelProperties.faceCount);
+        _transformedNormals = malloc(sizeof(LPPoint) * engineModelProperties.faceCount);
         _lightFactors = malloc(sizeof(float) * engineModelProperties.faceCount);
         _vertices = malloc(sizeof(LPPoint) * engineModelProperties.vertexCount);
         memset(_faces,0,sizeof(LPPoint) * engineModelProperties.faceCount);
         memset(_normals,0,sizeof(LPPoint) * engineModelProperties.faceCount);
+        memset(_transformedNormals,0,sizeof(LPPoint) * engineModelProperties.faceCount);
         memset(_lightFactors,0,sizeof(float) * engineModelProperties.faceCount);
         memset(_vertices,0,sizeof(LPPoint) * engineModelProperties.vertexCount);
         _vertexCount = engineModelProperties.vertexCount;
@@ -165,7 +167,6 @@
     for (int vertex = 0; vertex < self.vertexCount; vertex++) {
         static LPPoint temp;
         temp = self.vertices[vertex];
-        //EnginePrimitives *primitives = [EnginePrimitives sharedManager];
         temp = [LPEngineTransforms translatePoint:temp WithVector:self.translation];
         temp = [LPEngineTransforms scalePoint:temp fromPoint:self.center WithVector:self.scale];
         temp = [LPEngineTransforms rotateAtXAxis:self.rotationAxis ForPoint:temp AtAngle:self.rotation.x];
@@ -176,8 +177,13 @@
     }
     // calculate light for each face before the
     for (int face = 0; face < self.faceCount; face++) {
-        self.lightFactors[face] = [self findLightFactor:self.normals[face] ];
-        
+        float faceIndex1 = self.faces[face].x;
+        float faceIndex2 = self.faces[face].y;
+        float faceIndex3 = self.faces[face].z;
+        _transformedNormals[face] = [LPEngineTransforms calculateSurfaceNormalWithPlane:LPTriangleMake(_transformedVertices[(NSInteger)faceIndex1], _transformedVertices[(NSInteger)faceIndex2], _transformedVertices[(NSInteger)faceIndex3])];
+        //        self.lightFactors[face] = [self findLightFactor:self.transformedNormals[face] ];
+        self.lightFactors[face] = [self findLightFactor:_transformedNormals[face] ];
+
     }
 //    [self printLightFactors];
     

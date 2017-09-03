@@ -32,6 +32,7 @@ typedef NS_ENUM(NSInteger, LPEngineDrawStyle) {
 @property (nonatomic, readonly) NSInteger faceCount;
 
 @property (nonatomic, assign) LPPoint *transformedVertices;
+@property (nonatomic, assign) LPPoint *transformedNormals;
 @property (nonatomic, assign) LPPoint translation;
 @property (nonatomic, assign) LPPoint scale;
 @property (nonatomic, assign) LPPoint rotation;
