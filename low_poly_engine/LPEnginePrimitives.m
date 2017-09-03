@@ -88,6 +88,38 @@ LPPoint normalize(LPPoint point) {
 static Vertex *vertexData;
 static NSInteger vertexDataSize;
 
+void* AllocateVirtualMemory(size_t size)
+{
+    char*          data;
+    kern_return_t   err;
+    
+    // In debug builds, check that we have
+    // correct VM page alignment
+    check(size != 0);
+    check((size % 4096) == 0);
+    
+    // Allocate directly from VM
+    err = vm_allocate(  (vm_map_t) mach_task_self(),
+                      (vm_address_t*) &data,
+                      size,
+                      VM_FLAGS_ANYWHERE);
+//    err = posix_memalign((void**)&data, 4096, size);
+
+    // Check errors
+    check(err == KERN_SUCCESS);
+    if(err != KERN_SUCCESS)
+    {
+        data = NULL;
+    }
+    
+    return data;
+}
+
+NSInteger getVertexMemoryAllocationSize() {
+    return vertexMemoryAllocationSize;
+}
+
+
 NS_INLINE Vertex *addVertex(Vertex vertex,Vertex *source,NSInteger *sourceSize) {
     static NSInteger multiplier = 0;
     static const NSInteger sizeIncreaseMargin = 300000;
