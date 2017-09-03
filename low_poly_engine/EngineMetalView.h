@@ -29,7 +29,7 @@
 @property (weak) IBOutlet NSTextField *lightDirectionZ;
 
 - (void) render;
-- (void) drawRect: (NSRect)dirtyRect;
+- (void) drawRect: (CGRect)dirtyRect;
 - (void) createBuffer;
 - (void) registerShaders;
 - (void) sendToGPU;

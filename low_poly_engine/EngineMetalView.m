@@ -43,7 +43,7 @@
         
         CGSize canvasSize = [self.primitives canvasSize];
         if (!CGSizeEqualToSize(self.window.frame.size,canvasSize)) {
-            NSRect frame = [self.window frame];
+            CGRect frame = [self.window frame];
             frame.size = canvasSize;
 //            frame.origin = CGPointMake(50, 50);
             NSLog(@"window frame render %@",NSStringFromRect(frame) );
@@ -70,7 +70,7 @@
     
     CGSize canvasSize = [self.primitives canvasSize];
     if (!CGSizeEqualToSize(self.window.frame.size,canvasSize)) {
-        NSRect frame = [self.window frame];
+        CGRect frame = [self.window frame];
         frame.size = canvasSize;
         NSLog(@"window frame render %@",NSStringFromRect(frame) );
         [self.window setFrame:frame display:YES animate:YES];
@@ -78,7 +78,7 @@
 
 }
 
-- (void) drawRect: (NSRect)dirtyRect {
+- (void) drawRect: (CGRect)dirtyRect {
     [super drawRect:dirtyRect];
     [self render];
 }
