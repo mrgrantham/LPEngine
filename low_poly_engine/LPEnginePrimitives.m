@@ -19,6 +19,7 @@ static float virtualHeight;
 static vector_float4 color;
 static float pointSize = 10;
 static int16_t *depthBuffer;
+static NSInteger vertexMemoryAllocationSize=0;
 
 LPPoint LPPointMake(int16_t x, int16_t y, int16_t z) {
     LPPoint newPoint;

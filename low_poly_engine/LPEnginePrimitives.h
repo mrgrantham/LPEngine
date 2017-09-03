@@ -42,6 +42,7 @@ float pointDotProduct(LPPoint p1, LPPoint p2);
 LPPoint normalize(LPPoint point);
 //Vertex *addVertex(Vertex vertex,Vertex *source,NSInteger *sourceSize);
 //void drawPixelAt(NSInteger x, NSInteger y);
+NSInteger getVertexMemoryAllocationSize();
 
 
 @interface LPEnginePrimitives : NSObject
