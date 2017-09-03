@@ -87,7 +87,7 @@ LPPoint normalize(LPPoint point) {
 static Vertex *vertexData;
 static NSInteger vertexDataSize;
 
-static inline Vertex *addVertex(Vertex vertex,Vertex *source,NSInteger *sourceSize) {
+NS_INLINE Vertex *addVertex(Vertex vertex,Vertex *source,NSInteger *sourceSize) {
     static NSInteger multiplier = 0;
     static const NSInteger sizeIncreaseMargin = 300000;
     Vertex *tempSource;
@@ -111,7 +111,7 @@ static inline Vertex *addVertex(Vertex vertex,Vertex *source,NSInteger *sourceSi
     return source;
 }
 
-static inline void drawPixelAt(NSInteger x, NSInteger y) {
+NS_INLINE void drawPixelAt(NSInteger x, NSInteger y) {
     // just adds pixel vertex to vertex_data for 2 triangles
     static Vertex point;
     
@@ -122,7 +122,7 @@ static inline void drawPixelAt(NSInteger x, NSInteger y) {
 
 }
 
-static inline void drawScanLine(NSInteger leftX, NSInteger rightX, NSInteger leftZ, NSInteger rightZ, NSInteger y) {
+NS_INLINE void drawScanLine(NSInteger leftX, NSInteger rightX, NSInteger leftZ, NSInteger rightZ, NSInteger y) {
     
     //- (void) drawScanLineAtLeftX:(NSInteger)leftX RightX:(NSInteger)rightX LeftZ:(NSInteger)leftZ RightZ:(NSInteger)rightZ Y:(NSInteger)y {
     
