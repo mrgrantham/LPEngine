@@ -119,47 +119,60 @@ static inline void drawPixelAt(NSInteger x, NSInteger y) {
     point.color = color;
     point.pointsize = pointSize;
     vertexData = addVertex(point, vertexData, &vertexDataSize);
-    //    static Vertex upperLeft;
-//    static Vertex upperRight;
-//    static Vertex lowerLeft;
-//    static Vertex lowerRight;
-//    
-//    
-//    upperLeft.position  = (vector_float4){  ((( x * pixelWidth )/  canvas.width) * 2) - 1.0,
-//        ((( y * pixelWidth )/ canvas.height) * 2) - 1.0,
-//        0,
-//        1.0};
-//    
-//    upperRight.position = (vector_float4){ (((( x * pixelWidth ) + pixelWidth ) /  canvas.width) * 2) - 1.0,
-//        (((y * pixelWidth ) / canvas.height) * 2) - 1.0,
-//        0,
-//        1.0};
-//    
-//    lowerLeft.position  = (vector_float4){  ((( x * pixelWidth ) /  canvas.width) * 2) - 1.0,
-//        ((( ( y * pixelWidth ) + pixelWidth) / canvas.height) * 2) - 1.0,
-//        0,
-//        1.0};
-//    
-//    lowerRight.position = (vector_float4){ (((( x * pixelWidth ) + pixelWidth) / canvas.width) * 2) - 1.0,
-//        (((( y * pixelWidth ) + pixelWidth )/ canvas.height) * 2) - 1.0,
-//        0,
-//        1.0};
-//    
-//    upperLeft.color     = color;
-//    upperRight.color    = color;
-//    lowerLeft.color     = color;
-//    lowerRight.color    = color;
-//    
-//    // Upper Left Tiangle
-//    vertexData = addVertex(upperLeft, vertexData, &vertexDataSize);
-//    vertexData = addVertex(upperRight, vertexData, &vertexDataSize);
-//    vertexData = addVertex(lowerLeft, vertexData, &vertexDataSize);
-//    
-//    // Lower Right Triangle
-//    vertexData = addVertex(lowerRight, vertexData, &vertexDataSize);
-//    vertexData = addVertex(upperRight, vertexData, &vertexDataSize);
-//    vertexData = addVertex(lowerLeft, vertexData, &vertexDataSize);
+
 }
+
+static inline void drawScanLine(NSInteger leftX, NSInteger rightX, NSInteger leftZ, NSInteger rightZ, NSInteger y) {
+    
+    //- (void) drawScanLineAtLeftX:(NSInteger)leftX RightX:(NSInteger)rightX LeftZ:(NSInteger)leftZ RightZ:(NSInteger)rightZ Y:(NSInteger)y {
+    
+    static NSInteger DeltaX;
+    static NSInteger DeltaZ;
+    static NSInteger StepX = 1; // No need to calculate since always from left to right
+    static NSInteger StepZ;
+    static NSInteger DeltaMax;
+    static NSInteger ErrorX;
+    static NSInteger ErrorZ;
+    static long int depthBufferIndex; // needs to be a huge number. uint16_t might be enough i havent done the calculations. but int16_t definitely isnt
+    
+    if (leftX > rightX) {
+        leftX = rightX;
+    }
+    DeltaX = rightX - leftX;
+    DeltaZ = abs(rightZ - leftZ);
+    
+    StepZ = leftZ < rightZ ? 1 : -1;
+    
+    DeltaMax = DeltaX < DeltaZ ? DeltaZ : DeltaX;
+    
+    ErrorX = DeltaMax >> 1;
+    ErrorZ = DeltaMax >> 1;
+    //    ErrorX = 0;
+    //    ErrorZ = 0;
+    
+    
+    for(;;) {
+        
+        depthBufferIndex = leftX + (y * virtualWidth);
+        
+        
+        if (leftX >= 0 && leftX < virtualWidth && y >= 0 && y < virtualHeight && leftZ >= depthBuffer[depthBufferIndex] && leftZ <= 0) {
+            drawPixelAt(leftX, y);
+            depthBuffer[depthBufferIndex] = leftZ;
+        }
+        
+        if(leftX == rightX) {
+            break;
+        }
+        
+        ErrorX -= DeltaX; if (ErrorX < 0) { ErrorX += DeltaMax; leftX += StepX;}
+        ErrorZ -= DeltaZ; if (ErrorZ < 0) { ErrorZ += DeltaMax; leftZ += StepZ;}
+        
+        
+    }
+}
+
+
 
 @implementation LPEnginePrimitives
 
@@ -604,76 +617,6 @@ static inline void drawPixelAt(NSInteger x, NSInteger y) {
 
 - (void) drawTriangle:(LPTriangle*) triangle {
     [self drawTriangleAtPoint1:&triangle->p1 Point2:&triangle->p2 Point3:&triangle->p3];
-}
-
-- (void) drawScanLineAtLeftX:(NSInteger)leftX RightX:(NSInteger)rightX LeftZ:(NSInteger)leftZ RightZ:(NSInteger)rightZ Y:(NSInteger)y {
-    
-    static NSInteger DeltaX;
-    static NSInteger DeltaZ;
-    static NSInteger StepX = 1; // No need to calculate since always from left to right
-    static NSInteger StepZ;
-    static NSInteger DeltaMax;
-    static NSInteger ErrorX;
-    static NSInteger ErrorZ;
-    static NSInteger x;
-    static NSInteger z;
-    static long int depthBufferIndex; // needs to be a huge number. uint16_t might be enough i havent done the calculations. but int16_t definitely isnt
-//    NSLog(@"leftX %li rightX %li leftZ %li rightZ %li", leftX, rightX, leftZ, rightZ);
-
-    if (leftX > rightX) {
-//        if ((leftX - rightX) > 4) {
-//            NSLog(@"leftX %li rightX %li leftZ %li rightZ %li", leftX, rightX, leftZ, rightZ);
-//        }
-        // sometimes the left calculation overshoots. this is to correct
-        leftX = rightX;
-    }
-    DeltaX = rightX - leftX;
-    DeltaZ = leftZ > rightZ ? leftZ - rightZ : rightZ - leftZ;
-    
-    StepZ = leftZ < rightZ ? 1 : -1;
-    
-
-
-    DeltaMax = DeltaX < DeltaZ ? DeltaZ : DeltaX;
-    
-    ErrorX = DeltaMax >> 1;
-    ErrorZ = DeltaMax >> 1;
-//    ErrorX = 0;
-//    ErrorZ = 0;
-    
-    x=leftX;
-    z=leftZ;
-
-    
-    for(;;) {
-//        if(z > 0) {
-//            NSLog(@"Z went positive");
-//        }
-
-        depthBufferIndex = x + (y * virtualWidth);
-
-
-        if (x >= 0 && x < virtualWidth && y >= 0 && y < virtualHeight && z >= _depthBuffer[depthBufferIndex] && z <= 0) {
-            drawPixelAt(x, y);
-            _depthBuffer[depthBufferIndex] = z;
-        }
-//        else if (x >= 0 && x < self.virtualWidth && y >= 0 && y < self.virtualHeight && z < currentDepth && z <= 0){
-//            NSLog(@"z %li leftZ %li rightZ %li diff %li",z,leftZ,rightZ,z-rightZ);
-//            NSLog(@"StepX %i StepZ %i DeltaX %i DeltaZ %i ErrorZ %i ErrorX %i LeftX %i RightX %i LeftZ %i RightZ %i x %i z %i",StepX,StepZ,DeltaX,DeltaZ,ErrorZ,ErrorX,leftX,rightX,leftZ,rightZ,x,z);
-//        }
-        if(x == rightX) {
-//            if (abs(z - rightZ) > 3) {
-//                NSLog(@"z %li leftZ %li rightZ %li diff %li",z,leftZ,rightZ,z-rightZ);
-//                NSLog(@"StepX %i StepZ %i DeltaX %i DeltaZ %i ErrorZ %i ErrorX %i LeftX %i RightX %i LeftZ %i RightZ %i x %i z %i",StepX,StepZ,DeltaX,DeltaZ,ErrorZ,ErrorX,leftX,rightX,leftZ,rightZ,x,z);
-//            }
-            break;
-        }
-
-        ErrorX -= DeltaX; if (ErrorX < 0) { ErrorX += DeltaMax; x += StepX;}
-        ErrorZ -= DeltaZ; if (ErrorZ < 0) { ErrorZ += DeltaMax; z += StepZ;}
-        
-//        NSLog(@"StepX %i StepZ %i DeltaX %i DeltaZ %i Error %i ErrorComparison %i LeftX %i RightX %i LeftZ %i RightZ %i x %i z %i",StepX,StepZ,DeltaX,DeltaZ,Error,ErrorComparison,leftX,rightX,leftZ,rightZ,x,z);
-    }
 }
 
 
