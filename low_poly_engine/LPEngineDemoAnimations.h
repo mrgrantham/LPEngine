@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LPEngineTransforms.h"
 
 @interface LPEngineDemoAnimations : NSObject
+
+typedef LPTriangle LPTransformationSettings;
 
 @end
