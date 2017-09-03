@@ -47,7 +47,6 @@ LPPoint normalize(LPPoint point);
 @interface LPEnginePrimitives : NSObject
 
 
-@property (nonatomic) int16_t *depthBuffer;
 @property (nonatomic) LPPoint camera;
 
 
