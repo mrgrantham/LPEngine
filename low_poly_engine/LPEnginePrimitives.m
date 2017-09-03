@@ -122,16 +122,19 @@ NSInteger getVertexMemoryAllocationSize() {
 
 NS_INLINE Vertex *addVertex(Vertex vertex,Vertex *source,NSInteger *sourceSize) {
     static NSInteger multiplier = 0;
-    static const NSInteger sizeIncreaseMargin = 300000;
+    static const NSInteger sizeIncreaseMargin = 4096*60;
     Vertex *tempSource;
     if (source == nil) {
         NSLog(@"Initial Allocation");
-        source = malloc(sizeof(Vertex) * sizeIncreaseMargin * (multiplier+1));
+        source = AllocateVirtualMemory(sizeof(Vertex) * sizeIncreaseMargin * (multiplier+1));
+        vertexMemoryAllocationSize = sizeof(Vertex) * sizeIncreaseMargin * (multiplier+1);
         multiplier++;
     } else if (*sourceSize >= (sizeIncreaseMargin * multiplier)) {
         tempSource = malloc(sizeof(Vertex) * sizeIncreaseMargin * (multiplier + 1));
         memcpy(tempSource, source, *sourceSize * sizeof(Vertex));
-        free(source);
+//        free(source);
+        vm_deallocate(mach_task_self(),(unsigned int)source, *sourceSize * sizeof(Vertex));
+        vertexMemoryAllocationSize = sizeof(Vertex) * sizeIncreaseMargin * (multiplier + 1);
         source = tempSource;
         multiplier++;
         NSLog(@"source size %li",(long)*sourceSize);
