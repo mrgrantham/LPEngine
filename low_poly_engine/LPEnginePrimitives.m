@@ -158,17 +158,17 @@ NS_INLINE void drawPixelAt(NSInteger x, NSInteger y) {
 
 }
 
-NS_INLINE void drawScanLine(NSInteger leftX, NSInteger rightX, NSInteger leftZ, NSInteger rightZ, NSInteger y) {
+NS_INLINE void drawScanLine(int32_t leftX, int32_t rightX, int32_t leftZ, int32_t rightZ, int32_t y) {
     
     //- (void) drawScanLineAtLeftX:(NSInteger)leftX RightX:(NSInteger)rightX LeftZ:(NSInteger)leftZ RightZ:(NSInteger)rightZ Y:(NSInteger)y {
     
-    static NSInteger DeltaX;
-    static NSInteger DeltaZ;
-    static NSInteger StepX = 1; // No need to calculate since always from left to right
-    static NSInteger StepZ;
-    static NSInteger DeltaMax;
-    static NSInteger ErrorX;
-    static NSInteger ErrorZ;
+    static int32_t DeltaX;
+    static int32_t DeltaZ;
+    static int32_t StepX = 1; // No need to calculate since always from left to right
+    static int32_t StepZ;
+    static int32_t DeltaMax;
+    static int32_t ErrorX;
+    static int32_t ErrorZ;
     static long int depthBufferIndex; // needs to be a huge number. uint16_t might be enough i havent done the calculations. but int16_t definitely isnt
     
     if (leftX > rightX) {
@@ -381,7 +381,7 @@ NS_INLINE void drawScanLine(NSInteger leftX, NSInteger rightX, NSInteger leftZ, 
     static LPPoint middle;
     static LPPoint bottom;
     
-    static NSInteger YL,YR, XL, XR, ZL, ZR;
+    static int32_t YL,YR, XL, XR, ZL, ZR;
     
     if(p1->y < p2->y) {
         top = *p1;
