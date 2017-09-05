@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+#else
 #import <Cocoa/Cocoa.h>
+#endif
+
 #import "LPEnginePrimitives.h"
 
 static CGSize canvas;
@@ -88,25 +94,45 @@ LPPoint normalize(LPPoint point) {
 static Vertex *vertexData;
 static NSInteger vertexDataSize;
 
-void* AllocateVirtualMemory(size_t size)
+//void* AllocateVirtualMemory(size_t size)
+//{
+//    char*          data;
+//    kern_return_t   err;
+//    
+//    // In debug builds, check that we have
+//    // correct VM page alignment
+//    check(size != 0);
+//    check((size % 4096) == 0);
+//    
+//    // Allocate directly from VM
+//    err = vm_allocate(  (vm_map_t) mach_task_self(),
+//                      (vm_address_t*) &data,
+//                      size,
+//                      VM_FLAGS_ANYWHERE);
+////    err = posix_memalign((void**)&data, 4096, size);
+//
+//    // Check errors
+//    check(err == KERN_SUCCESS);
+//    if(err != KERN_SUCCESS)
+//    {
+//        data = NULL;
+//    }
+//    
+//    return data;
+//}
+void* AllocateAlignedMemory(size_t size)
 {
     char*          data;
     kern_return_t   err;
     
-    // In debug builds, check that we have
-    // correct VM page alignment
-    check(size != 0);
-    check((size % 4096) == 0);
+    NSUInteger pageSize = getpagesize();
+
     
     // Allocate directly from VM
-    err = vm_allocate(  (vm_map_t) mach_task_self(),
-                      (vm_address_t*) &data,
-                      size,
-                      VM_FLAGS_ANYWHERE);
-//    err = posix_memalign((void**)&data, 4096, size);
-
+    err = posix_memalign((void**)&data, pageSize, size);
+    //    err = posix_memalign((void**)&data, 4096, size);
+    
     // Check errors
-    check(err == KERN_SUCCESS);
     if(err != KERN_SUCCESS)
     {
         data = NULL;
@@ -114,6 +140,7 @@ void* AllocateVirtualMemory(size_t size)
     
     return data;
 }
+
 
 NSInteger getVertexMemoryAllocationSize() {
     return vertexMemoryAllocationSize;
@@ -126,14 +153,14 @@ NS_INLINE Vertex *addVertex(Vertex vertex,Vertex *source,NSInteger *sourceSize) 
     Vertex *tempSource;
     if (source == nil) {
         NSLog(@"Initial Allocation");
-        source = AllocateVirtualMemory(sizeof(Vertex) * sizeIncreaseMargin * (multiplier+1));
+        source = AllocateAlignedMemory(sizeof(Vertex) * sizeIncreaseMargin * (multiplier+1));
         vertexMemoryAllocationSize = sizeof(Vertex) * sizeIncreaseMargin * (multiplier+1);
         multiplier++;
     } else if (*sourceSize >= (sizeIncreaseMargin * multiplier)) {
-        tempSource = malloc(sizeof(Vertex) * sizeIncreaseMargin * (multiplier + 1));
+        tempSource = AllocateAlignedMemory(sizeof(Vertex) * sizeIncreaseMargin * (multiplier + 1));
         memcpy(tempSource, source, *sourceSize * sizeof(Vertex));
-//        free(source);
-        vm_deallocate(mach_task_self(),(unsigned int)source, *sourceSize * sizeof(Vertex));
+        free(source);
+//        vm_deallocate(mach_task_self(),(unsigned int)source, *sourceSize * sizeof(Vertex));
         vertexMemoryAllocationSize = sizeof(Vertex) * sizeIncreaseMargin * (multiplier + 1);
         source = tempSource;
         multiplier++;
@@ -329,7 +356,11 @@ NS_INLINE void drawScanLine(int32_t leftX, int32_t rightX, int32_t leftZ, int32_
 - (void) setPixelWidth:(NSInteger)pxWidth {
     pixelWidth = pxWidth;
     float scaleFactor;
+#if TARGET_OS_IPHONE
+    scaleFactor = [[UIScreen mainScreen] scale];
+#else
     scaleFactor = [[NSScreen mainScreen] backingScaleFactor];
+#endif
     NSLog(@"Scale Factor: %0.2f",scaleFactor);
     
     pointSize = ((canvas.height*scaleFactor)/virtualHeight);
@@ -339,7 +370,11 @@ NS_INLINE void drawScanLine(int32_t leftX, int32_t rightX, int32_t leftZ, int32_
     canvas.width = width * pixelWidth;
     virtualWidth = width;
     float scaleFactor;
+#if TARGET_OS_IPHONE
+    scaleFactor = [[UIScreen mainScreen] scale];
+#else
     scaleFactor = [[NSScreen mainScreen] backingScaleFactor];
+#endif
     NSLog(@"Scale Factor: %0.2f",scaleFactor);
     
     pointSize = ((canvas.height*scaleFactor)/virtualHeight);
@@ -357,7 +392,11 @@ NS_INLINE void drawScanLine(int32_t leftX, int32_t rightX, int32_t leftZ, int32_
 //    NSLog(@"DPI is %0.2f",(displayPixelSize.width / displayPhysicalSize.width) * 25.4f);
     
     float scaleFactor;
+#if TARGET_OS_IPHONE
+    scaleFactor = [[UIScreen mainScreen] scale];
+#else
     scaleFactor = [[NSScreen mainScreen] backingScaleFactor];
+#endif
     NSLog(@"Scale Factor: %0.2f",scaleFactor);
     
     pointSize = ((canvas.height*scaleFactor)/virtualHeight);
