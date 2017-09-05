@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>LPEngine iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>low_poly_engine.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -23,6 +28,21 @@
 			<true/>
 		</dict>
 		<key>D76CBAEF1F46716700D51490</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D7EE83221F5E3A9C0087E010</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D7EE833A1F5E3A9C0087E010</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D7EE83451F5E3A9C0087E010</key>
 		<dict>
 			<key>primary</key>
 			<true/>

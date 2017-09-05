@@ -22,6 +22,36 @@
 		D78240DF1F4767FC005CE3C9 /* LPEnginePrimitives.m in Sources */ = {isa = PBXBuildFile; fileRef = D78240DE1F4767FC005CE3C9 /* LPEnginePrimitives.m */; };
 		D7BB820D1F5B2A8E0035D58F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BB820C1F5B2A8E0035D58F /* Accelerate.framework */; };
 		D7D676941F5B606200D790F2 /* LPEngineDemoAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D676931F5B606200D790F2 /* LPEngineDemoAnimations.m */; };
+		D7EE83271F5E3A9C0087E010 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EE83261F5E3A9C0087E010 /* main.m */; };
+		D7EE832A1F5E3A9C0087E010 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EE83291F5E3A9C0087E010 /* AppDelegate.m */; };
+		D7EE832D1F5E3A9C0087E010 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EE832C1F5E3A9C0087E010 /* ViewController.m */; };
+		D7EE83321F5E3A9C0087E010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7EE83311F5E3A9C0087E010 /* Assets.xcassets */; };
+		D7EE83351F5E3A9C0087E010 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7EE83331F5E3A9C0087E010 /* LaunchScreen.storyboard */; };
+		D7EE83401F5E3A9C0087E010 /* LPEngine_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EE833F1F5E3A9C0087E010 /* LPEngine_iOSTests.m */; };
+		D7EE834B1F5E3A9C0087E010 /* LPEngine_iOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EE834A1F5E3A9C0087E010 /* LPEngine_iOSUITests.m */; };
+		D7EE83571F5E3B2E0087E010 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7EE83561F5E3B2D0087E010 /* Main.storyboard */; };
+		D7EE835A1F5E3B580087E010 /* EngineMetalView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EE83591F5E3B580087E010 /* EngineMetalView.m */; };
+		D7EE835B1F5E65F30087E010 /* LPEngineModelInterfaceFactory.h in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B86D1F4A204800607F4E /* LPEngineModelInterfaceFactory.h */; };
+		D7EE835C1F5E65F30087E010 /* LPEngineBaseAnimations.h in Sources */ = {isa = PBXBuildFile; fileRef = D763669E1F5B705E004B737B /* LPEngineBaseAnimations.h */; };
+		D7EE835D1F5E65F30087E010 /* LPEngineBaseAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = D763669F1F5B705E004B737B /* LPEngineBaseAnimations.m */; };
+		D7EE835E1F5E65F30087E010 /* LPEngineAnimationProperties.h in Sources */ = {isa = PBXBuildFile; fileRef = D76366A11F5B7711004B737B /* LPEngineAnimationProperties.h */; };
+		D7EE835F1F5E65F30087E010 /* LPEngineAnimationProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D76366A21F5B7711004B737B /* LPEngineAnimationProperties.m */; };
+		D7EE83601F5E65F30087E010 /* LPEngineModelInterfaceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B86E1F4A204800607F4E /* LPEngineModelInterfaceFactory.m */; };
+		D7EE83611F5E65F30087E010 /* LPEngineModelInterface.h in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B86A1F4A202200607F4E /* LPEngineModelInterface.h */; };
+		D7EE83621F5E65F30087E010 /* LPEngineModelInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B86B1F4A202200607F4E /* LPEngineModelInterface.m */; };
+		D7EE83631F5E65F30087E010 /* LPEngineModel.h in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8691F4A15C500607F4E /* LPEngineModel.h */; };
+		D7EE83641F5E65F30087E010 /* LPEngineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8671F4A15B700607F4E /* LPEngineModel.m */; };
+		D7EE83651F5E65F30087E010 /* LPEngineDemoAnimations.h in Sources */ = {isa = PBXBuildFile; fileRef = D7D676921F5B606200D790F2 /* LPEngineDemoAnimations.h */; };
+		D7EE83661F5E65F30087E010 /* LPEngineDemoAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D676931F5B606200D790F2 /* LPEngineDemoAnimations.m */; };
+		D7EE83671F5E65F30087E010 /* LPEngineScene.h in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8701F4B5B9800607F4E /* LPEngineScene.h */; };
+		D7EE83681F5E65F30087E010 /* LPEngineScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8711F4B5B9800607F4E /* LPEngineScene.m */; };
+		D7EE83691F5E65F30087E010 /* LPEngineDemos.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8631F480BC400607F4E /* LPEngineDemos.m */; };
+		D7EE836A1F5E65F30087E010 /* LPEngineDemos.h in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8651F480BD500607F4E /* LPEngineDemos.h */; };
+		D7EE836B1F5E65F30087E010 /* LPEnginePrimitives.h in Sources */ = {isa = PBXBuildFile; fileRef = D78240DD1F4767E3005CE3C9 /* LPEnginePrimitives.h */; };
+		D7EE836C1F5E65F30087E010 /* LPEnginePrimitives.m in Sources */ = {isa = PBXBuildFile; fileRef = D78240DE1F4767FC005CE3C9 /* LPEnginePrimitives.m */; };
+		D7EE836D1F5E65F30087E010 /* LPEngineTransforms.h in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8601F48084F00607F4E /* LPEngineTransforms.h */; };
+		D7EE836E1F5E65F30087E010 /* LPEngineTransforms.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8611F48086F00607F4E /* LPEngineTransforms.m */; };
+		D7EE836F1F5E6D770087E010 /* engineShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = D76CBB0E1F46D96B00D51490 /* engineShaders.metal */; };
 		D7F6B8621F48086F00607F4E /* LPEngineTransforms.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8611F48086F00607F4E /* LPEngineTransforms.m */; };
 		D7F6B8641F480BC400607F4E /* LPEngineDemos.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8631F480BC400607F4E /* LPEngineDemos.m */; };
 		D7F6B8681F4A15B700607F4E /* LPEngineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8671F4A15B700607F4E /* LPEngineModel.m */; };
@@ -44,6 +74,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = D76CBACE1F46716700D51490;
 			remoteInfo = low_poly_engine;
+		};
+		D7EE833C1F5E3A9C0087E010 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D76CBAC71F46716700D51490 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D7EE83221F5E3A9C0087E010;
+			remoteInfo = "LPEngine iOS";
+		};
+		D7EE83471F5E3A9C0087E010 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D76CBAC71F46716700D51490 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D7EE83221F5E3A9C0087E010;
+			remoteInfo = "LPEngine iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -75,6 +119,24 @@
 		D7BB820C1F5B2A8E0035D58F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		D7D676921F5B606200D790F2 /* LPEngineDemoAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEngineDemoAnimations.h; sourceTree = "<group>"; };
 		D7D676931F5B606200D790F2 /* LPEngineDemoAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineDemoAnimations.m; sourceTree = "<group>"; };
+		D7EE83231F5E3A9C0087E010 /* LPEngine iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LPEngine iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7EE83261F5E3A9C0087E010 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D7EE83281F5E3A9C0087E010 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D7EE83291F5E3A9C0087E010 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D7EE832B1F5E3A9C0087E010 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D7EE832C1F5E3A9C0087E010 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D7EE83311F5E3A9C0087E010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D7EE83341F5E3A9C0087E010 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D7EE83361F5E3A9C0087E010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7EE833B1F5E3A9C0087E010 /* LPEngine iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LPEngine iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7EE833F1F5E3A9C0087E010 /* LPEngine_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LPEngine_iOSTests.m; sourceTree = "<group>"; };
+		D7EE83411F5E3A9C0087E010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7EE83461F5E3A9C0087E010 /* LPEngine iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LPEngine iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7EE834A1F5E3A9C0087E010 /* LPEngine_iOSUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LPEngine_iOSUITests.m; sourceTree = "<group>"; };
+		D7EE834C1F5E3A9C0087E010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7EE83561F5E3B2D0087E010 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D7EE83581F5E3B580087E010 /* EngineMetalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineMetalView.h; sourceTree = "<group>"; };
+		D7EE83591F5E3B580087E010 /* EngineMetalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineMetalView.m; sourceTree = "<group>"; };
 		D7F6B8601F48084F00607F4E /* LPEngineTransforms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEngineTransforms.h; sourceTree = "<group>"; };
 		D7F6B8611F48086F00607F4E /* LPEngineTransforms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineTransforms.m; sourceTree = "<group>"; };
 		D7F6B8631F480BC400607F4E /* LPEngineDemos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineDemos.m; sourceTree = "<group>"; };
@@ -115,6 +177,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D7EE83201F5E3A9C0087E010 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7EE83381F5E3A9C0087E010 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7EE83431F5E3A9C0087E010 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -124,6 +207,9 @@
 				D76CBAD11F46716700D51490 /* low_poly_engine */,
 				D76CBAE81F46716700D51490 /* low_poly_engineTests */,
 				D76CBAF31F46716700D51490 /* low_poly_engineUITests */,
+				D7EE83241F5E3A9C0087E010 /* LPEngine iOS */,
+				D7EE833E1F5E3A9C0087E010 /* LPEngine iOSTests */,
+				D7EE83491F5E3A9C0087E010 /* LPEngine iOSUITests */,
 				D76CBAD01F46716700D51490 /* Products */,
 				D76CBB021F46B6AC00D51490 /* Frameworks */,
 			);
@@ -135,6 +221,9 @@
 				D76CBACF1F46716700D51490 /* low_poly_engine.app */,
 				D76CBAE51F46716700D51490 /* low_poly_engineTests.xctest */,
 				D76CBAF01F46716700D51490 /* low_poly_engineUITests.xctest */,
+				D7EE83231F5E3A9C0087E010 /* LPEngine iOS.app */,
+				D7EE833B1F5E3A9C0087E010 /* LPEngine iOSTests.xctest */,
+				D7EE83461F5E3A9C0087E010 /* LPEngine iOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,7 +237,6 @@
 				D76CBB0B1F46BF8C00D51490 /* EngineMetalView.m */,
 				D7F6B8661F4A153300607F4E /* Arwing.h */,
 				D7D8D9881F57A02C00804C5E /* LPEngineCore */,
-				D76CBB0E1F46D96B00D51490 /* engineShaders.metal */,
 				D76CBADB1F46716700D51490 /* Assets.xcassets */,
 				D76CBADD1F46716700D51490 /* Main.storyboard */,
 				D76CBAE01F46716700D51490 /* Info.plist */,
@@ -196,6 +284,7 @@
 		D7D8D9881F57A02C00804C5E /* LPEngineCore */ = {
 			isa = PBXGroup;
 			children = (
+				D76CBB0E1F46D96B00D51490 /* engineShaders.metal */,
 				D7F6B86D1F4A204800607F4E /* LPEngineModelInterfaceFactory.h */,
 				D763669E1F5B705E004B737B /* LPEngineBaseAnimations.h */,
 				D763669F1F5B705E004B737B /* LPEngineBaseAnimations.m */,
@@ -218,6 +307,50 @@
 				D7F6B8611F48086F00607F4E /* LPEngineTransforms.m */,
 			);
 			name = LPEngineCore;
+			sourceTree = "<group>";
+		};
+		D7EE83241F5E3A9C0087E010 /* LPEngine iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D7EE83281F5E3A9C0087E010 /* AppDelegate.h */,
+				D7EE83291F5E3A9C0087E010 /* AppDelegate.m */,
+				D7EE83561F5E3B2D0087E010 /* Main.storyboard */,
+				D7EE832B1F5E3A9C0087E010 /* ViewController.h */,
+				D7EE83581F5E3B580087E010 /* EngineMetalView.h */,
+				D7EE83591F5E3B580087E010 /* EngineMetalView.m */,
+				D7EE832C1F5E3A9C0087E010 /* ViewController.m */,
+				D7EE83311F5E3A9C0087E010 /* Assets.xcassets */,
+				D7EE83331F5E3A9C0087E010 /* LaunchScreen.storyboard */,
+				D7EE83361F5E3A9C0087E010 /* Info.plist */,
+				D7EE83251F5E3A9C0087E010 /* Supporting Files */,
+			);
+			path = "LPEngine iOS";
+			sourceTree = "<group>";
+		};
+		D7EE83251F5E3A9C0087E010 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D7EE83261F5E3A9C0087E010 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D7EE833E1F5E3A9C0087E010 /* LPEngine iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				D7EE833F1F5E3A9C0087E010 /* LPEngine_iOSTests.m */,
+				D7EE83411F5E3A9C0087E010 /* Info.plist */,
+			);
+			path = "LPEngine iOSTests";
+			sourceTree = "<group>";
+		};
+		D7EE83491F5E3A9C0087E010 /* LPEngine iOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D7EE834A1F5E3A9C0087E010 /* LPEngine_iOSUITests.m */,
+				D7EE834C1F5E3A9C0087E010 /* Info.plist */,
+			);
+			path = "LPEngine iOSUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +409,59 @@
 			productReference = D76CBAF01F46716700D51490 /* low_poly_engineUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		D7EE83221F5E3A9C0087E010 /* LPEngine iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7EE83531F5E3A9D0087E010 /* Build configuration list for PBXNativeTarget "LPEngine iOS" */;
+			buildPhases = (
+				D7EE831F1F5E3A9C0087E010 /* Sources */,
+				D7EE83201F5E3A9C0087E010 /* Frameworks */,
+				D7EE83211F5E3A9C0087E010 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "LPEngine iOS";
+			productName = "LPEngine iOS";
+			productReference = D7EE83231F5E3A9C0087E010 /* LPEngine iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D7EE833A1F5E3A9C0087E010 /* LPEngine iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7EE83541F5E3A9D0087E010 /* Build configuration list for PBXNativeTarget "LPEngine iOSTests" */;
+			buildPhases = (
+				D7EE83371F5E3A9C0087E010 /* Sources */,
+				D7EE83381F5E3A9C0087E010 /* Frameworks */,
+				D7EE83391F5E3A9C0087E010 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D7EE833D1F5E3A9C0087E010 /* PBXTargetDependency */,
+			);
+			name = "LPEngine iOSTests";
+			productName = "LPEngine iOSTests";
+			productReference = D7EE833B1F5E3A9C0087E010 /* LPEngine iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D7EE83451F5E3A9C0087E010 /* LPEngine iOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7EE83551F5E3A9D0087E010 /* Build configuration list for PBXNativeTarget "LPEngine iOSUITests" */;
+			buildPhases = (
+				D7EE83421F5E3A9C0087E010 /* Sources */,
+				D7EE83431F5E3A9C0087E010 /* Frameworks */,
+				D7EE83441F5E3A9C0087E010 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D7EE83481F5E3A9C0087E010 /* PBXTargetDependency */,
+			);
+			name = "LPEngine iOSUITests";
+			productName = "LPEngine iOSUITests";
+			productReference = D7EE83461F5E3A9C0087E010 /* LPEngine iOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -299,6 +485,21 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = D76CBACE1F46716700D51490;
 					};
+					D7EE83221F5E3A9C0087E010 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 66C855VF2F;
+						ProvisioningStyle = Automatic;
+					};
+					D7EE833A1F5E3A9C0087E010 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D7EE83221F5E3A9C0087E010;
+					};
+					D7EE83451F5E3A9C0087E010 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D7EE83221F5E3A9C0087E010;
+					};
 				};
 			};
 			buildConfigurationList = D76CBACA1F46716700D51490 /* Build configuration list for PBXProject "low_poly_engine" */;
@@ -317,6 +518,9 @@
 				D76CBACE1F46716700D51490 /* low_poly_engine */,
 				D76CBAE41F46716700D51490 /* low_poly_engineTests */,
 				D76CBAEF1F46716700D51490 /* low_poly_engineUITests */,
+				D7EE83221F5E3A9C0087E010 /* LPEngine iOS */,
+				D7EE833A1F5E3A9C0087E010 /* LPEngine iOSTests */,
+				D7EE83451F5E3A9C0087E010 /* LPEngine iOSUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -339,6 +543,30 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D76CBAEE1F46716700D51490 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7EE83211F5E3A9C0087E010 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7EE83571F5E3B2E0087E010 /* Main.storyboard in Resources */,
+				D7EE83351F5E3A9C0087E010 /* LaunchScreen.storyboard in Resources */,
+				D7EE83321F5E3A9C0087E010 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7EE83391F5E3A9C0087E010 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7EE83441F5E3A9C0087E010 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -385,6 +613,54 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D7EE831F1F5E3A9C0087E010 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7EE836F1F5E6D770087E010 /* engineShaders.metal in Sources */,
+				D7EE835B1F5E65F30087E010 /* LPEngineModelInterfaceFactory.h in Sources */,
+				D7EE835C1F5E65F30087E010 /* LPEngineBaseAnimations.h in Sources */,
+				D7EE835D1F5E65F30087E010 /* LPEngineBaseAnimations.m in Sources */,
+				D7EE835E1F5E65F30087E010 /* LPEngineAnimationProperties.h in Sources */,
+				D7EE835F1F5E65F30087E010 /* LPEngineAnimationProperties.m in Sources */,
+				D7EE83601F5E65F30087E010 /* LPEngineModelInterfaceFactory.m in Sources */,
+				D7EE83611F5E65F30087E010 /* LPEngineModelInterface.h in Sources */,
+				D7EE83621F5E65F30087E010 /* LPEngineModelInterface.m in Sources */,
+				D7EE83631F5E65F30087E010 /* LPEngineModel.h in Sources */,
+				D7EE83641F5E65F30087E010 /* LPEngineModel.m in Sources */,
+				D7EE83651F5E65F30087E010 /* LPEngineDemoAnimations.h in Sources */,
+				D7EE83661F5E65F30087E010 /* LPEngineDemoAnimations.m in Sources */,
+				D7EE83671F5E65F30087E010 /* LPEngineScene.h in Sources */,
+				D7EE83681F5E65F30087E010 /* LPEngineScene.m in Sources */,
+				D7EE83691F5E65F30087E010 /* LPEngineDemos.m in Sources */,
+				D7EE836A1F5E65F30087E010 /* LPEngineDemos.h in Sources */,
+				D7EE836B1F5E65F30087E010 /* LPEnginePrimitives.h in Sources */,
+				D7EE836C1F5E65F30087E010 /* LPEnginePrimitives.m in Sources */,
+				D7EE836D1F5E65F30087E010 /* LPEngineTransforms.h in Sources */,
+				D7EE836E1F5E65F30087E010 /* LPEngineTransforms.m in Sources */,
+				D7EE835A1F5E3B580087E010 /* EngineMetalView.m in Sources */,
+				D7EE832D1F5E3A9C0087E010 /* ViewController.m in Sources */,
+				D7EE832A1F5E3A9C0087E010 /* AppDelegate.m in Sources */,
+				D7EE83271F5E3A9C0087E010 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7EE83371F5E3A9C0087E010 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7EE83401F5E3A9C0087E010 /* LPEngine_iOSTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7EE83421F5E3A9C0087E010 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7EE834B1F5E3A9C0087E010 /* LPEngine_iOSUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -398,6 +674,16 @@
 			target = D76CBACE1F46716700D51490 /* low_poly_engine */;
 			targetProxy = D76CBAF11F46716700D51490 /* PBXContainerItemProxy */;
 		};
+		D7EE833D1F5E3A9C0087E010 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D7EE83221F5E3A9C0087E010 /* LPEngine iOS */;
+			targetProxy = D7EE833C1F5E3A9C0087E010 /* PBXContainerItemProxy */;
+		};
+		D7EE83481F5E3A9C0087E010 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D7EE83221F5E3A9C0087E010 /* LPEngine iOS */;
+			targetProxy = D7EE83471F5E3A9C0087E010 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -407,6 +693,14 @@
 				D76CBADE1F46716700D51490 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D7EE83331F5E3A9C0087E010 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D7EE83341F5E3A9C0087E010 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -506,6 +800,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = low_poly_engine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
@@ -519,6 +814,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = low_poly_engine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
@@ -577,6 +873,101 @@
 			};
 			name = Release;
 		};
+		D7EE834D1F5E3A9C0087E010 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 66C855VF2F;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "LPEngine iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "alto.LPEngine-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D7EE834E1F5E3A9C0087E010 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 66C855VF2F;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "LPEngine iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "alto.LPEngine-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D7EE834F1F5E3A9C0087E010 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "LPEngine iOSTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "alto.LPEngine-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LPEngine iOS.app/LPEngine iOS";
+			};
+			name = Debug;
+		};
+		D7EE83501F5E3A9C0087E010 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "LPEngine iOSTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "alto.LPEngine-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LPEngine iOS.app/LPEngine iOS";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D7EE83511F5E3A9C0087E010 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "LPEngine iOSUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "alto.LPEngine-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_TARGET_NAME = "LPEngine iOS";
+			};
+			name = Debug;
+		};
+		D7EE83521F5E3A9C0087E010 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "LPEngine iOSUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "alto.LPEngine-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_TARGET_NAME = "LPEngine iOS";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -615,6 +1006,30 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D7EE83531F5E3A9D0087E010 /* Build configuration list for PBXNativeTarget "LPEngine iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7EE834D1F5E3A9C0087E010 /* Debug */,
+				D7EE834E1F5E3A9C0087E010 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D7EE83541F5E3A9D0087E010 /* Build configuration list for PBXNativeTarget "LPEngine iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7EE834F1F5E3A9C0087E010 /* Debug */,
+				D7EE83501F5E3A9C0087E010 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D7EE83551F5E3A9D0087E010 /* Build configuration list for PBXNativeTarget "LPEngine iOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7EE83511F5E3A9C0087E010 /* Debug */,
+				D7EE83521F5E3A9C0087E010 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
