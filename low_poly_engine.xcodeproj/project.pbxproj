@@ -31,25 +31,16 @@
 		D7EE834B1F5E3A9C0087E010 /* LPEngine_iOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EE834A1F5E3A9C0087E010 /* LPEngine_iOSUITests.m */; };
 		D7EE83571F5E3B2E0087E010 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7EE83561F5E3B2D0087E010 /* Main.storyboard */; };
 		D7EE835A1F5E3B580087E010 /* EngineMetalView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EE83591F5E3B580087E010 /* EngineMetalView.m */; };
-		D7EE835B1F5E65F30087E010 /* LPEngineModelInterfaceFactory.h in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B86D1F4A204800607F4E /* LPEngineModelInterfaceFactory.h */; };
-		D7EE835C1F5E65F30087E010 /* LPEngineBaseAnimations.h in Sources */ = {isa = PBXBuildFile; fileRef = D763669E1F5B705E004B737B /* LPEngineBaseAnimations.h */; };
 		D7EE835D1F5E65F30087E010 /* LPEngineBaseAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = D763669F1F5B705E004B737B /* LPEngineBaseAnimations.m */; };
-		D7EE835E1F5E65F30087E010 /* LPEngineAnimationProperties.h in Sources */ = {isa = PBXBuildFile; fileRef = D76366A11F5B7711004B737B /* LPEngineAnimationProperties.h */; };
 		D7EE835F1F5E65F30087E010 /* LPEngineAnimationProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D76366A21F5B7711004B737B /* LPEngineAnimationProperties.m */; };
 		D7EE83601F5E65F30087E010 /* LPEngineModelInterfaceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B86E1F4A204800607F4E /* LPEngineModelInterfaceFactory.m */; };
-		D7EE83611F5E65F30087E010 /* LPEngineModelInterface.h in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B86A1F4A202200607F4E /* LPEngineModelInterface.h */; };
 		D7EE83621F5E65F30087E010 /* LPEngineModelInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B86B1F4A202200607F4E /* LPEngineModelInterface.m */; };
-		D7EE83631F5E65F30087E010 /* LPEngineModel.h in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8691F4A15C500607F4E /* LPEngineModel.h */; };
 		D7EE83641F5E65F30087E010 /* LPEngineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8671F4A15B700607F4E /* LPEngineModel.m */; };
-		D7EE83651F5E65F30087E010 /* LPEngineDemoAnimations.h in Sources */ = {isa = PBXBuildFile; fileRef = D7D676921F5B606200D790F2 /* LPEngineDemoAnimations.h */; };
 		D7EE83661F5E65F30087E010 /* LPEngineDemoAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D676931F5B606200D790F2 /* LPEngineDemoAnimations.m */; };
-		D7EE83671F5E65F30087E010 /* LPEngineScene.h in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8701F4B5B9800607F4E /* LPEngineScene.h */; };
 		D7EE83681F5E65F30087E010 /* LPEngineScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8711F4B5B9800607F4E /* LPEngineScene.m */; };
 		D7EE83691F5E65F30087E010 /* LPEngineDemos.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8631F480BC400607F4E /* LPEngineDemos.m */; };
 		D7EE836A1F5E65F30087E010 /* LPEngineDemos.h in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8651F480BD500607F4E /* LPEngineDemos.h */; };
-		D7EE836B1F5E65F30087E010 /* LPEnginePrimitives.h in Sources */ = {isa = PBXBuildFile; fileRef = D78240DD1F4767E3005CE3C9 /* LPEnginePrimitives.h */; };
 		D7EE836C1F5E65F30087E010 /* LPEnginePrimitives.m in Sources */ = {isa = PBXBuildFile; fileRef = D78240DE1F4767FC005CE3C9 /* LPEnginePrimitives.m */; };
-		D7EE836D1F5E65F30087E010 /* LPEngineTransforms.h in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8601F48084F00607F4E /* LPEngineTransforms.h */; };
 		D7EE836E1F5E65F30087E010 /* LPEngineTransforms.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8611F48086F00607F4E /* LPEngineTransforms.m */; };
 		D7EE836F1F5E6D770087E010 /* engineShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = D76CBB0E1F46D96B00D51490 /* engineShaders.metal */; };
 		D7F6B8621F48086F00607F4E /* LPEngineTransforms.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8611F48086F00607F4E /* LPEngineTransforms.m */; };
@@ -618,25 +609,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7EE836F1F5E6D770087E010 /* engineShaders.metal in Sources */,
-				D7EE835B1F5E65F30087E010 /* LPEngineModelInterfaceFactory.h in Sources */,
-				D7EE835C1F5E65F30087E010 /* LPEngineBaseAnimations.h in Sources */,
 				D7EE835D1F5E65F30087E010 /* LPEngineBaseAnimations.m in Sources */,
-				D7EE835E1F5E65F30087E010 /* LPEngineAnimationProperties.h in Sources */,
 				D7EE835F1F5E65F30087E010 /* LPEngineAnimationProperties.m in Sources */,
 				D7EE83601F5E65F30087E010 /* LPEngineModelInterfaceFactory.m in Sources */,
-				D7EE83611F5E65F30087E010 /* LPEngineModelInterface.h in Sources */,
 				D7EE83621F5E65F30087E010 /* LPEngineModelInterface.m in Sources */,
-				D7EE83631F5E65F30087E010 /* LPEngineModel.h in Sources */,
 				D7EE83641F5E65F30087E010 /* LPEngineModel.m in Sources */,
-				D7EE83651F5E65F30087E010 /* LPEngineDemoAnimations.h in Sources */,
 				D7EE83661F5E65F30087E010 /* LPEngineDemoAnimations.m in Sources */,
-				D7EE83671F5E65F30087E010 /* LPEngineScene.h in Sources */,
 				D7EE83681F5E65F30087E010 /* LPEngineScene.m in Sources */,
 				D7EE83691F5E65F30087E010 /* LPEngineDemos.m in Sources */,
 				D7EE836A1F5E65F30087E010 /* LPEngineDemos.h in Sources */,
-				D7EE836B1F5E65F30087E010 /* LPEnginePrimitives.h in Sources */,
 				D7EE836C1F5E65F30087E010 /* LPEnginePrimitives.m in Sources */,
-				D7EE836D1F5E65F30087E010 /* LPEngineTransforms.h in Sources */,
 				D7EE836E1F5E65F30087E010 /* LPEngineTransforms.m in Sources */,
 				D7EE835A1F5E3B580087E010 /* EngineMetalView.m in Sources */,
 				D7EE832D1F5E3A9C0087E010 /* ViewController.m in Sources */,
