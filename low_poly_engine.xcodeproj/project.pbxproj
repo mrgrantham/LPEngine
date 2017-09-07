@@ -42,7 +42,6 @@
 		D7EE83661F5E65F30087E010 /* LPEngineDemoAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D676931F5B606200D790F2 /* LPEngineDemoAnimations.m */; };
 		D7EE83681F5E65F30087E010 /* LPEngineScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8711F4B5B9800607F4E /* LPEngineScene.m */; };
 		D7EE83691F5E65F30087E010 /* LPEngineDemos.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8631F480BC400607F4E /* LPEngineDemos.m */; };
-		D7EE836A1F5E65F30087E010 /* LPEngineDemos.h in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8651F480BD500607F4E /* LPEngineDemos.h */; };
 		D7EE836C1F5E65F30087E010 /* LPEnginePrimitives.m in Sources */ = {isa = PBXBuildFile; fileRef = D78240DE1F4767FC005CE3C9 /* LPEnginePrimitives.m */; };
 		D7EE836E1F5E65F30087E010 /* LPEngineTransforms.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8611F48086F00607F4E /* LPEngineTransforms.m */; };
 		D7EE836F1F5E6D770087E010 /* engineShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = D76CBB0E1F46D96B00D51490 /* engineShaders.metal */; };
@@ -633,7 +632,6 @@
 				D7EE83661F5E65F30087E010 /* LPEngineDemoAnimations.m in Sources */,
 				D7EE83681F5E65F30087E010 /* LPEngineScene.m in Sources */,
 				D7EE83691F5E65F30087E010 /* LPEngineDemos.m in Sources */,
-				D7EE836A1F5E65F30087E010 /* LPEngineDemos.h in Sources */,
 				D7EE836C1F5E65F30087E010 /* LPEnginePrimitives.m in Sources */,
 				D7EE836E1F5E65F30087E010 /* LPEngineTransforms.m in Sources */,
 				D7EE835A1F5E3B580087E010 /* EngineMetalView.m in Sources */,

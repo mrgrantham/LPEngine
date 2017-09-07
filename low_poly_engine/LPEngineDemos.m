@@ -53,16 +53,16 @@
             LPPoint translation = {};
             translation.x = prim.virtualWidth / 2;
             translation.y = prim.virtualHeight / 4;
-            translation.z = -1500;
+            translation.z = -400;
             _demoScene.models[_arwingID].transformState.translation = translation;
             LPPoint scale = {.x=1.0, .y=1.0, .z=1.0};
             _demoScene.models[_arwingID].model.scale = scale;
             _demoScene.models[_arwingID].model.centerChanged = YES;
             [_demoScene.models[_arwingID].model findVertexCenter];
             
-            translation.x = prim.virtualWidth / 3;
+            translation.x = prim.virtualWidth / 5;
             translation.y = prim.virtualHeight / 5;
-            translation.z = -2000;
+            translation.z = -800;
             _demoScene.models[otherArwingID].transformState.translation = translation;
             
             
