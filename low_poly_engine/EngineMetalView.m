@@ -93,8 +93,8 @@
 //    [[EngineDemos sharedManager] triangleDemo];
     [[LPEngineDemos sharedManager] arwingDemo];
     
-    self.vertexData = self.primitives.vertexData;
-    self.vertexDataSize = self.primitives.vertexDataSize;
+    self.vertexData = self.primitives.vertexBackBuffer;
+    self.vertexDataSize = self.primitives.vertexBackBufferSize;
 //    NSLog(@"Number of Vertexes: %i",self.vertexDataSize);
     
     if (self.vertexData == nil) {
