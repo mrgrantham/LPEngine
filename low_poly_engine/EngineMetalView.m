@@ -101,18 +101,9 @@
         NSLog(@"Error: No Vertex Data");
         exit(EXIT_FAILURE);
     }
-//    else {
-//        float *vectors = (float *)self.vertexData;
-//        for (int i = 0; i < self.vertexDataSize; i++) {
-//            NSLog(@"V %d { %0.3f,%0.3f,%0.3f,%0.3f} {%0.3f,%0.3f,%0.3f,%0.3f}",i,vectors[(i*8)+0],vectors[(i*8)+1],vectors[(i*8)+2],vectors[(i*8)+3],vectors[(i*8)+4],vectors[(i*8)+5],vectors[(i*8)+6],vectors[(i*8)+7]);
-//        }
-//    }
-//    
-//    self.vertexBuffer = [self.device newBufferWithBytes: self.vertexData length: self.vertexDataSize * sizeof(Vertex) options: MTLResourceCPUCacheModeDefaultCache];
+
     self.vertexBuffer = [self.device newBufferWithBytesNoCopy: self.vertexData length: getVertexMemoryAllocationSize() options: MTLResourceCPUCacheModeDefaultCache deallocator:nil];
-//    self.vertexBuffer = [self.device newBufferWithBytesNoCopy: self.vertexData length: self.vertexDataSize * sizeof(Vertex) options: MTLResourceCPUCacheModeDefaultCache deallocator:^(void * _Nonnull pointer, NSUInteger length) {
-    
-//    }];
+
 
 }
 
