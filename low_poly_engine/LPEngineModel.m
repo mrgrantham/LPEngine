@@ -188,14 +188,14 @@
     }
 //    [self printLightFactors];
     
-    for (int vertex = 0; vertex < self.vertexCount; vertex++) {
-        static LPPoint temp;
-        temp = self.transformedVertices[vertex];
-        //EnginePrimitives *primitives = [EnginePrimitives sharedManager];
-        
-        temp = [LPEngineTransforms projectionTransformWithPoint:temp withCamera:[[LPEnginePrimitives sharedManager] camera]];
-        self.transformedVertices[vertex] = temp;
-    }
+//    for (int vertex = 0; vertex < self.vertexCount; vertex++) {
+//        static LPPoint temp;
+//        temp = self.transformedVertices[vertex];
+//        //EnginePrimitives *primitives = [EnginePrimitives sharedManager];
+//        
+//        temp = [LPEngineTransforms projectionTransformWithPoint:temp withCamera:[[LPEnginePrimitives sharedManager] camera]];
+//        self.transformedVertices[vertex] = temp;
+//    }
     
 }
 
