@@ -66,6 +66,7 @@
         [self printVertex];
         [self printFaces];
         [self printNormals];
+        _centerChanged = YES;
         [self findVertexCenter];
         
     }
