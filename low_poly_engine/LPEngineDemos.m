@@ -191,11 +191,6 @@
     [self.demoScene.models[_arwingID].model resetTransforms];
     LPPoint scale = {.x=1.0, .y=1.0, .z=1.0};
     self.demoScene.models[_arwingID].model.scale = scale;
-    LPPoint translation = {};
-    translation.x = 0;
-    translation.y = 0;
-    translation.z = 0;
-    self.demoScene.models[_arwingID].transformState.translation = translation;
 }
 
 - (void) resetFlight {
