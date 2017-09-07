@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D70194051F60C85E00464ECB /* LPEngineTransformState.m in Sources */ = {isa = PBXBuildFile; fileRef = D70194041F60C85E00464ECB /* LPEngineTransformState.m */; };
 		D76366A01F5B705E004B737B /* LPEngineBaseAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = D763669F1F5B705E004B737B /* LPEngineBaseAnimations.m */; };
 		D76366A31F5B7711004B737B /* LPEngineAnimationProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D76366A21F5B7711004B737B /* LPEngineAnimationProperties.m */; };
 		D76CBAD41F46716700D51490 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D76CBAD31F46716700D51490 /* AppDelegate.m */; };
@@ -43,6 +44,7 @@
 		D7EE836C1F5E65F30087E010 /* LPEnginePrimitives.m in Sources */ = {isa = PBXBuildFile; fileRef = D78240DE1F4767FC005CE3C9 /* LPEnginePrimitives.m */; };
 		D7EE836E1F5E65F30087E010 /* LPEngineTransforms.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8611F48086F00607F4E /* LPEngineTransforms.m */; };
 		D7EE836F1F5E6D770087E010 /* engineShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = D76CBB0E1F46D96B00D51490 /* engineShaders.metal */; };
+		D7EE83721F6050A40087E010 /* LPEngineSceneModelState.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EE83711F6050A40087E010 /* LPEngineSceneModelState.m */; };
 		D7F6B8621F48086F00607F4E /* LPEngineTransforms.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8611F48086F00607F4E /* LPEngineTransforms.m */; };
 		D7F6B8641F480BC400607F4E /* LPEngineDemos.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8631F480BC400607F4E /* LPEngineDemos.m */; };
 		D7F6B8681F4A15B700607F4E /* LPEngineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6B8671F4A15B700607F4E /* LPEngineModel.m */; };
@@ -83,6 +85,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D70194031F60C85E00464ECB /* LPEngineTransformState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEngineTransformState.h; sourceTree = "<group>"; };
+		D70194041F60C85E00464ECB /* LPEngineTransformState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineTransformState.m; sourceTree = "<group>"; };
 		D763669E1F5B705E004B737B /* LPEngineBaseAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEngineBaseAnimations.h; sourceTree = "<group>"; };
 		D763669F1F5B705E004B737B /* LPEngineBaseAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineBaseAnimations.m; sourceTree = "<group>"; };
 		D76366A11F5B7711004B737B /* LPEngineAnimationProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEngineAnimationProperties.h; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 		D7EE83561F5E3B2D0087E010 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D7EE83581F5E3B580087E010 /* EngineMetalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineMetalView.h; sourceTree = "<group>"; };
 		D7EE83591F5E3B580087E010 /* EngineMetalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineMetalView.m; sourceTree = "<group>"; };
+		D7EE83701F6050A40087E010 /* LPEngineSceneModelState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEngineSceneModelState.h; sourceTree = "<group>"; };
+		D7EE83711F6050A40087E010 /* LPEngineSceneModelState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineSceneModelState.m; sourceTree = "<group>"; };
 		D7F6B8601F48084F00607F4E /* LPEngineTransforms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEngineTransforms.h; sourceTree = "<group>"; };
 		D7F6B8611F48086F00607F4E /* LPEngineTransforms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineTransforms.m; sourceTree = "<group>"; };
 		D7F6B8631F480BC400607F4E /* LPEngineDemos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineDemos.m; sourceTree = "<group>"; };
@@ -288,6 +294,8 @@
 				D7F6B8671F4A15B700607F4E /* LPEngineModel.m */,
 				D7D676921F5B606200D790F2 /* LPEngineDemoAnimations.h */,
 				D7D676931F5B606200D790F2 /* LPEngineDemoAnimations.m */,
+				D7EE83701F6050A40087E010 /* LPEngineSceneModelState.h */,
+				D7EE83711F6050A40087E010 /* LPEngineSceneModelState.m */,
 				D7F6B8701F4B5B9800607F4E /* LPEngineScene.h */,
 				D7F6B8711F4B5B9800607F4E /* LPEngineScene.m */,
 				D7F6B8631F480BC400607F4E /* LPEngineDemos.m */,
@@ -295,6 +303,8 @@
 				D78240DD1F4767E3005CE3C9 /* LPEnginePrimitives.h */,
 				D78240DE1F4767FC005CE3C9 /* LPEnginePrimitives.m */,
 				D7F6B8601F48084F00607F4E /* LPEngineTransforms.h */,
+				D70194031F60C85E00464ECB /* LPEngineTransformState.h */,
+				D70194041F60C85E00464ECB /* LPEngineTransformState.m */,
 				D7F6B8611F48086F00607F4E /* LPEngineTransforms.m */,
 			);
 			name = LPEngineCore;
@@ -573,6 +583,7 @@
 			files = (
 				D76366A01F5B705E004B737B /* LPEngineBaseAnimations.m in Sources */,
 				D78240DF1F4767FC005CE3C9 /* LPEnginePrimitives.m in Sources */,
+				D70194051F60C85E00464ECB /* LPEngineTransformState.m in Sources */,
 				D7D676941F5B606200D790F2 /* LPEngineDemoAnimations.m in Sources */,
 				D76CBB0F1F46D96B00D51490 /* engineShaders.metal in Sources */,
 				D76CBB0C1F46BF8C00D51490 /* EngineMetalView.m in Sources */,
@@ -584,6 +595,7 @@
 				D7F6B8641F480BC400607F4E /* LPEngineDemos.m in Sources */,
 				D76CBAD41F46716700D51490 /* AppDelegate.m in Sources */,
 				D7F6B86F1F4A204800607F4E /* LPEngineModelInterfaceFactory.m in Sources */,
+				D7EE83721F6050A40087E010 /* LPEngineSceneModelState.m in Sources */,
 				D7F6B8681F4A15B700607F4E /* LPEngineModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -996,6 +1008,7 @@
 				D7EE834E1F5E3A9C0087E010 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D7EE83541F5E3A9D0087E010 /* Build configuration list for PBXNativeTarget "LPEngine iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -1004,6 +1017,7 @@
 				D7EE83501F5E3A9C0087E010 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D7EE83551F5E3A9D0087E010 /* Build configuration list for PBXNativeTarget "LPEngine iOSUITests" */ = {
 			isa = XCConfigurationList;
@@ -1012,6 +1026,7 @@
 				D7EE83521F5E3A9C0087E010 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
