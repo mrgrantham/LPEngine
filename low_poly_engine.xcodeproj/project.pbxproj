@@ -22,6 +22,8 @@
 		D76CBB0F1F46D96B00D51490 /* engineShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = D76CBB0E1F46D96B00D51490 /* engineShaders.metal */; };
 		D78240DF1F4767FC005CE3C9 /* LPEnginePrimitives.m in Sources */ = {isa = PBXBuildFile; fileRef = D78240DE1F4767FC005CE3C9 /* LPEnginePrimitives.m */; };
 		D7BB820D1F5B2A8E0035D58F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BB820C1F5B2A8E0035D58F /* Accelerate.framework */; };
+		D7CF3D901F6110E000C347F1 /* LPEngineSceneModelState.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EE83711F6050A40087E010 /* LPEngineSceneModelState.m */; };
+		D7CF3D911F6110ED00C347F1 /* LPEngineTransformState.m in Sources */ = {isa = PBXBuildFile; fileRef = D70194041F60C85E00464ECB /* LPEngineTransformState.m */; };
 		D7D676941F5B606200D790F2 /* LPEngineDemoAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D676931F5B606200D790F2 /* LPEngineDemoAnimations.m */; };
 		D7EE83271F5E3A9C0087E010 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EE83261F5E3A9C0087E010 /* main.m */; };
 		D7EE832A1F5E3A9C0087E010 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EE83291F5E3A9C0087E010 /* AppDelegate.m */; };
@@ -620,6 +622,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7CF3D911F6110ED00C347F1 /* LPEngineTransformState.m in Sources */,
+				D7CF3D901F6110E000C347F1 /* LPEngineSceneModelState.m in Sources */,
 				D7EE836F1F5E6D770087E010 /* engineShaders.metal in Sources */,
 				D7EE835D1F5E65F30087E010 /* LPEngineBaseAnimations.m in Sources */,
 				D7EE835F1F5E65F30087E010 /* LPEngineAnimationProperties.m in Sources */,

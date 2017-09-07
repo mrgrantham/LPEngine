@@ -246,29 +246,6 @@ NS_INLINE void drawScanLine(int32_t leftX, int32_t rightX, int32_t leftZ, int32_
     }
 }
 
-//- (Vertex *)addVertex:(Vertex)vertex To:(Vertex*)source OfSize:(NSInteger*)sourceSize {
-//    static NSInteger multiplier = 0;
-//    static const NSInteger sizeIncreaseMargin = 300000;
-//    Vertex *tempSource;
-//    if (source == nil) {
-//        NSLog(@"Initial Allocation");
-//        source = malloc(sizeof(Vertex) * sizeIncreaseMargin * (multiplier+1));
-//        multiplier++;
-//    } else if (*sourceSize >= (sizeIncreaseMargin * multiplier)) {
-//        tempSource = malloc(sizeof(Vertex) * sizeIncreaseMargin * (multiplier + 1));
-//        memcpy(tempSource, source, *sourceSize * sizeof(Vertex));
-//        free(source);
-//        source = tempSource;
-//        multiplier++;
-//        NSLog(@"source size %li",(long)*sourceSize);
-//    }
-//    vertex.pointsize = pointSize;
-//    memcpy(&source[*sourceSize], &vertex, sizeof(Vertex));
-//
-//    
-//    (*sourceSize)++;
-//    return source;
-//}
 
 - (Vertex *)vertexData {
     return vertexData;
@@ -299,51 +276,6 @@ NS_INLINE void drawScanLine(int32_t leftX, int32_t rightX, int32_t leftZ, int32_
     return self;
 }
 
-//- (void) drawPixelAtX:(NSInteger)x Y:(NSInteger)y {
-//    
-//    // just adds pixel vertex to vertex_data for 2 triangles
-//    static Vertex upperLeft;
-//    static Vertex upperRight;
-//    static Vertex lowerLeft;
-//    static Vertex lowerRight;
-//    
-//    
-//    upperLeft.position  = (vector_float4){  ((( x * pixelWidth )/  canvas.width) * 2) - 1.0,
-//                                            ((( y * pixelWidth )/ canvas.height) * 2) - 1.0,
-//                                                                            0,
-//                                                                          1.0};
-//    
-//    upperRight.position = (vector_float4){ (((( x * pixelWidth ) + pixelWidth ) /  canvas.width) * 2) - 1.0,
-//                                                            (((y * pixelWidth ) / canvas.height) * 2) - 1.0,
-//                                                                                            0,
-//                                                                                          1.0};
-//    
-//    lowerLeft.position  = (vector_float4){  ((( x * pixelWidth ) /  canvas.width) * 2) - 1.0,
-//                            ((( ( y * pixelWidth ) + pixelWidth) / canvas.height) * 2) - 1.0,
-//                                                                             0,
-//                                                                           1.0};
-//    
-//    lowerRight.position = (vector_float4){ (((( x * pixelWidth ) + pixelWidth) / canvas.width) * 2) - 1.0,
-//                                          (((( y * pixelWidth ) + pixelWidth )/ canvas.height) * 2) - 1.0,
-//                                                                                          0,
-//                                                                                        1.0};
-//    
-//    upperLeft.color     = color;
-//    upperRight.color    = color;
-//    lowerLeft.color     = color;
-//    lowerRight.color    = color;
-//    
-//    // Upper Left Tiangle
-//    vertexData = addVertex(upperLeft, vertexData, &vertexDataSize);
-//    vertexData = addVertex(upperRight, vertexData, &vertexDataSize);
-//    vertexData = addVertex(lowerLeft, vertexData, &vertexDataSize);
-//
-//    // Lower Right Triangle
-//    vertexData = addVertex(lowerRight, vertexData, &vertexDataSize);
-//    vertexData = addVertex(upperRight, vertexData, &vertexDataSize);
-//    vertexData = addVertex(lowerLeft, vertexData, &vertexDataSize);
-//}
-//
 - (void) setColorWithRed:(NSInteger)red Green: (NSInteger) green Blue:(NSInteger)blue {
     color = (vector_float4){(float)red/255.0f,(float)green/255.0f,(float)blue/255.0f,1.0};
     

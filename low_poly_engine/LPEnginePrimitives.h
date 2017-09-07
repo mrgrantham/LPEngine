@@ -53,14 +53,11 @@ NSInteger getVertexMemoryAllocationSize();
 
 
 - (void) clearVertices;
-//- (Vertex *)addVertex:(Vertex)vertex To:(Vertex*)source OfSize:(NSInteger*)sourceSize;
-
 - (Vertex *)vertexData;
 - (NSInteger)vertexDataSize;
 
 + (id) sharedManager;
 
-//- (void) drawPixelAtX:(NSInteger)x Y:(NSInteger)y;
 - (void) setColorWithRed:(NSInteger)red Green: (NSInteger) green Blue:(NSInteger)blue ;
 
 - (CGSize) canvasSize;
@@ -83,7 +80,6 @@ NSInteger getVertexMemoryAllocationSize();
 - (void)drawTriangleAtCopiedPoint1:(LPPoint) p1 Point2:(LPPoint) p2 Point3:(LPPoint) p3;
 - (void)drawTriangleAtX1:(NSInteger)x1 Y1:(NSInteger)y1 X2:(NSInteger)x2 Y2:(NSInteger)y2 X3:(NSInteger)x3 Y3:(NSInteger)y3;
 - (void)drawTriangle:(LPTriangle*) triangle;
-//- (void)drawScanLineAtLeftX:(NSInteger)leftX RightX:(NSInteger)rightX LeftZ:(NSInteger)leftZ RightZ:(NSInteger)rightZ Y:(NSInteger)y;
 
 @end
 
