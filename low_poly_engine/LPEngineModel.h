@@ -19,8 +19,6 @@ typedef NS_ENUM(NSInteger, LPEngineDrawStyle) {
 
 @interface LPEngineModel : NSObject
 
-@property (nonatomic, assign) vector_float4 *drawableVerticesSolid;
-@property (nonatomic, assign) vector_float4 *drawableVerticesWireframe;
 @property (nonatomic, readonly) LPEngineModelInterface *engineModelProperties;
 
 
