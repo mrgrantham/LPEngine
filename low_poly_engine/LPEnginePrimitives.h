@@ -54,6 +54,9 @@ NSInteger getVertexMemoryAllocationSize();
 
 - (void) clearVertices;
 - (Vertex *)vertexData;
+- (Vertex *)vertexBackBuffer;
+- (NSInteger)vertexBackBufferSize;
+- (void)commitFrameToBackBuffer;
 - (NSInteger)vertexDataSize;
 
 + (id) sharedManager;

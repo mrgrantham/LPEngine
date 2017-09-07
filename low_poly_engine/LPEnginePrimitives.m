@@ -92,7 +92,10 @@ LPPoint normalize(LPPoint point) {
 }
 
 static Vertex *vertexData;
+static Vertex *vertexBackBuffer;
+static NSInteger vertexBackBufferMemoryAllocationSize;
 static NSInteger vertexDataSize;
+static NSInteger vertexBackBufferSize;
 
 //void* AllocateVirtualMemory(size_t size)
 //{
@@ -249,6 +252,24 @@ NS_INLINE void drawScanLine(int32_t leftX, int32_t rightX, int32_t leftZ, int32_
 
 - (Vertex *)vertexData {
     return vertexData;
+}
+
+- (Vertex *)vertexBackBuffer {
+    return vertexBackBuffer;
+}
+
+- (NSInteger)vertexBackBufferSize {
+    return vertexBackBufferSize;
+}
+
+- (void)commitFrameToBackBuffer {
+    if (vertexMemoryAllocationSize > vertexBackBufferMemoryAllocationSize) {
+        free(vertexBackBuffer);
+        vertexBackBuffer = AllocateAlignedMemory(vertexMemoryAllocationSize);
+        vertexBackBufferMemoryAllocationSize = vertexMemoryAllocationSize;
+    }
+    memcpy(vertexBackBuffer, vertexData, sizeof(Vertex) * vertexDataSize);
+    vertexBackBufferSize = vertexDataSize;
 }
 
 - (NSInteger)vertexDataSize {
