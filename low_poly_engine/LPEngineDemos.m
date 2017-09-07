@@ -1,4 +1,4 @@
-//
+
 //  EngineDemos.m
 //  low_poly_engine
 //
@@ -27,28 +27,47 @@
 
 - (id) init {
     if (self = [super init]) {
-        if (_arwing == nil) {
+        if (_demoScene == nil) {
+            // Configure model
             LPEngineModelInterface *modelProperties = [[LPEngineModelInterface alloc] init];
             modelProperties.vertices = (int16_t*)arwingVertices;
             modelProperties.vertexCount = sizeof(arwingVertices) / (sizeof(int16_t) * 3);
             modelProperties.faces = (int16_t*)arwingFaces;
             modelProperties.faceCount = sizeof(arwingFaces) / (sizeof(int16_t) * 3);
-            LPPoint lightSource = {.x=0.5, .y=0.8, .z=0.5};
-            modelProperties.lightSource = lightSource;
             NSLog(@"light source: %@", NSStringFromLPPoint(modelProperties.lightSource));
+            LPEngineModel *arwing = [[LPEngineModel alloc] initWithProperties:modelProperties];
+            
+            //Create scene
+            _demoScene = [[LPEngineScene alloc] init];
+            LPPoint lightSource = {.x=0.5, .y=0.8, .z=0.5};
+            _demoScene.lightSource = lightSource;
+            
+            // Place Model in Scene
+            _arwingID = [_demoScene addModel:arwing];
+            
+            NSInteger otherArwingID = [_demoScene addModel:arwing];
 
-            _arwing = [[LPEngineModel alloc] initWithProperties:modelProperties];
-            LPPoint translation = {};
             LPEnginePrimitives *prim = [LPEnginePrimitives sharedManager];
+
+            // Position model in scene
+            LPPoint translation = {};
             translation.x = prim.virtualWidth / 2;
             translation.y = prim.virtualHeight / 4;
-            translation.z = -800;
-            _arwing.translation = translation;
-            LPPoint scale = {.x=2.0, .y=2.0, .z=2.0};
-            _arwing.scale = scale;
-            _arwing.centerChanged = YES;
-            [_arwing findVertexCenter];
+            translation.z = -1500;
+            _demoScene.models[_arwingID].transformState.translation = translation;
+            LPPoint scale = {.x=1.0, .y=1.0, .z=1.0};
+            _demoScene.models[_arwingID].model.scale = scale;
+            _demoScene.models[_arwingID].model.centerChanged = YES;
+            [_demoScene.models[_arwingID].model findVertexCenter];
+            
+            translation.x = prim.virtualWidth / 3;
+            translation.y = prim.virtualHeight / 5;
+            translation.z = -2000;
+            _demoScene.models[otherArwingID].transformState.translation = translation;
+            
+            
             _rotateContinuous = NO;
+            
             
             
             
@@ -57,7 +76,7 @@
             rotateVector.y = 3*M_PI/4;
             [self resetArwing];
             [self resetFlight];
-            [_arwing rotateWithVector:rotateVector];
+            [_demoScene.models[_arwingID].model rotateWithVector:rotateVector];
             
 //            _rotationRadians = {};
 //            _translationRadians = {};
@@ -104,12 +123,12 @@
     if (self.rotateContinuous) {
         static LPPoint rotationVector = {};
         rotationVector.y = 0.015;
-        [self.arwing rotateWithVector:rotationVector];
+        [self.demoScene.models[_arwingID].model rotateWithVector:rotationVector];
     }
     if (self.translateContinuous) {
         static float translationRadian = M_PI / 2;
         translationVector.x = (sin(translationRadian) * 50) ;
-        [self.arwing translateWithVector:translationVector];
+        [self.demoScene.models[_arwingID].model translateWithVector:translationVector];
         translationRadian += 0.1;
         translationRadian = translationRadian >= (M_PI * 2) ? translationRadian - (M_PI * 2): translationRadian;
     }
@@ -122,7 +141,7 @@
         scaleVector.y = sineValue * 0.02;
         scaleVector.z = sineValue * 0.02;
 
-        [self.arwing scaleWithVector:scaleVector];
+        [self.demoScene.models[_arwingID].model scaleWithVector:scaleVector];
         scaleRadian += 0.1;
         scaleRadian = scaleRadian >= (M_PI * 2) ? scaleRadian - (M_PI * 2): scaleRadian;
     }
@@ -133,16 +152,16 @@
         translateVector.x = 0;
         translateVector.y = sineValue * 5;
         translateVector.z = 0;
-        [self.arwing translateWithVector:translateVector];
+        [self.demoScene.models[_arwingID].model translateWithVector:translateVector];
         
         sineValue = sin(self.rotationRadians.x + (1.22   *M_PI));
 //        NSLog(@"Rotation sineValue: %0.2f",sineValue);
         static LPPoint rotateVector = {};
         //        NSLog(@"sineValue: %0.2f", sineValue);
         rotateVector.x = sineValue * 0.17;
-        rotateVector.y = self.arwing.rotation.y;
+        rotateVector.y = self.demoScene.models[_arwingID].model.rotation.y;
         rotateVector.z = 0;
-        self.arwing.rotation = rotateVector;
+        self.demoScene.models[_arwingID].model.rotation = rotateVector;
         
         
         LPPoint temp = self.translationRadians;
@@ -157,27 +176,26 @@
     }
     
     [[LPEnginePrimitives sharedManager] resetDepthBuffer];
-    [self.arwing findVertexCenter];
-    self.arwing.rotationAxis = self.arwing.center;
-    [self.arwing transformVertices];
+    [self.demoScene.models[_arwingID].model findVertexCenter];
+    self.demoScene.models[_arwingID].model.rotationAxis = self.demoScene.models[_arwingID].model.center;
+    [self.demoScene.models[_arwingID].model transformVertices];
     
-    [self.arwing draw:LPEngineDrawSolid];
+    [self.demoScene draw];
     
 }
 
 - (void) resetArwing {
-    LPEnginePrimitives *prim = [LPEnginePrimitives sharedManager];
     self.scaleContinuous = NO;
     self.rotateContinuous = NO;
     self.translateContinuous = NO;
-    [self.arwing resetTransforms];
-    LPPoint scale = {.x=2.0, .y=2.0, .z=2.0};
-    self.arwing.scale = scale;
+    [self.demoScene.models[_arwingID].model resetTransforms];
+    LPPoint scale = {.x=1.0, .y=1.0, .z=1.0};
+    self.demoScene.models[_arwingID].model.scale = scale;
     LPPoint translation = {};
-    translation.x = prim.virtualWidth / 2;
-    translation.y = prim.virtualHeight / 4;
-    translation.z = -800;
-    self.arwing.translation = translation;
+    translation.x = 0;
+    translation.y = 0;
+    translation.z = 0;
+    self.demoScene.models[_arwingID].transformState.translation = translation;
 }
 
 - (void) resetFlight {

@@ -10,10 +10,11 @@
 #define EngineDemos_h
 
 #import "LPEngineModel.h"
+#import "LPEngineScene.h"
 
 @interface LPEngineDemos : NSObject
 
-@property (nonatomic, strong) LPEngineModel* arwing;
+@property (nonatomic, strong) LPEngineScene* demoScene;
 @property (nonatomic, assign) BOOL rotateContinuous;
 @property (nonatomic, assign) BOOL translateContinuous;
 @property (nonatomic, assign) BOOL scaleContinuous;
@@ -24,7 +25,7 @@
 @property (nonatomic, assign) LPPoint rotationRadians;
 @property (nonatomic, assign) LPPoint translationRadians;
 @property (nonatomic, assign) LPPoint scaleRadians;
-
+@property (nonatomic, assign) NSInteger arwingID;
 
 + (id)sharedManager;
 - (id) init;
