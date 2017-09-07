@@ -19,7 +19,7 @@
 
         _transformState = [[LPEngineTransformState alloc] init];
         memset(_normals,0,sizeof(LPPoint) * model.faceCount);
-        memset(_lightFactors,0,sizeof(LPPoint) * model.faceCount);
+        memset(_lightFactors,0,sizeof(float) * model.faceCount);
         memset(_transformedVertices,0,sizeof(LPPoint) * model.vertexCount);
 
     }
