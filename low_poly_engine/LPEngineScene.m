@@ -47,6 +47,9 @@
                                 Point3:&modelState.transformedVertices[(NSInteger)*(point + 2)]];
         }
     }
+    
+    // copy completed frame to backbuffer
+    [self.primitives commitFrameToBackBuffer];
 }
 
 - (void)transformVertices {
