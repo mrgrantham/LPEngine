@@ -11,7 +11,11 @@
 @implementation LPEngineScene
 
 - (NSInteger)addModel:(LPEngineModel *)model {
-    NSInteger temp = 1;
+    static NSInteger ID = -1;
+    ID++;
+    model.lightSource = self.lightSource;
+    LPEngineSceneModelState *modelState = [[LPEngineSceneModelState alloc] initWithModel:model];
+    [self.models addObject:modelState];
     
     return temp;
 }
