@@ -160,7 +160,7 @@
     NSLog(@"counterclockwise!!!");
     LPPoint rotationVector = {};
     rotationVector.y = 0.05;
-    [[[LPEngineDemos sharedManager] arwing] rotateWithVector:rotationVector];
+    [demo.demoScene.models[demo.arwingID].model rotateWithVector:rotationVector];
 }
 
 - (IBAction)rotateClockwise:(id)sender {
@@ -169,7 +169,7 @@
     NSLog(@"clockwise!!!");
     LPPoint rotationVector = {};
     rotationVector.y = -0.05;
-    [[[LPEngineDemos sharedManager] arwing] rotateWithVector:rotationVector];
+    [demo.demoScene.models[demo.arwingID].model rotateWithVector:rotationVector];
 }
 
 - (IBAction)translateLeft:(id)sender {
@@ -178,7 +178,7 @@
     NSLog(@"translate left");
     LPPoint rotationVector = {};
     rotationVector.x = -5;
-    [[[LPEngineDemos sharedManager] arwing] translateWithVector:rotationVector];
+    [demo.demoScene.models[demo.arwingID].model translateWithVector:rotationVector];
 }
 
 - (IBAction)translateRight:(id)sender {
@@ -187,7 +187,7 @@
     NSLog(@"translate right");
     LPPoint translationVector = {};
     translationVector.x = 5;
-    [[[LPEngineDemos sharedManager] arwing] translateWithVector:translationVector];
+    [demo.demoScene.models[demo.arwingID].model translateWithVector:translationVector];
 }
 
 - (IBAction)scaleSmaller:(id)sender {
@@ -198,7 +198,7 @@
     scaleVector.x =  -0.05;
     scaleVector.y =  -0.05;
     scaleVector.z =  -0.05;
-    [[[LPEngineDemos sharedManager] arwing] scaleWithVector:scaleVector];
+    [demo.demoScene.models[demo.arwingID].model scaleWithVector:scaleVector];
 }
 
 - (IBAction)scaleLarger:(id)sender {
@@ -209,7 +209,7 @@
     scaleVector.x =  0.05;
     scaleVector.y =  0.05;
     scaleVector.z =  0.05;
-    [[[LPEngineDemos sharedManager] arwing] scaleWithVector:scaleVector];
+    [demo.demoScene.models[demo.arwingID].model scaleWithVector:scaleVector];
 }
 
 - (IBAction)rotateContinuous:(id)sender {
@@ -254,7 +254,7 @@
     LPEngineDemos *demo = [LPEngineDemos sharedManager];
     [demo resetArwing];
     [demo resetFlight];
-    [[demo arwing] rotateWithVector:rotateVector];
+    [demo.demoScene.models[demo.arwingID].model rotateWithVector:rotateVector];
     
     if (demo.flyContinuous) {
         demo.flyContinuous = NO;
@@ -263,28 +263,28 @@
     }
 }
 - (IBAction)updateLightSourceX:(NSSlider*)sender {
-    LPPoint temp = {};
-    temp = [[[LPEngineDemos sharedManager] arwing] lightSource];
+    LPEngineDemos *demo = [LPEngineDemos sharedManager];
+    LPPoint temp = [demo.demoScene.models[demo.arwingID].model lightSource];
     float factor = (float)(sender.intValue) / 100.0;
     temp.x = factor;
-    [[LPEngineDemos sharedManager] arwing].lightSource = temp;
+    demo.demoScene.lightSource = temp;
     self.lightDirectionX.stringValue = [NSString stringWithFormat:@"X %1.2f",factor];
 }
 - (IBAction)updateLightSourceY:(NSSlider*)sender {
-    LPPoint temp = {};
-    temp = [[[LPEngineDemos sharedManager] arwing] lightSource];
+    LPEngineDemos *demo = [LPEngineDemos sharedManager];
+    LPPoint temp = [demo.demoScene.models[demo.arwingID].model lightSource];
     float factor = (float)(sender.intValue) / 100.0;
     temp.y = factor;
-    [[LPEngineDemos sharedManager] arwing].lightSource = temp;
+    demo.demoScene.lightSource = temp;
     self.lightDirectionY.stringValue = [NSString stringWithFormat:@"Y %1.2f",factor];
     
 }
 - (IBAction)updateLightSourceZ:(NSSlider*)sender {
-    LPPoint temp = {};
-    temp = [[[LPEngineDemos sharedManager] arwing] lightSource];
+    LPEngineDemos *demo = [LPEngineDemos sharedManager];
+    LPPoint temp = [demo.demoScene.models[demo.arwingID].model lightSource];
     float factor = (float)(sender.intValue) / 100.0;
     temp.z = factor;
-    [[LPEngineDemos sharedManager] arwing].lightSource = temp;
+    demo.demoScene.lightSource = temp;
     self.lightDirectionZ.stringValue = [NSString stringWithFormat:@"Z %1.2f",factor];
 }
 
