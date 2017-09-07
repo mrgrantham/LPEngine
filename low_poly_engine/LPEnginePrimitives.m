@@ -500,8 +500,8 @@ NS_INLINE void drawScanLine(int32_t leftX, int32_t rightX, int32_t leftZ, int32_
     ZR = top.z;
     //text("SETUP TIME: " + (millis() - setup_time), 850,60);
     //draw_time = millis();
-    LPTriangle triangle = LPTriangleMake(top, middle, bottom);
-    [self debugWithTriangle:triangle];
+//    LPTriangle triangle = LPTriangleMake(top, middle, bottom);
+//    [self debugWithTriangle:triangle];
     static BOOL pointChanged = YES;
     
     if(edge > 0) {  // right pointing triangle
