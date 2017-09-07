@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "LPEngineModel.h"
+#import "LPEngineTransforms.h"
+#import "LPEnginePrimitives.h"
+#import "LPEngineSceneModelState.h"
 
 typedef NS_ENUM(NSInteger, LPEngineModelTransform) {
     LPEngineModelTransformRotate,
@@ -16,11 +19,19 @@ typedef NS_ENUM(NSInteger, LPEngineModelTransform) {
 };
 
 
+
+
 @interface LPEngineScene : NSObject
+
+@property (nonatomic, strong) NSMutableArray<LPEngineSceneModelState *> *models;
+@property (nonatomic, strong) LPEnginePrimitives *primitives;
+@property (nonatomic, assign) LPPoint lightSource;
 
 - (NSInteger)addModel:(LPEngineModel *)model;
 - (void)transformModelWithID:(NSInteger)modelID
-              Transformation:(LPEngineModelTransform)transformation;
-
+              Transformation:(LPEngineTransformState*)transformation;
+- (void)transformVertices;
+- (void)draw;
+- (id)init;
 
 @end
