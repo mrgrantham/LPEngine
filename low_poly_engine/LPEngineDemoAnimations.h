@@ -11,6 +11,5 @@
 
 @interface LPEngineDemoAnimations : NSObject
 
-typedef LPTriangle LPTransformationSettings;
 
 @end
