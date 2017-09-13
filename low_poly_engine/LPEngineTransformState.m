@@ -9,8 +9,13 @@
 
 
 #import "LPEngineTransformState.h"
+#import "LPEnginePrimitives.h"
 
 @implementation LPEngineTransformState
+
+- (NSString *)string {
+    return [NSString stringWithFormat:@"Tran  %@\nRot   %@\nScale %@",NSStringFromLPPoint(_translation), NSStringFromLPPoint(_rotation), NSStringFromLPPoint(_scale)];
+}
 
 @end
 

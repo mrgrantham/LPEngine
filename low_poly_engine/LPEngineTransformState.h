@@ -18,6 +18,9 @@
 @property (nonatomic, assign) LPPoint translation;
 @property (nonatomic, assign) LPPoint scale;
 
+
+- (NSString *)string;
+
 @end
 
 #endif
