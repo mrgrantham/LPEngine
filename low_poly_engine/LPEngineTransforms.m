@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "LPEngineTransforms.h"
+#import <simd/simd.h>
 
 static float _3Dmatrix[3][3];
 
@@ -155,26 +156,59 @@ static float _3Dmatrix[3][3];
     return scaledPoint;
 }
 
-+ (LPPoint) projectionTransformWithPoint:(LPPoint)point withCamera:(LPPoint)camera {
++ (matrix_float4x4)translationMatrixAtPosition: (LPPoint)position{
+    vector_float4 X = {1, 0, 0, 0};
+    vector_float4 Y = {0, 1, 0, 0};
+    vector_float4 Z = {0, 0, 1, 0};
+    vector_float4 W = {position.x, position.y, position.z, 1};
+    return (matrix_float4x4){X, Y, Z, W};
+}
 
-    static LPPoint _2Dpoint = {};
-    static LPPoint D = {};
++ (matrix_float4x4)projectionMatrixNear:(float)near Far:(float)far Aspect:(float)aspect FieldOfView:(float)fovy {
+    static float scaleY;
+    static float scaleX;
+    static float scaleZ;
+    static float scaleW;
+    scaleY = 1 / tan(fovy * 0.5);
+    scaleX = scaleY / aspect;
+    scaleZ = -(far + near) / (far - near);
+    scaleW = -2 * far * near / (far - near);
     
+    vector_float4 X = {scaleX, 0, 0, 0};
+    vector_float4 Y = {0, scaleY, 0, 0};
+    vector_float4 Z = {0, 0, scaleZ, -1};
+    vector_float4 W = {0, 0, scaleW, 0};
+    return (matrix_float4x4){X, Y, Z, W};
+}
+
+
++ (void)projectionTransformWithPoint:(Vertex*)point withCamera:(LPPoint)camera {
+
+//    static LPPoint _2Dpoint = {};
+//    static LPPoint D = {};
+//    
+//    
+//    // more complex if camera viewport is rotated
+//    D.x = point.x - camera.x;
+//    D.y = point.y - camera.y;
+//    D.z = point.z - camera.z;
+//    
+//    _2Dpoint.x = (NSInteger)(-camera.z * D.x / (float)D.z);
+//    _2Dpoint.y = (NSInteger)(-camera.z * D.y / (float)D.z);
+//    _2Dpoint.z = (NSInteger)D.z;
+//    
+//    _2Dpoint.x += camera.x;
+//    _2Dpoint.y += camera.y;
+//    _2Dpoint.z += camera.z;
+//
+    float aspect = (float)([[LPEnginePrimitives sharedManager] canvasSize].width / [[LPEnginePrimitives sharedManager] canvasSize].height);
+    matrix_float4x4 projMatrix = [LPEngineTransforms projectionMatrixNear:0.1 Far: 900 Aspect: aspect FieldOfView: 0.6];
+//    matrix_float4x4 viewMatrix =  [LPEngineTransforms translationMatrixAtPosition:camera];
+    //    matrix_float4x4 modelViewProjectionMatrix = matrix_multiply(projMatrix, viewMatrix);
+    matrix_float4x4 modelViewProjectionMatrix = projMatrix;
     
-    // more complex if camera viewport is rotated
-    D.x = point.x - camera.x;
-    D.y = point.y - camera.y;
-    D.z = point.z - camera.z;
-    
-    _2Dpoint.x = (NSInteger)(-camera.z * D.x / (float)D.z);
-    _2Dpoint.y = (NSInteger)(-camera.z * D.y / (float)D.z);
-    _2Dpoint.z = (NSInteger)D.z;
-    
-    _2Dpoint.x += camera.x;
-    _2Dpoint.y += camera.y;
-    _2Dpoint.z += camera.z;
-    
-    return _2Dpoint;
+//    return _2Dpoint;
+    point->position =  matrix_multiply(modelViewProjectionMatrix, point->position);
 }
 
 

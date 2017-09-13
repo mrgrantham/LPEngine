@@ -21,7 +21,8 @@
 
 + (LPPoint) translatePoint:(LPPoint)point WithVector:(LPPoint)translationVector;
 + (LPPoint) scalePoint:(LPPoint)point fromPoint:(LPPoint)centerPoint WithVector:(LPPoint)scaleVector;
-+ (LPPoint) projectionTransformWithPoint:(LPPoint)point withCamera:(LPPoint)camera;
++ (matrix_float4x4)projectionMatrixNear:(float)near Far:(float)far Aspect:(float)aspect FieldOfView:(float)fovy;
++ (void)projectionTransformWithPoint:(Vertex *)point withCamera:(LPPoint)camera;
 + (LPPoint) calculateSurfaceNormalWithPlane:(LPTriangle)plane;
 @end
 
