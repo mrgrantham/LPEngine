@@ -21,6 +21,7 @@
 		D76CBB0C1F46BF8C00D51490 /* EngineMetalView.m in Sources */ = {isa = PBXBuildFile; fileRef = D76CBB0B1F46BF8C00D51490 /* EngineMetalView.m */; };
 		D76CBB0F1F46D96B00D51490 /* engineShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = D76CBB0E1F46D96B00D51490 /* engineShaders.metal */; };
 		D78240DF1F4767FC005CE3C9 /* LPEnginePrimitives.m in Sources */ = {isa = PBXBuildFile; fileRef = D78240DE1F4767FC005CE3C9 /* LPEnginePrimitives.m */; };
+		D7A1899D1F69D76B0007FFDF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D7A1899C1F69D76B0007FFDF /* README.md */; };
 		D7BB820D1F5B2A8E0035D58F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BB820C1F5B2A8E0035D58F /* Accelerate.framework */; };
 		D7CF3D901F6110E000C347F1 /* LPEngineSceneModelState.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EE83711F6050A40087E010 /* LPEngineSceneModelState.m */; };
 		D7CF3D911F6110ED00C347F1 /* LPEngineTransformState.m in Sources */ = {isa = PBXBuildFile; fileRef = D70194041F60C85E00464ECB /* LPEngineTransformState.m */; };
@@ -112,6 +113,7 @@
 		D76CBB0E1F46D96B00D51490 /* engineShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = engineShaders.metal; sourceTree = "<group>"; };
 		D78240DD1F4767E3005CE3C9 /* LPEnginePrimitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEnginePrimitives.h; sourceTree = "<group>"; };
 		D78240DE1F4767FC005CE3C9 /* LPEnginePrimitives.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LPEnginePrimitives.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D7A1899C1F69D76B0007FFDF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7BB820C1F5B2A8E0035D58F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		D7D676921F5B606200D790F2 /* LPEngineDemoAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEngineDemoAnimations.h; sourceTree = "<group>"; };
 		D7D676931F5B606200D790F2 /* LPEngineDemoAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPEngineDemoAnimations.m; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 		D76CBAC61F46716700D51490 = {
 			isa = PBXGroup;
 			children = (
+				D7A1899C1F69D76B0007FFDF /* README.md */,
 				D76CBAD11F46716700D51490 /* low_poly_engine */,
 				D76CBAE81F46716700D51490 /* low_poly_engineTests */,
 				D76CBAF31F46716700D51490 /* low_poly_engineUITests */,
@@ -593,6 +596,7 @@
 				D76CBAD71F46716700D51490 /* main.m in Sources */,
 				D7F6B8621F48086F00607F4E /* LPEngineTransforms.m in Sources */,
 				D76366A31F5B7711004B737B /* LPEngineAnimationProperties.m in Sources */,
+				D7A1899D1F69D76B0007FFDF /* README.md in Sources */,
 				D7F6B8641F480BC400607F4E /* LPEngineDemos.m in Sources */,
 				D76CBAD41F46716700D51490 /* AppDelegate.m in Sources */,
 				D7F6B86F1F4A204800607F4E /* LPEngineModelInterfaceFactory.m in Sources */,
