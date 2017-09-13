@@ -106,13 +106,25 @@
 //            modelState.transformedVertices[vertex] = temp;
 //        }
     }
-    
 }
+
+- (void)centerCamera {
+    LPPoint camera = {};
+    
+    camera.x = [_primitives virtualWidth] / 2;
+    camera.y = [_primitives virtualHeight] / 2;
+    camera.z = 400;
+    
+    self.camera = camera;
+}
+
 
 - (id)init {
     if (self = [super init]) {
         _models = [NSMutableArray array];
         _primitives = [LPEnginePrimitives sharedManager];
+        [self centerCamera];
+
     }
     return self;
 }

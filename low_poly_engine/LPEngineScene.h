@@ -26,11 +26,13 @@ typedef NS_ENUM(NSInteger, LPEngineModelTransform) {
 @property (nonatomic, strong) NSMutableArray<LPEngineSceneModelState *> *models;
 @property (nonatomic, strong) LPEnginePrimitives *primitives;
 @property (nonatomic, assign) LPPoint lightSource;
+@property (nonatomic) LPPoint camera;
 
 - (NSInteger)addModel:(LPEngineModel *)model;
 - (void)transformModelWithID:(NSInteger)modelID
               Transformation:(LPEngineTransformState*)transformation;
 - (void)transformVertices;
+- (void)centerCamera;
 - (void)draw;
 - (id)init;
 
