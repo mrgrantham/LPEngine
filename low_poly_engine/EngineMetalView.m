@@ -58,6 +58,11 @@
         renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0.2f, 0.2f, 0.8f, 1.0f);
         renderPassDescriptor.colorAttachments[0].loadAction = MTLLoadActionClear;
         
+        MTLDepthStencilDescriptor *depthStencilDescriptor = [MTLDepthStencilDescriptor new];
+        depthStencilDescriptor.depthCompareFunction = MTLCompareFunctionLess;
+        depthStencilDescriptor.depthWriteEnabled = YES;
+        self.depthStencilState = [self.device newDepthStencilStateWithDescriptor:depthStencilDescriptor];
+        
 
     }
     return self;
@@ -140,6 +145,9 @@
         NSObject <MTLRenderCommandEncoder> *commandEncoder = [commandBuffer renderCommandEncoderWithDescriptor: renderPassDescriptor];
         
         [commandEncoder setRenderPipelineState:self.renderPipelineState];
+        [commandEncoder setDepthClipMode:MTLDepthClipModeClip];
+        [commandEncoder setCullMode:MTLCullModeBack];
+        [commandEncoder setDepthStencilState:self.depthStencilState];
         [commandEncoder setVertexBuffer:self.vertexBuffer offset: 0 atIndex: 0 ];
         if (self.vertexDataSize != 0) {
 
