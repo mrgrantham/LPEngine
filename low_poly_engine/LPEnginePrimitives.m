@@ -45,7 +45,7 @@ LPTriangle LPTriangleMake(LPPoint p1, LPPoint p2, LPPoint p3) {
 }
 
 NSString *NSStringFromLPPoint(LPPoint point) {
-    NSString *newString = [NSString stringWithFormat:@"{ %0.2f, %0.2f, %0.2f }",point.x,point.y,point.z];
+    NSString *newString = [NSString stringWithFormat:@"{ % 5.2f, % 5.2f, % 5.2f }",point.x,point.y,point.z];
     return newString;
 }
 
