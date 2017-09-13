@@ -29,9 +29,9 @@
 
 - (id) initWithCoder:(NSCoder *)coder {
     if ((self = [super initWithCoder:coder])){
-        self.primitives = [LPEnginePrimitives sharedManager];
-        self.vertexData = nil;
-        self.vertexDataSize = 0;
+        _primitives = [LPEnginePrimitives sharedManager];
+        _vertexData = nil;
+        _vertexDataSize = 0;
         
         self.preferredFramesPerSecond = 60;
         
