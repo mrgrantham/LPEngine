@@ -48,6 +48,19 @@
         }
     }
     
+    for (int vertex = 0; vertex < _primitives.vertexDataSize; vertex++) {
+        static Vertex* temp;
+        temp = &_primitives.vertexData[vertex];
+        
+        [self centerCamera];
+//        NSLog(@"Before perspective: %0.2f %0.2f %0.2f %0.2f",temp->position[0],temp->position[1],temp->position[2],temp->position[3]);
+        [LPEngineTransforms projectionTransformWithPoint:temp withCamera:_camera];
+        temp->position.z = fabsf(temp->position.z);
+//        NSLog(@"After perspective: %0.2f %0.2f %0.2f %0.2f",temp->position[0],temp->position[1],temp->position[2],temp->position[3]);
+
+        //modelState.transformedVertices[vertex] = temp;
+    }
+    
     // copy completed frame to backbuffer
     [self.primitives commitFrameToBackBuffer];
 }
@@ -84,16 +97,14 @@
             
         }
         
-        for (int vertex = 0; vertex < modelState.model.vertexCount; vertex++) {
-            static LPPoint temp;
-            temp = modelState.transformedVertices[vertex];
-            //EnginePrimitives *primitives = [EnginePrimitives sharedManager];
-    
-            temp = [LPEngineTransforms projectionTransformWithPoint:temp withCamera:[[LPEnginePrimitives sharedManager] camera]];
-            modelState.transformedVertices[vertex] = temp;
-        }
-        
-    
+//        for (int vertex = 0; vertex < modelState.model.vertexCount; vertex++) {
+//            static LPPoint temp;
+//            temp = modelState.transformedVertices[vertex];
+//    
+//            [self centerCamera];
+//            temp = [LPEngineTransforms projectionTransformWithPoint:temp withCamera:_camera];
+//            modelState.transformedVertices[vertex] = temp;
+//        }
     }
     
 }
