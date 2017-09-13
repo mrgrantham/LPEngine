@@ -72,7 +72,6 @@
         [modelState.model transformVertices];
         [modelState.model findVertexCenter];
         modelState.modelCenter = [LPEngineTransforms translatePoint:modelState.model.center WithVector:modelState.transformState.translation];
-
         
         // transform for scene space
         for (int vertex = 0; vertex < modelState.model.vertexCount; vertex++) {
@@ -91,8 +90,9 @@
             float faceIndex1 = modelState.model.faces[face].x;
             float faceIndex2 = modelState.model.faces[face].y;
             float faceIndex3 = modelState.model.faces[face].z;
-            modelState.normals[face] = [LPEngineTransforms calculateSurfaceNormalWithPlane:LPTriangleMake(modelState.transformedVertices[(NSInteger)faceIndex1], modelState.transformedVertices[(NSInteger)faceIndex2], modelState.transformedVertices[(NSInteger)faceIndex3])];
-            //        self.lightFactors[face] = [self findLightFactor:self.transformedNormals[face] ];
+            modelState.normals[face] = [LPEngineTransforms calculateSurfaceNormalWithPlane:LPTriangleMake(modelState.transformedVertices[(NSInteger)faceIndex1],
+                                                                                                          modelState.transformedVertices[(NSInteger)faceIndex2],
+                                                                                                          modelState.transformedVertices[(NSInteger)faceIndex3])];
             modelState.lightFactors[face] = [modelState.model findLightFactor:modelState.normals[face] ];
             
         }
