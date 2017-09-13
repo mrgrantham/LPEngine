@@ -373,15 +373,6 @@ NS_INLINE void drawScanLine(int32_t leftX, int32_t rightX, int32_t leftZ, int32_
     }
 }
 
-- (void)centerCamera {
-    LPPoint camera = {};
-    
-    camera.x = virtualWidth / 2;
-    camera.y = virtualHeight / 2;
-    camera.z = 400;
-    
-    self.camera = camera;
-}
 
 - (void) drawHorizontalLineAtLeftPoint:(LPPoint) leftPoint RightPoint:(LPPoint)rightPoint {
     

@@ -48,7 +48,6 @@ NSInteger getVertexMemoryAllocationSize();
 @interface LPEnginePrimitives : NSObject
 
 
-@property (nonatomic) LPPoint camera;
 
 
 
@@ -70,7 +69,6 @@ NSInteger getVertexMemoryAllocationSize();
 - (float)virtualWidth;
 - (float)virtualHeight;
 - (void)resetDepthBuffer;
-- (void)centerCamera;
 
 - (void)debugWithTriangle:(LPTriangle)triangle;
 
