@@ -10,6 +10,7 @@
 #import "LPEngineModel.h"
 #import "LPEnginePrimitives.h"
 #import "LPEngineTransforms.h"
+#import <simd/simd.h>
 
 @implementation LPEngineModel
 
@@ -208,7 +209,7 @@
     LPPoint point = {.x=0, .y=0, .z=0};
     self.translation = point;
     self.rotation = point;
-    self.rotationAxis = point;
+    self.rotationAxis = self.center;
     LPPoint scalePoint = {.x=1.0, .y=1.0, .z=1.0};
     self.scale = scalePoint;
     self.centerChanged = TRUE;
