@@ -41,30 +41,36 @@
             _demoScene = [[LPEngineScene alloc] init];
             LPPoint lightSource = {.x=0.5, .y=0.8, .z=0.5};
             _demoScene.lightSource = lightSource;
-            
-            // Place Model in Scene
-            _arwingID = [_demoScene addModel:arwing];
-            
-            NSInteger otherArwingID = [_demoScene addModel:arwing];
-
             LPEnginePrimitives *prim = [LPEnginePrimitives sharedManager];
 
-            // Position model in scene
-            LPPoint translation = {};
-            translation.x = prim.virtualWidth / 2;
-            translation.y = prim.virtualHeight / 4;
-            translation.z = -400;
-            _demoScene.models[_arwingID].transformState.translation = translation;
-            LPPoint scale = {.x=1.0, .y=1.0, .z=1.0};
-            _demoScene.models[_arwingID].model.scale = scale;
-            _demoScene.models[_arwingID].model.centerChanged = YES;
-            [_demoScene.models[_arwingID].model findVertexCenter];
+            NSInteger numModels = 2;
+            NSInteger widthSpacing = prim.virtualWidth / (numModels + 1);
+            NSInteger heightSpacing = prim.virtualHeight / (numModels + 2);
+            NSInteger depthSpacing = 100;
+
+            NSLog(@"modeldim: %li widthSpacing: %li heightSpacing: %li depthSpacing: %li",numModels,widthSpacing,heightSpacing,depthSpacing);
             
-            translation.x = prim.virtualWidth / 5;
-            translation.y = prim.virtualHeight / 5;
-            translation.z = -800;
-            _demoScene.models[otherArwingID].transformState.translation = translation;
             
+            for (int x = 0; x < numModels; x++) {
+                for(int y = 0; y < numModels; y++) {
+                    for (int z = 0; z <numModels; z++) {
+                        _arwingID = [_demoScene addModel:arwing];
+                        // Position model in scene
+                        LPPoint translation = {};
+                        translation.x = widthSpacing * (x + 1);
+                        translation.y = heightSpacing * (y + 1);
+                        translation.z = -300 - (depthSpacing * z);
+                        
+                        _demoScene.models[_arwingID].transformState.translation = translation;
+                        LPPoint scale = {.x=0.5, .y=0.5, .z=0.5};
+                        _demoScene.models[_arwingID].model.scale = scale;
+                        _demoScene.models[_arwingID].model.centerChanged = YES;
+                        [_demoScene.models[_arwingID].model findVertexCenter];
+                        NSLog(@"\nModel: { %i, %i, %i }\n%@",x,y,z,[_demoScene.models[_arwingID].transformState string]);
+                    }
+                }
+            }
+            NSLog(@"\nScene Data camera %@", NSStringFromLPPoint([_demoScene camera]));
             
             _rotateContinuous = NO;
             
@@ -72,11 +78,11 @@
             
             
             // break in to separate method later
-            LPPoint rotateVector = {};
-            rotateVector.y = 3*M_PI/4;
+//            LPPoint rotateVector = {};
+//            rotateVector.y = 3*M_PI/4;
             [self resetArwing];
             [self resetFlight];
-            [_demoScene.models[_arwingID].model rotateWithVector:rotateVector];
+//            [_demoScene.models[_arwingID].model rotateWithVector:rotateVector];
             
 //            _rotationRadians = {};
 //            _translationRadians = {};
@@ -127,7 +133,7 @@
     }
     if (self.translateContinuous) {
         static float translationRadian = M_PI / 2;
-        translationVector.x = (sin(translationRadian) * 50) ;
+        translationVector.x = (sin(translationRadian) * 20) ;
         [self.demoScene.models[_arwingID].model translateWithVector:translationVector];
         translationRadian += 0.1;
         translationRadian = translationRadian >= (M_PI * 2) ? translationRadian - (M_PI * 2): translationRadian;
@@ -150,7 +156,7 @@
         float sineValue = sin(self.translationRadians.y - (M_PI/2));
 //        NSLog(@"Translation sineValue: %0.2f", sineValue);
         translateVector.x = 0;
-        translateVector.y = sineValue * 5;
+        translateVector.y = sineValue * 2;
         translateVector.z = 0;
         [self.demoScene.models[_arwingID].model translateWithVector:translateVector];
         
@@ -189,7 +195,7 @@
     self.rotateContinuous = NO;
     self.translateContinuous = NO;
     [self.demoScene.models[_arwingID].model resetTransforms];
-    LPPoint scale = {.x=1.0, .y=1.0, .z=1.0};
+    LPPoint scale = {.x=0.5, .y=0.5, .z=0.5};
     self.demoScene.models[_arwingID].model.scale = scale;
 }
 
@@ -200,7 +206,7 @@
     //resetPoint.y = M_PI/8;
     self.translationRadians = resetPoint;
 
-    resetPoint.x = M_PI/2;
+    //resetPoint.x = M_PI/2;
     self.rotationRadians = resetPoint;
 }
 
