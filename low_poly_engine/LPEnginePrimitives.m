@@ -222,10 +222,10 @@ NS_INLINE void drawScanLine(int32_t leftX, int32_t rightX, int32_t leftZ, int32_
         depthBufferIndex = leftX + (y * virtualWidth);
         
         
-        if (leftX >= 0 && leftX < virtualWidth && y >= 0 && y < virtualHeight && leftZ >= depthBuffer[depthBufferIndex] && leftZ <= 0) {
-            drawPixelAt(leftX, y);
-            depthBuffer[depthBufferIndex] = leftZ;
-        }
+//        if (leftX >= 0 && leftX < virtualWidth && y >= 0 && y < virtualHeight && leftZ >= depthBuffer[depthBufferIndex] && leftZ <= 0) {
+            drawPixelAt(leftX, y, leftZ);
+//            depthBuffer[depthBufferIndex] = leftZ;
+//        }
         
         if(leftX == rightX) {
             break;
