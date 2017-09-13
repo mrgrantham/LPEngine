@@ -72,7 +72,7 @@
     if (!CGSizeEqualToSize(self.window.frame.size,canvasSize)) {
         CGRect frame = [self.window frame];
         frame.size = canvasSize;
-        NSLog(@"window frame render %@",NSStringFromRect(frame) );
+        //NSLog(@"window frame render %@",NSStringFromRect(frame) );
         [self.window setFrame:frame display:YES animate:YES];
     }
 
