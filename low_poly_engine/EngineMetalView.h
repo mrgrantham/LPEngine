@@ -18,9 +18,10 @@
 
 //@property (nonatomic, weak) NSObject <MTLCommandBuffer> *commandBuffer;
 //@property (nonatomic, weak) NSObject <MTLRenderCommandEncoder> *commandEncoder;
-@property (nonatomic, strong) id<MTLRenderPipelineState> renderPipelineState;
+@property (nonatomic, strong) id <MTLRenderPipelineState> renderPipelineState;
 @property (nonatomic, strong) id <MTLBuffer> vertexBuffer;
 @property (nonatomic, strong) LPEnginePrimitives *primitives;
+@property (nonatomic, strong) id <MTLDepthStencilState> depthStencilState;
 @property (nonatomic) Vertex *vertexData;
 @property (nonatomic) NSInteger vertexDataSize;
 @property (nonatomic, strong) id <MTLLibrary> library;
