@@ -39,7 +39,6 @@
         [self.primitives setVirtualWidth:640];
         [self.primitives setVirtualHeight:480];
         [self.primitives resetDepthBuffer];
-        [self.primitives centerCamera];
         
         CGSize canvasSize = [self.primitives canvasSize];
         if (!CGSizeEqualToSize(self.window.frame.size,canvasSize)) {
