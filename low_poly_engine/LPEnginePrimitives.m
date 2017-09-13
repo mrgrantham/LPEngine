@@ -177,11 +177,11 @@ NS_INLINE Vertex *addVertex(Vertex vertex,Vertex *source,NSInteger *sourceSize) 
     return source;
 }
 
-NS_INLINE void drawPixelAt(NSInteger x, NSInteger y) {
+NS_INLINE void drawPixelAt(NSInteger x, NSInteger y, NSInteger z) {
     // just adds pixel vertex to vertex_data for 2 triangles
     static Vertex point;
     
-    point.position = (vector_float4){((( (x * pixelWidth) + (pixelWidth>>1) )/  canvas.width) * 2) - 1.0,((( (y * pixelWidth)  + (pixelWidth>>1)  )/ canvas.height) * 2) - 1.0, 0, 1.0};
+    point.position = (vector_float4){((( (x * pixelWidth) + (pixelWidth>>1) )/  canvas.width) * 2) - 1.0,((( (y * pixelWidth)  + (pixelWidth>>1)  )/ canvas.height) * 2) - 1.0, ((( (z * pixelWidth)  + (pixelWidth>>1)  )/ canvas.height) * 2) - 1.0, 1.0};
     point.color = color;
     point.pointsize = pointSize;
     vertexData = addVertex(point, vertexData, &vertexDataSize);
