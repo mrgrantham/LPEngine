@@ -244,7 +244,8 @@ NS_INLINE void drawScanLine(int32_t leftX, int32_t rightX, int32_t leftZ, int32_
 
 - (void) clearVertices {
     if (vertexData != NULL) {
-        memset(vertexData, 0, sizeof(Vertex) * vertexDataSize);
+        // attempt to speed up draw time
+//        memset(vertexData, 0, sizeof(Vertex) * vertexDataSize);
         vertexDataSize = 0;
     }
 }
