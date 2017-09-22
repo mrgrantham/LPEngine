@@ -66,10 +66,10 @@
             static LPPoint temp;
             temp = modelState.model.transformedVertices[vertex];
             temp = [LPEngineTransforms translatePoint:temp WithVector:modelState.transformState.translation];
-            temp = [LPEngineTransforms scalePoint:temp fromPoint:modelState.modelCenter WithVector:modelState.model.scale];
-            temp = [LPEngineTransforms rotateAtXAxis:modelState.modelCenter ForPoint:temp AtAngle:modelState.model.rotation.x];
-            temp = [LPEngineTransforms rotateAtYAxis:modelState.modelCenter ForPoint:temp AtAngle:modelState.model.rotation.y];
-            temp = [LPEngineTransforms rotateAtZAxis:modelState.modelCenter ForPoint:temp AtAngle:modelState.model.rotation.z];
+            temp = [LPEngineTransforms scalePoint:temp fromPoint:modelState.modelCenter WithVector:modelState.transformState.scale];
+            temp = [LPEngineTransforms rotateAtXAxis:modelState.modelCenter ForPoint:temp AtAngle:modelState.transformState.rotation.x];
+            temp = [LPEngineTransforms rotateAtYAxis:modelState.modelCenter ForPoint:temp AtAngle:modelState.transformState.rotation.y];
+            temp = [LPEngineTransforms rotateAtZAxis:modelState.modelCenter ForPoint:temp AtAngle:modelState.transformState.rotation.z];
             modelState.transformedVertices[vertex] = temp;
             
         }
