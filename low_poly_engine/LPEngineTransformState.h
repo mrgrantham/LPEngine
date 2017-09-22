@@ -18,6 +18,8 @@
 @property (nonatomic, assign) LPPoint translation;
 @property (nonatomic, assign) LPPoint scale;
 
+- (id)init;
+
 @end
 
 #endif
