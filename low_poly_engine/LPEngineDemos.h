@@ -31,6 +31,7 @@
 - (id) init;
 - (void) triangleDemo;
 - (void) arwingDemo;
+- (void)applyRotation:(LPPoint)rotation;
 - (void) resetArwing;
 - (void) resetFlight;
 

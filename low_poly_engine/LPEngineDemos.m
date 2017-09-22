@@ -184,6 +184,12 @@
     
 }
 
+- (void)applyRotation:(LPPoint)rotation {
+    static const float rotationScale = 0.015;
+    LPPoint scaledRotation = LPPointMake(rotationScale * rotation.y, rotationScale * rotation.x , 0.0);
+    [self.demoScene.models[_arwingID].model rotateWithVector:scaledRotation];
+}
+
 - (void) resetArwing {
     self.scaleContinuous = NO;
     self.rotateContinuous = NO;
