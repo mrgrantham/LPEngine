@@ -15,7 +15,9 @@
 #import "LPEngineDemos.h"
 
 
-@implementation EngineMetalView
+@implementation EngineMetalView {
+    CGPoint _lastDragLocation;
+}
 
 - (id) init {
     self = [super init];
@@ -50,7 +52,7 @@
 //            [self.window setFrame:frame display:YES animate:YES];
         }
         self.device = MTLCreateSystemDefaultDevice();
-        NSLog(@"\nDevice: %@ \nDescription: %@ \n maxThreadsPerThreadgroup: width %li height %li depth %li ",self.device.name,self.device.description, self.device.maxThreadsPerThreadgroup.width,self.device.maxThreadsPerThreadgroup.height,(unsigned long)self.device.maxThreadsPerThreadgroup.depth);
+        NSLog(@"\nDevice: %@ \nDescription: %@ \n maxThreadsPerThreadgroup: width %li height %li depth %li ",self.device.name,self.device.description, (unsigned long)self.device.maxThreadsPerThreadgroup.width,self.device.maxThreadsPerThreadgroup.height,(unsigned long)self.device.maxThreadsPerThreadgroup.depth);
         self.library = [self.device newDefaultLibrary];
         [self registerShaders];
         
@@ -59,8 +61,47 @@
         renderPassDescriptor.colorAttachments[0].loadAction = MTLLoadActionClear;
         
 
+        UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                                                               action:@selector(handleGestureRecognizer:)];
+        [self addGestureRecognizer:panGestureRecognizer];
     }
     return self;
+}
+
+static CGPoint CGPointDelta(CGPoint p1, CGPoint p2) {
+    return CGPointMake(p2.x - p1.x, p2.y - p1.y);
+}
+
+- (void)handleGestureRecognizer:(UIPanGestureRecognizer *)panGestureRecognizer {
+    LPEngineDemos *demo = [LPEngineDemos sharedManager];
+    switch ([panGestureRecognizer state]) {
+        case UIGestureRecognizerStateBegan:
+        {
+            // Halt other demos
+            demo.flyContinuous = NO;
+            demo.rotateContinuous = NO;
+            demo.translateContinuous = NO;
+            demo.scaleContinuous = NO;
+            
+            _lastDragLocation = [panGestureRecognizer locationInView:self];
+        }
+            break;
+        case UIGestureRecognizerStateChanged:
+        {
+            CGPoint location = [panGestureRecognizer locationInView:self];
+            CGPoint delta = CGPointDelta(location, _lastDragLocation);
+            _lastDragLocation = location;
+            [demo applyRotation:LPPointMake(delta.x, delta.y, 0.0)];
+        }
+            break;
+        case UIGestureRecognizerStateEnded:
+        case UIGestureRecognizerStateFailed:
+        {
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 - (void) render {
