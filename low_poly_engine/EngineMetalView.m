@@ -15,7 +15,9 @@
 #import "LPEngineDemos.h"
 
 
-@implementation EngineMetalView
+@implementation EngineMetalView {
+    CGPoint _lastDragLocation;
+}
 
 - (id) init {
     self = [super init];
@@ -57,10 +59,50 @@
         MTLRenderPassDescriptor *renderPassDescriptor = self.currentRenderPassDescriptor;
         renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0.2f, 0.2f, 0.8f, 1.0f);
         renderPassDescriptor.colorAttachments[0].loadAction = MTLLoadActionClear;
+
         
+        NSPanGestureRecognizer *panGestureRecognizer = [[NSPanGestureRecognizer alloc] initWithTarget:self
+                                                                                               action:@selector(handleGestureRecognizer:)];
+        [self addGestureRecognizer:panGestureRecognizer];
 
     }
     return self;
+}
+
+static CGPoint CGPointDelta(CGPoint p1, CGPoint p2) {
+    return CGPointMake(p2.x - p1.x, p2.y - p1.y);
+}
+
+- (void)handleGestureRecognizer:(NSPanGestureRecognizer *)panGestureRecognizer {
+    LPEngineDemos *demo = [LPEngineDemos sharedManager];
+    switch ([panGestureRecognizer state]) {
+        case NSGestureRecognizerStateBegan:
+        {
+            // Halt other demos
+            demo.flyContinuous = NO;
+            demo.rotateContinuous = NO;
+            demo.translateContinuous = NO;
+            demo.scaleContinuous = NO;
+            
+            _lastDragLocation = [panGestureRecognizer locationInView:self];
+        }
+            break;
+        case NSGestureRecognizerStateChanged:
+        {
+            CGPoint location = [panGestureRecognizer locationInView:self];
+            CGPoint delta = CGPointDelta(location, _lastDragLocation);
+            _lastDragLocation = location;
+            [demo applyRotation:LPPointMake(delta.x, delta.y, 0.0)];
+        }
+            break;
+        case NSGestureRecognizerStateEnded:
+        case NSGestureRecognizerStateFailed:
+        {
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 - (void) render {
