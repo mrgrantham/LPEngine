@@ -2,7 +2,7 @@
 //  LPEngineModelSceneState.h
 //  low_poly_engine
 //
-//  Created by DEV on 9/6/17.
+//  Created by James Granthamon 9/6/17.
 //  Copyright © 2017 DEV. All rights reserved.
 //
 

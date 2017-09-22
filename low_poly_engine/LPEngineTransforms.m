@@ -2,7 +2,7 @@
 //  EngineTransforms.m
 //  low_poly_engine
 //
-//  Created by DEV on 8/18/17.
+//  Created by James Granthamon 8/18/17.
 //  Copyright © 2017 DEV. All rights reserved.
 //
 

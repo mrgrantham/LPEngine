@@ -2,7 +2,7 @@
 //  LPEngine_iOSUITests.m
 //  LPEngine iOSUITests
 //
-//  Created by DEV on 9/4/17.
+//  Created by James Granthamon 9/4/17.
 //  Copyright © 2017 DEV. All rights reserved.
 //
 

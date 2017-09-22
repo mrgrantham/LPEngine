@@ -2,7 +2,7 @@
 //  EngineScene.h
 //  low_poly_engine
 //
-//  Created by DEV on 8/21/17.
+//  Created by James Granthamon 8/21/17.
 //  Copyright © 2017 DEV. All rights reserved.
 //
 
