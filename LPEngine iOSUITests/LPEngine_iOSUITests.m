@@ -3,7 +3,7 @@
 //  LPEngine iOSUITests
 //
 //  Created by James Granthamon 9/4/17.
-//  Copyright © 2017 DEV. All rights reserved.
+//  Copyright © 2017 James Grantham All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
