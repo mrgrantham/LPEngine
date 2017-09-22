@@ -20,6 +20,7 @@
 		D76CBB061F46B6B400D51490 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76CBB051F46B6B400D51490 /* MetalKit.framework */; };
 		D76CBB0C1F46BF8C00D51490 /* EngineMetalView.m in Sources */ = {isa = PBXBuildFile; fileRef = D76CBB0B1F46BF8C00D51490 /* EngineMetalView.m */; };
 		D76CBB0F1F46D96B00D51490 /* engineShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = D76CBB0E1F46D96B00D51490 /* engineShaders.metal */; };
+		D77F56B41F75C94C003F40F8 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = D77F56B31F75C94C003F40F8 /* LICENSE */; };
 		D78240DF1F4767FC005CE3C9 /* LPEnginePrimitives.m in Sources */ = {isa = PBXBuildFile; fileRef = D78240DE1F4767FC005CE3C9 /* LPEnginePrimitives.m */; };
 		D7A1899D1F69D76B0007FFDF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D7A1899C1F69D76B0007FFDF /* README.md */; };
 		D7BB820D1F5B2A8E0035D58F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BB820C1F5B2A8E0035D58F /* Accelerate.framework */; };
@@ -111,6 +112,7 @@
 		D76CBB0B1F46BF8C00D51490 /* EngineMetalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = EngineMetalView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D76CBB0D1F46BF9F00D51490 /* EngineMetalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = EngineMetalView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D76CBB0E1F46D96B00D51490 /* engineShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = engineShaders.metal; sourceTree = "<group>"; };
+		D77F56B31F75C94C003F40F8 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		D78240DD1F4767E3005CE3C9 /* LPEnginePrimitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPEnginePrimitives.h; sourceTree = "<group>"; };
 		D78240DE1F4767FC005CE3C9 /* LPEnginePrimitives.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LPEnginePrimitives.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D7A1899C1F69D76B0007FFDF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				D7A1899C1F69D76B0007FFDF /* README.md */,
+				D77F56B31F75C94C003F40F8 /* LICENSE */,
 				D76CBAD11F46716700D51490 /* low_poly_engine */,
 				D76CBAE81F46716700D51490 /* low_poly_engineTests */,
 				D76CBAF31F46716700D51490 /* low_poly_engineUITests */,
@@ -536,6 +539,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D77F56B41F75C94C003F40F8 /* LICENSE in Resources */,
 				D76CBADC1F46716700D51490 /* Assets.xcassets in Resources */,
 				D76CBADF1F46716700D51490 /* Main.storyboard in Resources */,
 			);
